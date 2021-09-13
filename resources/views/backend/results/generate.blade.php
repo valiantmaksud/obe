@@ -127,7 +127,7 @@
                                                                         <input type="text"
                                                                             name="option_marks[{{ $i }}][{{ $j }}]"
                                                                             value="{{ request('option_marks')[$i][$j] }}"
-                                                                            class="form-control question-option" required>
+                                                                            class="form-control question-option">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -140,7 +140,7 @@
                                                                         <select
                                                                             name="option_outcome[{{ $i }}][{{ $j }}]"
                                                                             class="form-control question-option"
-                                                                            data-placeholder="--Select Outcome--" required>
+                                                                            data-placeholder="--Select Outcome--">
                                                                             <option value=""></option>
                                                                             @foreach ($outcomes as $key => $item)
                                                                                 <option value="{{ $key }}"
@@ -180,7 +180,6 @@
                                     <table id="result-table" class="table table-bordered" style="width: 100%">
                                         <thead style="background: bg-dark">
                                             <tr>
-                                                {{-- @dd(count(request('option_marks')) ) --}}
                                                 <td rowspan="{{ $total = request('total_question') }}"
                                                     style="width: 20%!important">Student ID</td>
                                                 <td colspan="{{ count(request('options')) * $total }}"
@@ -254,7 +253,7 @@
                         <span class="input-group-addon">
                             Marks:
                         </span>
-                        <input type="number" name="option_marks[${id}][${index}]" class="form-control question-option" required>
+                        <input type="text" name="option_marks[${id}][${index}]" class="form-control question-option">
                     </div>
                 </div>
             </div>
@@ -264,7 +263,7 @@
                         <span class="input-group-addon">
                             Outcome:
                         </span>
-                        <select name="option_outcome[${id}][${index}]" class="form-control chosen-select-100-percent question-option" data-placeholder="--Select Outcome--" required>
+                        <select name="option_outcome[${id}][${index}]" class="form-control chosen-select-100-percent question-option" data-placeholder="--Select Outcome--">
                         <option value=""></option>
                         @foreach ($outcomes as $key => $item)
                             <option value="{{ $key }}">{{ $item }}</option>

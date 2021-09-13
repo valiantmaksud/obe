@@ -24,10 +24,13 @@ class ResultController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $data['outcomes'] = Outcome::pluck('name','id');
         $data['subjects'] = Subject::get(['id','name','code']);
+        // if ($request->filled('option_marks')) {
+        //     return view('backend.results.generate', $data);
+        // }
         return view('backend.results.create', $data);
     }
 
