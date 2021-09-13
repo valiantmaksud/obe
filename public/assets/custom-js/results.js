@@ -1,41 +1,21 @@
 function addTrRow() {
+    let td = ''
+    for (let index = 0; index < $('.result-tr-3 td').length; index++) {
+        td += `<td>
+        <input type="text" name="" id="" class="form-control">
+    </td>`
+    }
     let tr = `
     <tr class="tr-row">
     <td>
         <div class="input-group">
             <span class="input-group-addon">
-                UG02
+                UG02-
             </span>
-            <input type="text" name="student_ids[]" id="" class="form-control">
+            <input type="text" name="student_ids[]" id="" class="form-control"/>
         </div>
     </td>
-    <td>
-        <input type="text" name="" id="" class="form-control">
-    </td>
-    <td>
-        <input type="text" name="" id="" class="form-control">
-    </td>
-    <td>
-        <input type="text" name="" id="" class="form-control">
-    </td>
-    <td>
-        <input type="text" name="" id="" class="form-control">
-    </td>
-    <td>
-        <input type="text" name="" id="" class="form-control">
-    </td>
-    <td>
-        <input type="text" name="" id="" class="form-control">
-    </td>
-    <td>
-        <input type="text" name="" id="" class="form-control">
-    </td>
-    <td>
-        <input type="text" name="" id="" class="form-control">
-    </td>
-    <td>
-        <input type="text" name="" id="" class="form-control">
-    </td>
+    ${td}
     <td>
         <div class="btn-corner btn-group">
             <button class="btn btn-xs btn-success" onclick="addTrRow()" type="button">
