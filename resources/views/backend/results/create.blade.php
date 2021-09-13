@@ -102,10 +102,8 @@
                                                                 How Many Option:
                                                             </span>
                                                             <input type="number" min="1" max="5"
-                                                                onkeyup="return addItem(this,{{ $i }})"
-                                                                name="options[]" @if (isset(request('options')[$i]))
-                                                            value={{ request('options')[$i] }}
-                                                @endif
+                                                                onkeyup="addItem(this,{{ $i }})"
+                                                                name="options[]" 
                                                 class="form-control question-option"
                                                 placeholder="No. of Option" required>
                                 </div>
@@ -114,8 +112,6 @@
                             </tr>
                             <tfoot>
                                 <tr>
-                                    @if (request()->filled('options'))
-
                                         @for ($i = 0; $i < request('total_question'); $i++)
                                             <td id="option{{ $i }}"
                                                 style="width: {{ 100 / request('total_question') }}%">
@@ -161,7 +157,6 @@
                                                 @endif
                                             </td>
                                         @endfor
-                                    @endif
 
                                 </tr>
                             </tfoot>
