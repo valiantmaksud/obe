@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-sm-12">
-                        <form action="{{ route('courses.store') }}" method="post" class="form-horizontal">
+                        <form action="{{ route('subjects.store') }}" method="post" class="form-horizontal">
                             @csrf
                             <div class="form-group">
                                 <label class="col-sm-3 control-label" for="form-field-1-1"> Course Name </label>
@@ -28,17 +28,17 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label" for="form-field-1-1"> Course Code </label>
 
-                                <div class="col-xs-12 col-sm-8 @error('name') has-error @enderror">
-                                    <input type="text" class="form-control" name="code" value="{{ old('code') }}"
-                                        placeholder="Course Code" autocomplete="off">
-                                    @error('code')
+                                <div class="col-xs-12 col-sm-8 @error('course_code') has-error @enderror">
+                                    <input type="text" class="form-control" name="course_code"
+                                        value="{{ old('course_code') }}" placeholder="Course Code" autocomplete="off">
+                                    @error('course_code')
                                         <span class="text-danger">
                                             {{ $message }}
                                         </span>
                                     @enderror
                                 </div>
                             </div>
-
+                            
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"></label>
 

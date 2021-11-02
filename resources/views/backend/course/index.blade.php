@@ -40,20 +40,19 @@
                                     <td class="text-center">{{ $item->updated_at }}</td>
                                     <td class="text-center">
                                         <div class="btn-group btn-corner">
-                                            <a href="#editModal"
-                                                onclick="editModal(`{{ $item->name }}`,`{{ $item->code }}`,`{{ route('courses.destroy', $item->id) }}`)"
-                                                role="button" data-toggle="modal" class="btn btn-sm btn-success"
-                                                title="Edit">
+                                            <a href="#editModal" onclick="editModal(`{{ $item->name }}`,`{{ $item->code }}`,`{{ route('subjects.destroy', $item->id) }}`)" 
+                                             role="button" data-toggle="modal"
+                                                class="btn btn-sm btn-success" title="Edit">
                                                 <i class="fa fa-pencil-square-o"></i>
                                             </a>
                                             <a class="btn btn-sm btn-danger" href="#"
-                                                onclick="delete_item(`{{ route('courses.destroy', $item->id) }}`)"
+                                                onclick="delete_item(`{{ route('subjects.destroy', $item->id) }}`)"
                                                 data-toggle="modal" data-target="#delete-modal">
                                                 <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                             </a>
                                         </div>
 
-
+                                        
                                     </td>
                                 </tr>
                             @endforeach
@@ -77,13 +76,13 @@
             $('#deleteItemForm').attr('action', url)
         }
 
-        function editModal(name, code, url) {
+        function editModal(name,code,url) {
             $('#sname').val(name)
             $('#scode').val(code)
             $('#editForm').attr('action', url)
         }
     </script>
-    <script type="text/javascript">
+     <script type="text/javascript">
         jQuery(function($) {
             $('#dynamic-table').DataTable({
                 "ordering": false,

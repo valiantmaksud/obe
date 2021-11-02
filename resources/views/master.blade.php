@@ -9,10 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
     <link rel="stylesheet" href="{{ asset('assets/font-awesome/4.5.0/css/font-awesome.min.css') }}" />
-    <!-- ace settings handler -->
-    {{-- <link rel="stylesheet" href="{{ asset('/css/font-awesome.min.css') }}"> --}}
+
 
     <link rel="stylesheet" href="{{ asset('assets/css/chosen.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/ace.min.css') }}" class="ace-main-stylesheet"
@@ -21,7 +19,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/ace-rtl.min.css') }}" />
 
     <script src="{{ asset('assets/js/ace-extra.min.js') }}"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
 
     @yield('inline-css')
 </head>
@@ -46,7 +43,7 @@
 
             {{-- @include('backend._partials.topmenu') --}}
 
-        </div><!-- /.navbar-container -->
+        </div>
     </div>
 
     <div class="main-container ace-save-state" id="main-container">
@@ -119,7 +116,27 @@
         <script src="{{ asset('assets/js/chosen.jquery.min.js') }}"></script>
         <script src="{{ asset('assets/custom-js/chosen-box.js') }}"></script>
 
+
+        <script>
+            var path = window.location.href.split('?')[0];
+
+            path = path.replace('#', '')
+
+            let selector = "a[href='" + path + "']"
+            let a_tag = $(selector)
+
+            let li_tag = a_tag.closest('li')
+            li_tag.addClass('active')
+
+
+            li_tag.parents('li').add(this).each(function() {
+                $(this).addClass('open');
+            });
+        </script>
+
         @yield('inline-js')
+
+
 </body>
 
 </html>

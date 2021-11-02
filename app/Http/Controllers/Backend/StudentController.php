@@ -3,16 +3,20 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Subject;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
-class SubjectController extends Controller
+class StudentController extends Controller
 {
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view('backend.subjects.index', [
-            'subjects'  => Subject::latest()->paginate(25)
+        return view('backend.students.index', [
+            'students'  => Student::latest()->get()
         ]);
     }
 
@@ -23,7 +27,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.students.create');
     }
 
     /**
@@ -35,15 +39,14 @@ class SubjectController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name'  => 'required',
-            'code'  => 'required|unique:subjects,code'
+            'name'          => 'required',
+            'student_id'    => 'required|unique:students,student_id',
+            'email'         => 'nullable',
+            'phone'         => 'nullable',
+            'batch'         => 'nullable',
         ]);
-        try {
-            Subject::firstOrCreate($data);
-        } catch (\Throwable $th) {
-            return redirect()->back()->withError($th->getMessage());
-        }
-        return redirect()->back()->withMessage('subject added success');
+        Student::create($data);
+        return redirect()->route('students.index')->withMessage('Student Added success!');
     }
 
     /**
@@ -65,7 +68,9 @@ class SubjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('backend.students.edit', [
+            'student'   => Student::find($id)
+        ]);
     }
 
     /**
@@ -77,16 +82,8 @@ class SubjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->validate([
-            'name'  => 'required',
-            'code'  => 'required|unique:subjects,code'
-        ]);
-        try {
-            Subject::find($id)->update($data);
-        } catch (\Throwable $th) {
-            return redirect()->back()->withError($th->getMessage());
-        }
-        return redirect()->back()->withMessage('subject update success');
+        Student::find($id)->update($request->all());
+        return redirect()->route('students.index')->withMessage('Student update success!');
     }
 
     /**
@@ -95,13 +92,9 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subject $course)
+    public function destroy($id)
     {
-        try {
-            $course->delete();
-        } catch (\Throwable $th) {
-            return redirect()->back()->withError($th->getMessage());
-        }
-        return redirect()->back()->withMessage('course delete success');
+        Student::find($id)->delete();
+        return redirect()->route('students.index')->withMessage('Student deleted success!');
     }
 }
