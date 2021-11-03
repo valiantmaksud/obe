@@ -65,11 +65,11 @@
                                                         class="form-control input-sm" placeholder="Type Course Name">
                                                 </td>
                                                 <td>
-                                                    <input type="number" name="co" value="{{ $courseSetup->co }}"
+                                                    <input type="text" name="co" value="{{ $courseSetup->co }}"
                                                         class="form-control input-sm" placeholder="Enter CO">
                                                 </td>
                                                 <td>
-                                                    <input type="number" name="po" value="{{ $courseSetup->po }}"
+                                                    <input type="text" name="po" value="{{ $courseSetup->po }}"
                                                         class="form-control input-sm" placeholder="Enter PO">
                                                 </td>
                                                 <td>
