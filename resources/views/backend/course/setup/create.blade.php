@@ -39,7 +39,7 @@
                             @csrf
 
                             <div class="row">
-                                <div class="col-sm-10 col-sm-offset-1">
+                                <div class="col-sm-11 col-sm-offset-1">
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
@@ -107,11 +107,11 @@
                                 placeholder="Type Course Name">
                         </td>
                         <td>
-                            <input type="number" name="cos[]" class="form-control input-sm"
+                            <input type="text" name="cos[]" class="form-control input-sm"
                                 placeholder="Enter CO">
                         </td>
                         <td>
-                            <input type="number" name="pos[]" class="form-control input-sm"
+                            <input type="text" name="pos[]" class="form-control input-sm"
                                 placeholder="Enter PO">
                         </td>
                         <td>
