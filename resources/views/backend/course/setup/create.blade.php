@@ -38,8 +38,8 @@
                             enctype="multipart/form-data">
                             @csrf
 
-                            <div class="row">
-                                <div class="col-sm-11 col-sm-offset-1">
+                            <div class="row" style="padding:20px">
+                                <div class="col-sm-12">
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
@@ -70,7 +70,7 @@
                                         <label class="control-label col-md-4 col-sm-4 "></label>
                                         <div class="col-md-3 col-sm-3 pull-right">
                                             <button type="submit" class="btn btn-primary col-md-12">
-                                                <i class="fa fa-plus"></i> Add New
+                                                <i class="fa fa-plus"></i> Save
                                             </button>
                                         </div>
                                     </div>

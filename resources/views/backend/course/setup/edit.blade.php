@@ -39,8 +39,8 @@
                             @csrf
                             @method('PUT')
 
-                            <div class="row">
-                                <div class="col-sm-10 col-sm-offset-1">
+                            <div class="row" style="padding:20px">
+                                <div class="col-sm-12">
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
