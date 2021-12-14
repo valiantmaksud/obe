@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,11 +30,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['namespace'   => 'App\Http\Controllers\Backend', 'prefix' => 'admin', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
-    Route::resource('students',         'StudentController');
-    Route::resource('courses',          'SubjectController');
-    Route::resource('outcomes',         'OutcomeController');
-    Route::resource('results',          'ResultController');
-    Route::resource('course-setups',    'CourseSetupController');
+    Route::resource('programs',  ProgramController::class);
+    Route::resource('users',     UserController::class);
 });

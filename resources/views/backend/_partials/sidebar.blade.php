@@ -10,57 +10,43 @@
     <li>
         <a href="#" class="dropdown-toggle">
             <i class="menu-icon fa fa-list-alt"></i>
-            <span class="menu-text"> Course Setup </span>
+            <span class="menu-text"> Programs </span>
             <b class="arrow fa fa-angle-down"></b>
         </a>
         <ul class="submenu">
             <li>
-                <a href="{{ route('course-setups.create') }}">
+                <a href="{{ route('programs.create') }}">
                     <i class="menu-icon fa fa-exchange"></i>
                     <span class="menu-text"> Add New </span>
                 </a>
                 <b class="arrow"></b>
             </li>
             <li>
-                <a href="{{ route('course-setups.index') }}">
+                <a href="{{ route('programs.index') }}">
                     <i class="menu-icon fa fa-exchange"></i>
                     <span class="menu-text"> List </span>
                 </a>
                 <b class="arrow"></b>
             </li>
         </ul>
-    </li>
-    {{-- <li>
-        <a href="{{ route('outcomes.index') }}">
-            <i class="menu-icon fa fa-exchange"></i>
-            <span class="menu-text"> Outcome </span>
-        </a>
-        <b class="arrow"></b>
-    </li> --}}
-    <li>
-        <a href="{{ route('courses.index') }}">
-            <i class="menu-icon fa fa-book"></i>
-            <span class="menu-text"> Course List </span>
-        </a>
-        <b class="arrow"></b>
     </li>
 
     <li>
         <a href="#" class="dropdown-toggle">
             <i class="menu-icon fa fa-list-alt"></i>
-            <span class="menu-text"> Students </span>
+            <span class="menu-text"> Users </span>
             <b class="arrow fa fa-angle-down"></b>
         </a>
         <ul class="submenu">
             <li>
-                <a href="{{ route('students.create') }}">
+                <a href="{{ route('users.create') }}">
                     <i class="menu-icon fa fa-exchange"></i>
                     <span class="menu-text"> Add New </span>
                 </a>
                 <b class="arrow"></b>
             </li>
             <li>
-                <a href="{{ route('students.index') }}">
+                <a href="{{ route('users.index') }}">
                     <i class="menu-icon fa fa-exchange"></i>
                     <span class="menu-text"> List </span>
                 </a>
@@ -68,14 +54,6 @@
             </li>
         </ul>
     </li>
-    {{-- <li>
-        <a href="{{ route('results.create') }}">
-            <i class="menu-icon fa fa-percent"></i>
-            <span class="menu-text"> Result </span>
-        </a>
-        <b class="arrow"></b>
-    </li> --}}
-
 
     <li>
         <a href="{{ route('logout') }}" onclick="event.preventDefault();

@@ -1,10 +1,10 @@
 @extends('master')
 
 
-@section('title', 'Student')
+@section('title', 'User List')
 
 @section('page-header')
-    <i class="fa fa-info-circle"></i> Student
+    <i class="fa fa-info-circle"></i> User List
 @stop
 
 @section('main-content')
@@ -21,7 +21,7 @@
                 <div class="widget-header">
                     <h4 class="widget-title"> @yield('page-header')</h4>
                     <span class="widget-toolbar">
-                        <a href="{{ route('students.create') }}" class="">
+                        <a href="{{ route('users.create') }}" class="">
                             <i class="fa fa-plus"></i> Add New
                         </a>
                     </span>
@@ -44,42 +44,44 @@
                                         <thead>
                                             <tr>
                                                 <th>Sl</th>
-                                                <th>Name</th>
+                                                <th>User Name</th>
+                                                <th>User Type</th>
+                                                <th>User role</th>
                                                 <th>Email</th>
-                                                <th>Phone</th>
-                                                <th>Student ID</th>
-                                                <th>Batch</th>
-                                                <th>Created At </th>
+                                                <th>Dept. code</th>
+                                                <th>Institute code</th>
+                                                <th>Status</th>
+
                                                 <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
 
-                                            @forelse ($students as $key => $item)
+                                            @forelse ($users as $key => $item)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $item->name }}</td>
+                                                    <td>{{ $item->username }}</td>
+                                                    <td>{{ $item->usertype }}</td>
+                                                    <td>{{ $item->userrole }}</td>
                                                     <td>{{ $item->email }}</td>
-                                                    <td>{{ $item->phone }}</td>
-                                                    <td>{{ $item->student_id }}</td>
-                                                    <td>{{ $item->batch }}</td>
+                                                    <td>{{ $item->deptcode }}</td>
+                                                    <td>{{ $item->institutecode }}</td>
+                                                    <td>{{ $item->status_02 }}</td>
 
-                                                    <td>{{ \Carbon\Carbon::parse($item->created_at)->format('F d, Y h:i s A') }}
-                                                    </td>
                                                     <td class="text-center">
                                                         <div class="btn-group btn-corner">
 
 
                                                             <!-- edit -->
-                                                            <a href="{{ route('students.edit', $item->id) }}"
-                                                                role="button" class="btn btn-sm btn-success" title="Edit">
+                                                            <a href="{{ route('users.edit', $item->id) }}" role="button"
+                                                                class="btn btn-sm btn-success" title="Edit">
                                                                 <i class="fa fa-pencil-square-o"></i>
                                                             </a>
 
                                                             <!-- delete -->
                                                             <button type="button"
-                                                                onclick="delete_item(`{{ route('students.destroy', $item->id) }}`)"
+                                                                onclick="delete_item(`{{ route('users.destroy', $item->id) }}`)"
                                                                 data-toggle="modal" data-target="#delete-modal"
                                                                 class="btn btn-sm btn-danger" title="Delete">
                                                                 <i class="fa fa-trash"></i>
