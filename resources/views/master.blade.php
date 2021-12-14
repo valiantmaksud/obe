@@ -89,16 +89,7 @@
 
             </div><!-- /.row -->
         </div><!-- /.page-content -->
-        <div class="footer hidden-print">
-            <div class="footer-inner">
-                <div class="footer-content">Developed By
-                    <span class="blue bolder">
-                        <a href="/" target="_blank"> State University </a>
-                    </span>
-                    @ {{ date('Y') }}
-                </div>
-            </div>
-        </div>
+
         <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
             <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
         </a>

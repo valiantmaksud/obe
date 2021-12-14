@@ -164,15 +164,6 @@
                                                     </button>
                                                 </div>
                                                 <div class="space-4"></div>
-                                                <div class="social-or-login center">
-                                                    <span class="bigger-110">
-                                                        &copy; Developed By
-                                                    </span>
-                                                </div>
-
-                                                <div class="text-center" style="margin-top: 10px;">
-                                                    <strong class="grey"> SUB</strong>
-                                                </div>
 
 
                                             </fieldset>
