@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\CurrentEnrollSemisterController;
+use App\Http\Controllers\CurrentMarkEntrySemisterController;
+use App\Http\Controllers\PoController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\SemisterController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +37,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
-    Route::resource('programs',  ProgramController::class);
-    Route::resource('users',     UserController::class);
+    Route::resource('programs',                     ProgramController::class);
+    Route::resource('users',                        UserController::class);
+    Route::resource('semisters',                    SemisterController::class);
+    Route::resource('pos',                          PoController::class);
+    Route::resource('students',                     StudentController::class);
+    Route::resource('current_enroll_semister',      CurrentEnrollSemisterController::class)->names('current_semister');
+    Route::resource('current_mark_entry_semister',  CurrentMarkEntrySemisterController::class);
 });

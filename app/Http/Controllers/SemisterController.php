@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Outcome;
-use App\Models\Subject;
+use App\Models\Semister;
 use Illuminate\Http\Request;
 
-class ResultController extends Controller
+class SemisterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,8 @@ class ResultController extends Controller
      */
     public function index()
     {
-        //
+        $semisters = Semister::latest()->get();
+        return view('backend.semisters.index', compact('semisters'));
     }
 
     /**
@@ -24,14 +23,9 @@ class ResultController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $data['outcomes'] = Outcome::pluck('name','id');
-        $data['subjects'] = Subject::get(['id','name','code']);
-        // if ($request->filled('option_marks')) {
-        //     return view('backend.results.generate', $data);
-        // }
-        return view('backend.results.create', $data);
+        //
     }
 
     /**
@@ -42,7 +36,12 @@ class ResultController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+
+        Semister::create($data);
+
+        return redirect()->route('semisters.index')->withMessage('Semister added success');
     }
 
     /**
@@ -76,7 +75,9 @@ class ResultController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Semister::find($id)->update($request->all());
+
+        return redirect()->route('semisters.index')->withMessage('Semister update success');
     }
 
     /**
@@ -87,6 +88,8 @@ class ResultController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Semister::find($id)->delete();
+
+        return redirect()->route('semisters.index')->withMessage('Semister delete success');
     }
 }

@@ -56,6 +56,112 @@
     </li>
 
     <li>
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-list-alt"></i>
+            <span class="menu-text"> Current Enroll Sem. </span>
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+        <ul class="submenu">
+            <li>
+                <a href="{{ route('current_semister.create') }}">
+                    <i class="menu-icon fa fa-exchange"></i>
+                    <span class="menu-text"> Add New </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+            <li>
+                <a href="{{ route('current_semister.index') }}">
+                    <i class="menu-icon fa fa-exchange"></i>
+                    <span class="menu-text"> List </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+        </ul>
+    </li>
+
+    <li>
+        <a href="{{ route('semisters.index') }}">
+            <i class="menu-icon fa fa-list"></i>
+            <span class="menu-text"> Semister </span>
+        </a>
+        <b class="arrow"></b>
+    </li>
+
+    <li>
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-list-alt"></i>
+            <span class="menu-text"> Po </span>
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+        <ul class="submenu">
+            <li>
+                <a href="{{ route('pos.create') }}">
+                    <i class="menu-icon fa fa-exchange"></i>
+                    <span class="menu-text"> Add New </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+            <li>
+                <a href="{{ route('pos.index') }}">
+                    <i class="menu-icon fa fa-exchange"></i>
+                    <span class="menu-text"> List </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+        </ul>
+    </li>
+
+
+    <li>
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-list-alt"></i>
+            <span class="menu-text">Mark Entry </span>
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+        <ul class="submenu">
+            <li>
+                <a href="{{ route('current_mark_entry_semister.create') }}">
+                    <i class="menu-icon fa fa-exchange"></i>
+                    <span class="menu-text"> Add New </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+            <li>
+                <a href="{{ route('current_mark_entry_semister.index') }}">
+                    <i class="menu-icon fa fa-exchange"></i>
+                    <span class="menu-text"> List </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+        </ul>
+    </li>
+
+
+    <li>
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-list-alt"></i>
+            <span class="menu-text"> Students </span>
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+        <ul class="submenu">
+            <li>
+                <a href="{{ route('students.create') }}">
+                    <i class="menu-icon fa fa-exchange"></i>
+                    <span class="menu-text"> Add New </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+            <li>
+                <a href="{{ route('students.index') }}">
+                    <i class="menu-icon fa fa-exchange"></i>
+                    <span class="menu-text"> List </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+        </ul>
+    </li>
+
+    <li>
         <a href="{{ route('logout') }}" onclick="event.preventDefault();
                              document.getElementById('logout-form').submit();">
 
