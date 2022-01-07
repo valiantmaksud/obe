@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\UserCSV;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -13,9 +15,13 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::latest()->get();
+        $users = User::latest()
+            ->when($request->filled('username'), function ($q) use ($request) {
+                $q->where('username', 'like', '%' . $request->username, '%');
+            })
+            ->get();
         return view('backend.users.index', compact('users'));
     }
 
@@ -37,11 +43,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->except('password');
+        if ($request->filled('file_upload')) {
+            $this->bulkUpload($request);
+        } else {
+            $data = $request->except('password');
 
-        $data['password'] = Hash::make($request->password);
+            $data['password'] = Hash::make($request->password);
 
-        User::create($data);
+            User::create($data);
+        }
+
 
         return redirect()->route('users.index')->withMessage('User created success');
     }
@@ -92,5 +103,14 @@ class UserController extends Controller
     {
         $user->delete();
         return redirect()->route('users.index')->withMessage('User deleted success');
+    }
+
+
+
+
+
+    public function bulkUpload($request)
+    {
+        Excel::import(new UserCSV(), $request->file('csv_file'));
     }
 }

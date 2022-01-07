@@ -25,6 +25,11 @@
                             <i class="fa fa-plus"></i> Add New
                         </a>
                     </span>
+                    <span class="widget-toolbar">
+                        <a href="{{ route('students.create') }}?type=upload" class="">
+                            <i class="fa fa-upload"></i> Upload Student
+                        </a>
+                    </span>
                 </div>
 
 
@@ -32,6 +37,43 @@
                 <!-- body -->
                 <div class="widget-body">
                     <div class="widget-main">
+
+
+                        <!-- Searching -->
+                        <div class="row">
+                            <div class="col-sm-8 col-sm-offset-2">
+                                <form action="">
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <td style="width: 30%">
+                                                    <input type="text" name="studentid" value="{{ request('studentid') }}"
+                                                        class="form-control input-sm" placeholder="Student ID">
+                                                </td>
+                                                <td style="width: 30%">
+                                                    <input type="text" name="studentname"
+                                                        value="{{ request('studentname') }}" class="form-control input-sm"
+                                                        placeholder="Student Name">
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group btn-corner">
+                                                        <button type="submit" class="btn btn-sm btn-success">
+                                                            <i class="fa fa-search"></i> Search
+                                                        </button>
+                                                        <a href="{{ request()->url() }}" class="btn btn-sm">
+                                                            <i class="fa fa-refresh"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+
+                        </div>
+
+
 
 
                         <div class="row">

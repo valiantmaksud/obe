@@ -25,6 +25,11 @@
                             <i class="fa fa-plus"></i> Add New
                         </a>
                     </span>
+                    <span class="widget-toolbar">
+                        <a href="{{ route('users.create') }}?type=upload" class="">
+                            <i class="fa fa-upload"></i> Upload User
+                        </a>
+                    </span>
                 </div>
 
 
@@ -32,6 +37,39 @@
                 <!-- body -->
                 <div class="widget-body">
                     <div class="widget-main">
+
+
+                        <!-- Searching -->
+                        <div class="row">
+                            <div class="col-sm-8 col-sm-offset-2">
+                                <form action="">
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <td style="width: 30%">
+                                                    <input type="text" name="username" value="{{ request('username') }}"
+                                                        class="form-control input-sm" placeholder="User Name">
+                                                </td>
+
+                                                <td class="text-center">
+                                                    <div class="btn-group btn-corner">
+                                                        <button type="submit" class="btn btn-sm btn-success">
+                                                            <i class="fa fa-search"></i> Search
+                                                        </button>
+                                                        <a href="{{ request()->url() }}" class="btn btn-sm">
+                                                            <i class="fa fa-refresh"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+
+                        </div>
+
+
 
 
                         <div class="row">

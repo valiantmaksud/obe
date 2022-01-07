@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\Student as ImportsStudent;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StudentController extends Controller
 {
@@ -12,9 +14,16 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $students = Student::latest()->get();
+        $students = Student::latest()
+            ->when($request->filled('studentid'), function ($q) use ($request) {
+                $q->where('studentid', $request->studentid);
+            })
+            ->when($request->filled('studentname'), function ($q) use ($request) {
+                $q->where('studentname', $request->studentid);
+            })
+            ->get();
         return view('backend.students.index', compact('students'));
     }
 
@@ -36,10 +45,14 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
 
+        if ($request->filled('file_upload')) {
+            $this->bulkUpload($request);
+        } else {
+            $data = $request->all();
 
-        Student::create($data);
+            Student::create($data);
+        }
 
         return redirect()->route('students.index')->withMessage('Student added success');
     }
@@ -89,5 +102,14 @@ class StudentController extends Controller
     {
         $student->delete();
         return redirect()->route('students.index')->withMessage('Student deleted success');
+    }
+
+
+
+
+
+    public function bulkUpload($request)
+    {
+        Excel::import(new ImportsStudent(), $request->file('csv_file'));
     }
 }
