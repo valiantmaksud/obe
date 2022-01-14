@@ -68,20 +68,24 @@
                                                     <td class="text-center">
                                                         <div class="btn-group btn-corner">
 
+                                                            @if (hasPermission('editor'))
+                                                                <!-- edit -->
+                                                                <a href="{{ route('current_semister.edit', $item->id) }}"
+                                                                    role="button" class="btn btn-sm btn-success"
+                                                                    title="Edit">
+                                                                    <i class="fa fa-pencil-square-o"></i>
+                                                                </a>
+                                                            @endif
 
-                                                            <!-- edit -->
-                                                            <a href="{{ route('current_semister.edit', $item->id) }}"
-                                                                role="button" class="btn btn-sm btn-success" title="Edit">
-                                                                <i class="fa fa-pencil-square-o"></i>
-                                                            </a>
-
-                                                            <!-- delete -->
-                                                            <button type="button"
-                                                                onclick="delete_item(`{{ route('current_semister.destroy', $item->id) }}`)"
-                                                                data-toggle="modal" data-target="#delete-modal"
-                                                                class="btn btn-sm btn-danger" title="Delete">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
+                                                            @if (hasPermission('creator'))
+                                                                <!-- delete -->
+                                                                <button type="button"
+                                                                    onclick="delete_item(`{{ route('current_semister.destroy', $item->id) }}`)"
+                                                                    data-toggle="modal" data-target="#delete-modal"
+                                                                    class="btn btn-sm btn-danger" title="Delete">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
+                                                            @endif
                                                         </div>
                                                     </td>
                                                 </tr>

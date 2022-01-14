@@ -76,9 +76,12 @@
     </div>
 
     <div class="page-header">
-
-        <a href="#add-new" role="button" data-toggle="modal" class="btn btn-xs btn-info"
-            style="float: right; margin: 0 2px;"> <i class="fa fa-plus"></i> Add @yield('title') </a>
+        @if (hasPermission('creator'))
+            <a href="#add-new" role="button" data-toggle="modal" class="btn btn-xs btn-info"
+                style="float: right; margin: 0 2px;">
+                <i class="fa fa-plus"></i> Add @yield('title')
+            </a>
+        @endif
         <h1>
             @yield('page-header')
         </h1>
@@ -109,17 +112,20 @@
 
                                 <td>
                                     <div class="btn-group btn-corner">
-                                        <a href="#edit{{ $item->id }}" role="button" data-toggle="modal"
-                                            class="btn btn-sm btn-success" title="Edit">
-                                            <i class="fa fa-pencil-square-o"></i>
-                                        </a>
-
-                                        <button type="button"
-                                            onclick="delete_item(`{{ route('semisters.destroy', $item->id) }}`)"
-                                            data-toggle="modal" data-target="#delete-modal" class="btn btn-sm btn-danger"
-                                            title="Delete">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
+                                        @if (hasPermission('editor'))
+                                            <a href="#edit{{ $item->id }}" role="button" data-toggle="modal"
+                                                class="btn btn-sm btn-success" title="Edit">
+                                                <i class="fa fa-pencil-square-o"></i>
+                                            </a>
+                                        @endif
+                                        @if (hasPermission('creator'))
+                                            <button type="button"
+                                                onclick="delete_item(`{{ route('semisters.destroy', $item->id) }}`)"
+                                                data-toggle="modal" data-target="#delete-modal"
+                                                class="btn btn-sm btn-danger" title="Delete">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        @endif
                                     </div>
 
 

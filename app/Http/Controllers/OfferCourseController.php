@@ -2,19 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Traits\CheckPermission;
 use App\Models\OfferCourse;
 use Illuminate\Http\Request;
 
 class OfferCourseController extends Controller
 {
+    use CheckPermission;
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\ResofferCoursense
      */
     public function index()
     {
-        //
+        $offer_courses = OfferCourse::latest()->get();
+        return view('backend.offer_courses.index', compact('offer_courses'));
     }
 
     /**
@@ -24,7 +28,7 @@ class OfferCourseController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.offer_courses.create');
     }
 
     /**
@@ -35,7 +39,12 @@ class OfferCourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['_11_cid'] = OfferCourse::max('id') + 1;
+
+        OfferCourse::create($data);
+
+        return redirect()->route('offer_courses.index')->withMessage('Po added success');
     }
 
     /**
@@ -57,7 +66,7 @@ class OfferCourseController extends Controller
      */
     public function edit(OfferCourse $offerCourse)
     {
-        //
+        return view('backend.offer_courses.edit', compact('offerCourse'));
     }
 
     /**
@@ -69,7 +78,8 @@ class OfferCourseController extends Controller
      */
     public function update(Request $request, OfferCourse $offerCourse)
     {
-        //
+        $offerCourse->update($request->all());
+        return redirect()->route('offer_courses.index')->withMessage('Po updated success');
     }
 
     /**
@@ -80,6 +90,7 @@ class OfferCourseController extends Controller
      */
     public function destroy(OfferCourse $offerCourse)
     {
-        //
+        $offerCourse->delete();
+        return redirect()->route('offer_courses.index')->withMessage('offerCourse deleted success');
     }
 }

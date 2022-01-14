@@ -20,16 +20,18 @@
                 <!-- header -->
                 <div class="widget-header">
                     <h4 class="widget-title"> @yield('page-header')</h4>
-                    <span class="widget-toolbar">
-                        <a href="{{ route('students.create') }}" class="">
-                            <i class="fa fa-plus"></i> Add New
-                        </a>
-                    </span>
-                    <span class="widget-toolbar">
-                        <a href="{{ route('students.create') }}?type=upload" class="">
-                            <i class="fa fa-upload"></i> Upload Student
-                        </a>
-                    </span>
+                    @if (hasPermission('creator'))
+                        <span class="widget-toolbar">
+                            <a href="{{ route('students.create') }}" class="">
+                                <i class="fa fa-plus"></i> Add New
+                            </a>
+                        </span>
+                        <span class="widget-toolbar">
+                            <a href="{{ route('students.create') }}?type=upload" class="">
+                                <i class="fa fa-upload"></i> Upload Student
+                            </a>
+                        </span>
+                    @endif
                 </div>
 
 
@@ -115,19 +117,24 @@
                                                         <div class="btn-group btn-corner">
 
 
-                                                            <!-- edit -->
-                                                            <a href="{{ route('students.edit', $item->id) }}"
-                                                                role="button" class="btn btn-sm btn-success" title="Edit">
-                                                                <i class="fa fa-pencil-square-o"></i>
-                                                            </a>
+                                                            @if (hasPermission('editor'))
+                                                                <!-- edit -->
+                                                                <a href="{{ route('students.edit', $item->id) }}"
+                                                                    role="button" class="btn btn-sm btn-success"
+                                                                    title="Edit">
+                                                                    <i class="fa fa-pencil-square-o"></i>
+                                                                </a>
+                                                            @endif
 
-                                                            <!-- delete -->
-                                                            <button type="button"
-                                                                onclick="delete_item(`{{ route('students.destroy', $item->id) }}`)"
-                                                                data-toggle="modal" data-target="#delete-modal"
-                                                                class="btn btn-sm btn-danger" title="Delete">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
+                                                            @if (hasPermission('creator'))
+                                                                <!-- delete -->
+                                                                <button type="button"
+                                                                    onclick="delete_item(`{{ route('students.destroy', $item->id) }}`)"
+                                                                    data-toggle="modal" data-target="#delete-modal"
+                                                                    class="btn btn-sm btn-danger" title="Delete">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
+                                                            @endif
                                                         </div>
                                                     </td>
                                                 </tr>

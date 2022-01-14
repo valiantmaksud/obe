@@ -1,9 +1,9 @@
 @extends('master')
 
-@section('title', 'User Setup')
+@section('title', 'Offer Course List')
 
 @section('page-header')
-    <i class="fa fa-plus-circle"></i> User Setup
+    <i class="fa fa-plus-circle"></i> Offer Course List
 @stop
 
 
@@ -20,8 +20,8 @@
                 <div class="widget-header">
                     <h4 class="widget-title"> @yield('page-header')</h4>
                     <span class="widget-toolbar">
-                        <a href="{{ route('users.index') }}" class="">
-                            <i class="fa fa-list-alt"></i> User List
+                        <a href="{{ route('offer_courses.index') }}" class="">
+                            <i class="fa fa-list-alt"></i> List
                         </a>
                     </span>
                 </div>
@@ -34,20 +34,24 @@
 
 
 
-                        <form method="POST" action="{{ route('users.update', $user->id) }}" class="form-horizontal"
-                            enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('offer_courses.update', $offerCourse->id) }}"
+                            class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
 
 
+
+
+
                             <div class="form-group">
                                 <label class="control-label col-sm-3 col-sm-3" for="product_name">
-                                    User name<sup class="text-danger">*</sup> :
+                                    Program code<sup class="text-danger">*</sup> :
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <input class="form-control" type="text" name="username" autocomplete="off"
-                                        value="{{ old('username', $user->username) }}" placeholder="username" required />
+                                    <input class="form-control" type="text" name="programcode" autocomplete="off"
+                                        value="{{ old('programcode', $offerCourse->programcode) }}"
+                                        placeholder="programcode" required />
                                 </div>
                             </div>
 
@@ -56,22 +60,12 @@
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3 col-sm-3">
-                                    User Type<sup class="text-danger">*</sup>:
+                                    Semister<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    @php
-                                        $types = ['admin', 'examcontroller', 'deptadmin', 'teacher'];
-                                    @endphp
-                                    <select name="usertype" class="chosen-select form-control" data-placeholder="--Type--"
+                                    <input type="text" name="semister" class="form-control" autocomplete="off"
+                                        value="{{ old('semister', $offerCourse->semister) }}" placeholder="semister"
                                         required>
-                                        <option value=""></option>
-                                        @foreach ($types as $type)
-                                            <option value="{{ $type }}"
-                                                {{ old('usertype', $user->usertype) == $type ? 'selected' : '' }}>
-                                                {{ $type }}</option>
-                                        @endforeach
-                                    </select>
-
                                 </div>
                             </div>
 
@@ -80,63 +74,60 @@
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3 col-sm-3">
-                                    User role<sup class="text-danger">*</sup>:
+                                    Year<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    @php
-                                        $roles = ['viewer', 'editor', 'creator'];
-                                    @endphp
-                                    <select name="userrole" class="chosen-select form-control" data-placeholder="--Role--"
+                                    <input type="text" name="year" class="form-control" autocomplete="off"
+                                        value="{{ old('year', $offerCourse->year) }}" placeholder="year" required>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3 col-sm-3">
+                                    Course Code<sup class="text-danger">*</sup>:
+                                </label>
+                                <div class="col-md-5 col-sm-5">
+                                    <input type="text" name="coursecode" class="form-control" autocomplete="off"
+                                        value="{{ old('coursecode', $offerCourse->coursecode) }}" placeholder="coursecode"
                                         required>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3 col-sm-3">
+                                    Teacher ID<sup class="text-danger">*</sup>:
+                                </label>
+                                <div class="col-md-5 col-sm-5">
+                                    <input type="text" name="teacherid" class="form-control" autocomplete="off"
+                                        value="{{ old('teacherid', $offerCourse->teacherid) }}" placeholder="teacherid"
+                                        required>
+                                </div>
+                            </div>
+
+
+
+
+                            <!-- Type  -->
+                            <div class="form-group">
+                                <label class="control-label col-sm-3 col-sm-3">
+                                    Final Status<sup class="text-danger">*</sup>:
+                                </label>
+                                <div class="col-md-5 col-sm-5">
+                                    <select name="finalized_status" class="chosen-select form-control"
+                                        data-placeholder="--Type--" required>
                                         <option value=""></option>
-                                        @foreach ($roles as $role)
-                                            <option value="{{ $role }}"
-                                                {{ old('userrole', $user->userrole) == $role ? 'selected' : '' }}>
-                                                {{ $role }}</option>
-                                        @endforeach
+                                        <option value="Active" selected>Active</option>
+                                        <option value="Inactive">In Active</option>
+
                                     </select>
                                 </div>
                             </div>
-
-
-
-
-                            <div class="form-group">
-                                <label class="control-label col-sm-3 col-sm-3">
-                                    User Email<sup class="text-danger">*</sup>:
-                                </label>
-                                <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="email" class="form-control" autocomplete="off"
-                                        value="{{ old('email', $user->email) }}" placeholder="email" required>
-                                </div>
-                            </div>
-
-
-
-
-                            <div class="form-group">
-                                <label class="control-label col-sm-3 col-sm-3">
-                                    Dept Code<sup class="text-danger">*</sup>:
-                                </label>
-                                <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="deptcode" class="form-control" autocomplete="off"
-                                        value="{{ old('deptcode', $user->deptcode) }}" placeholder="deptcode" required>
-                                </div>
-                            </div>
-
-
-
-                            <div class="form-group">
-                                <label class="control-label col-sm-3 col-sm-3">
-                                    Institute code<sup class="text-danger">*</sup>:
-                                </label>
-                                <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="institutecode" class="form-control" autocomplete="off"
-                                        value="{{ old('institutecode', $user->institutecode) }}"
-                                        placeholder="institutecode" required>
-                                </div>
-                            </div>
-
 
 
 
@@ -147,7 +138,7 @@
                                     Status<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="status_02" class="chosen-select form-control" data-placeholder="--Type--"
+                                    <select name="status_11" class="chosen-select form-control" data-placeholder="--Type--"
                                         required>
                                         <option value=""></option>
                                         <option value="Active" selected>Active</option>
@@ -168,6 +159,7 @@
                                     </button>
                                 </div>
                             </div>
+
 
 
                         </form>

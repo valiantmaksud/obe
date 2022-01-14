@@ -1,10 +1,10 @@
 @extends('master')
 
 
-@section('title', 'User List')
+@section('title', 'Program List')
 
 @section('page-header')
-    <i class="fa fa-info-circle"></i> User List
+    <i class="fa fa-info-circle"></i> Program List
 @stop
 
 @section('main-content')
@@ -20,18 +20,11 @@
                 <!-- header -->
                 <div class="widget-header">
                     <h4 class="widget-title"> @yield('page-header')</h4>
-                    @if (hasPermission('creator'))
-                        <span class="widget-toolbar">
-                            <a href="{{ route('users.create') }}" class="">
-                                <i class="fa fa-plus"></i> Add New
-                            </a>
-                        </span>
-                        <span class="widget-toolbar">
-                            <a href="{{ route('users.create') }}?type=upload" class="">
-                                <i class="fa fa-upload"></i> Upload User
-                            </a>
-                        </span>
-                    @endif
+                    <span class="widget-toolbar">
+                        <a href="{{ route('offer_courses.create') }}" class="">
+                            <i class="fa fa-plus"></i> Add New
+                        </a>
+                    </span>
                 </div>
 
 
@@ -39,39 +32,6 @@
                 <!-- body -->
                 <div class="widget-body">
                     <div class="widget-main">
-
-
-                        <!-- Searching -->
-                        <div class="row">
-                            <div class="col-sm-8 col-sm-offset-2">
-                                <form action="">
-                                    <table class="table table-bordered">
-                                        <tbody>
-                                            <tr>
-                                                <td style="width: 30%">
-                                                    <input type="text" name="username" value="{{ request('username') }}"
-                                                        class="form-control input-sm" placeholder="User Name">
-                                                </td>
-
-                                                <td class="text-center">
-                                                    <div class="btn-group btn-corner">
-                                                        <button type="submit" class="btn btn-sm btn-success">
-                                                            <i class="fa fa-search"></i> Search
-                                                        </button>
-                                                        <a href="{{ request()->url() }}" class="btn btn-sm">
-                                                            <i class="fa fa-refresh"></i>
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </form>
-                            </div>
-
-                        </div>
-
-
 
 
                         <div class="row">
@@ -84,12 +44,11 @@
                                         <thead>
                                             <tr>
                                                 <th>Sl</th>
-                                                <th>User Name</th>
-                                                <th>User Type</th>
-                                                <th>User role</th>
-                                                <th>Email</th>
-                                                <th>Dept. code</th>
-                                                <th>Institute code</th>
+                                                <th>Program Code</th>
+                                                <th>Semister</th>
+                                                <th>Year</th>
+                                                <th>Course code</th>
+                                                <th>Teacher ID</th>
                                                 <th>Status</th>
 
                                                 <th class="text-center">Action</th>
@@ -98,23 +57,23 @@
 
                                         <tbody>
 
-                                            @forelse ($users as $key => $item)
+                                            @forelse ($offer_courses as $key => $item)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $item->username }}</td>
-                                                    <td>{{ $item->usertype }}</td>
-                                                    <td>{{ $item->userrole }}</td>
-                                                    <td>{{ $item->email }}</td>
-                                                    <td>{{ $item->deptcode }}</td>
-                                                    <td>{{ $item->institutecode }}</td>
-                                                    <td>{{ $item->status_02 }}</td>
+                                                    <td>{{ $item->programcode }}</td>
+                                                    <td>{{ $item->semister }}</td>
+                                                    <td>{{ $item->year }}</td>
+                                                    <td>{{ $item->coursecode }}</td>
+                                                    <td>{{ $item->teacherid }}</td>
+                                                    <td>{{ $item->status_11 }}</td>
 
                                                     <td class="text-center">
                                                         <div class="btn-group btn-corner">
 
+
                                                             @if (hasPermission('editor'))
                                                                 <!-- edit -->
-                                                                <a href="{{ route('users.edit', $item->id) }}"
+                                                                <a href="{{ route('offer_courses.edit', $item->id) }}"
                                                                     role="button" class="btn btn-sm btn-success"
                                                                     title="Edit">
                                                                     <i class="fa fa-pencil-square-o"></i>
@@ -124,7 +83,7 @@
                                                             @if (hasPermission('creator'))
                                                                 <!-- delete -->
                                                                 <button type="button"
-                                                                    onclick="delete_item(`{{ route('users.destroy', $item->id) }}`)"
+                                                                    onclick="delete_item(`{{ route('offer_courses.destroy', $item->id) }}`)"
                                                                     data-toggle="modal" data-target="#delete-modal"
                                                                     class="btn btn-sm btn-danger" title="Delete">
                                                                     <i class="fa fa-trash"></i>

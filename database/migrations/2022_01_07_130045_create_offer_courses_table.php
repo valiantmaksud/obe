@@ -15,7 +15,7 @@ class CreateOfferCoursesTable extends Migration
     {
         Schema::create('_11_offercourses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('_11_cid');
+            $table->unsignedBigInteger('_11_cid')->nullable();
             $table->string('programcode');
             $table->string('semister');
             $table->string('year');
