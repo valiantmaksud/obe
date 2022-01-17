@@ -15,12 +15,12 @@
 
             <!-- Action -->
             <div class="col-sm-8 col-sm-offset-2 text-right">
-                {{-- <a href="{{ asset('Sample/Student.csv') }}" download class="btn btn-primary btn-sm">
+                <a href="{{ asset('csv/student_sample.csv') }}" download class="btn btn-primary btn-sm">
                     <span class="translate">
                         Download Sample
                     </span>
                     <i class="fa fa-download"></i>
-                </a> --}}
+                </a>
                 <button class="btn btn-inverse btn-sm" type="submit">
                     <span class="translate">
                         Import Student

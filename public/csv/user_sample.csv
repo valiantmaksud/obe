@@ -1,0 +1,2 @@
+username,email,password,usertype,userrole,deptcode,institutecode,status_02
+testuser,test2@gmail.com,123456,admin,creator,cse,cse,Active

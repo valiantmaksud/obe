@@ -79,8 +79,8 @@
             Dept Code<sup class="text-danger">*</sup>:
         </label>
         <div class="col-md-5 col-sm-5">
-            <input type="text" name="userrole" class="form-control" autocomplete="off" value="{{ old('userrole') }}"
-                placeholder="userrole" required>
+            <input type="text" name="deptcode" class="form-control" autocomplete="off" value="{{ old('deptcode') }}"
+                placeholder="deptcode" required>
         </div>
     </div>
 
