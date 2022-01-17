@@ -19,9 +19,10 @@ class UserController extends Controller
     {
         $users = User::latest()
             ->when($request->filled('username'), function ($q) use ($request) {
-                $q->where('username', 'like', '%' . $request->username, '%');
+                $q->where('username', 'like', '%' . $request->username . '%');
             })
             ->get();
+
         return view('backend.users.index', compact('users'));
     }
 
