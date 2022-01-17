@@ -112,12 +112,14 @@
 
                                 <td>
                                     <div class="btn-group btn-corner">
-                                        @if (hasPermission('editor'))
+
+                                        @if (hasPermission(['editor', 'creator']))
                                             <a href="#edit{{ $item->id }}" role="button" data-toggle="modal"
                                                 class="btn btn-sm btn-success" title="Edit">
                                                 <i class="fa fa-pencil-square-o"></i>
                                             </a>
                                         @endif
+
                                         @if (hasPermission('creator'))
                                             <button type="button"
                                                 onclick="delete_item(`{{ route('semisters.destroy', $item->id) }}`)"

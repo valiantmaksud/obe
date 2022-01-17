@@ -24,15 +24,13 @@
                     <b class="arrow"></b>
                 </li>
             @endif
-            @if (hasPermission(['viewer', 'editor']))
-                <li>
-                    <a href="{{ route('programs.index') }}">
-                        <i class="menu-icon fa fa-exchange"></i>
-                        <span class="menu-text"> List </span>
-                    </a>
-                    <b class="arrow"></b>
-                </li>
-            @endif
+            <li>
+                <a href="{{ route('programs.index') }}">
+                    <i class="menu-icon fa fa-exchange"></i>
+                    <span class="menu-text"> List </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
         </ul>
     </li>
 
@@ -52,15 +50,14 @@
                     <b class="arrow"></b>
                 </li>
             @endif
-            @if (hasPermission(['viewer', 'editor']))
-                <li>
-                    <a href="{{ route('users.index') }}">
-                        <i class="menu-icon fa fa-exchange"></i>
-                        <span class="menu-text"> List </span>
-                    </a>
-                    <b class="arrow"></b>
-                </li>
-            @endif
+            <li>
+                <a href="{{ route('users.index') }}">
+                    <i class="menu-icon fa fa-exchange"></i>
+                    <span class="menu-text"> List </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+
         </ul>
     </li>
 
@@ -80,15 +77,13 @@
                     <b class="arrow"></b>
                 </li>
             @endif
-            @if (hasPermission(['viewer', 'editor']))
-                <li>
-                    <a href="{{ route('current_semister.index') }}">
-                        <i class="menu-icon fa fa-exchange"></i>
-                        <span class="menu-text"> List </span>
-                    </a>
-                    <b class="arrow"></b>
-                </li>
-            @endif
+            <li>
+                <a href="{{ route('current_semister.index') }}">
+                    <i class="menu-icon fa fa-exchange"></i>
+                    <span class="menu-text"> List </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
         </ul>
     </li>
 
@@ -116,15 +111,13 @@
                     <b class="arrow"></b>
                 </li>
             @endif
-            @if (hasPermission(['viewer', 'editor']))
-                <li>
-                    <a href="{{ route('pos.index') }}">
-                        <i class="menu-icon fa fa-exchange"></i>
-                        <span class="menu-text"> List </span>
-                    </a>
-                    <b class="arrow"></b>
-                </li>
-            @endif
+            <li>
+                <a href="{{ route('pos.index') }}">
+                    <i class="menu-icon fa fa-exchange"></i>
+                    <span class="menu-text"> List </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
         </ul>
     </li>
 
@@ -145,15 +138,13 @@
                     <b class="arrow"></b>
                 </li>
             @endif
-            @if (hasPermission(['viewer', 'editor']))
-                <li>
-                    <a href="{{ route('current_mark_entry_semister.index') }}">
-                        <i class="menu-icon fa fa-exchange"></i>
-                        <span class="menu-text"> List </span>
-                    </a>
-                    <b class="arrow"></b>
-                </li>
-            @endif
+            <li>
+                <a href="{{ route('current_mark_entry_semister.index') }}">
+                    <i class="menu-icon fa fa-exchange"></i>
+                    <span class="menu-text"> List </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
         </ul>
     </li>
 
@@ -174,15 +165,14 @@
                     <b class="arrow"></b>
                 </li>
             @endif
-            @if (hasPermission(['viewer', 'editor']))
-                <li>
-                    <a href="{{ route('students.index') }}">
-                        <i class="menu-icon fa fa-exchange"></i>
-                        <span class="menu-text"> List </span>
-                    </a>
-                    <b class="arrow"></b>
-                </li>
-            @endif
+            <li>
+                <a href="{{ route('students.index') }}">
+                    <i class="menu-icon fa fa-exchange"></i>
+                    <span class="menu-text"> List </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+
         </ul>
     </li>
 
@@ -203,15 +193,15 @@
                     <b class="arrow"></b>
                 </li>
             @endif
-            @if (hasPermission(['viewer', 'editor']))
-                <li>
-                    <a href="{{ route('offer_courses.index') }}">
-                        <i class="menu-icon fa fa-exchange"></i>
-                        <span class="menu-text"> List </span>
-                    </a>
-                    <b class="arrow"></b>
-                </li>
-            @endif
+
+            <li>
+                <a href="{{ route('offer_courses.index') }}">
+                    <i class="menu-icon fa fa-exchange"></i>
+                    <span class="menu-text"> List </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+
         </ul>
     </li>
 

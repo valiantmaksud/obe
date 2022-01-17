@@ -68,7 +68,7 @@
                                                     <td class="text-center">
                                                         <div class="btn-group btn-corner">
 
-                                                            @if (hasPermission('editor'))
+                                                            @if (hasPermission(['editor', 'creator']))
                                                                 <!-- edit -->
                                                                 <a href="{{ route('current_semister.edit', $item->id) }}"
                                                                     role="button" class="btn btn-sm btn-success"
