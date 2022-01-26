@@ -1,10 +1,10 @@
 @extends('master')
 
 
-@section('title', 'Offer course List')
+@section('title', 'Enroll Student List')
 
 @section('page-header')
-    <i class="fa fa-info-circle"></i> Offer course List
+    <i class="fa fa-info-circle"></i> Enroll Student List
 @stop
 
 @section('main-content')
@@ -21,7 +21,7 @@
                 <div class="widget-header">
                     <h4 class="widget-title"> @yield('page-header')</h4>
                     <span class="widget-toolbar">
-                        <a href="{{ route('offer_courses.create') }}" class="">
+                        <a href="{{ route('enroll-students.create') }}" class="">
                             <i class="fa fa-plus"></i> Add New
                         </a>
                     </span>
@@ -44,11 +44,10 @@
                                         <thead>
                                             <tr>
                                                 <th>Sl</th>
-                                                <th>Program Code</th>
-                                                <th>Semister</th>
-                                                <th>Year</th>
-                                                <th>Course code</th>
-                                                <th>Teacher ID</th>
+                                                <th>Offer Course</th>
+                                                <th>Student</th>
+                                                <th>Enroll type</th>
+
                                                 <th>Status</th>
                                                 <th class="text-center">Action</th>
                                             </tr>
@@ -56,15 +55,13 @@
 
                                         <tbody>
 
-                                            @forelse ($offer_courses as $key => $item)
+                                            @forelse ($enrollStudents as $key => $item)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $item->programcode }}</td>
-                                                    <td>{{ $item->semister }}</td>
-                                                    <td>{{ $item->year }}</td>
-                                                    <td>{{ $item->coursecode }}</td>
-                                                    <td>{{ $item->teacherid }}</td>
-                                                    <td>{{ $item->status_11 }}</td>
+                                                    <td>{{ $item->offer->programcode }}</td>
+                                                    <td>{{ $item->student->studentid }}</td>
+                                                    <td>{{ $item->enrolltype }}</td>
+                                                    <td>{{ $item->status_13 }}</td>
 
                                                     <td class="text-center">
                                                         <div class="btn-group btn-corner">
@@ -72,7 +69,7 @@
 
                                                             @if (hasPermission(['editor', 'creator']))
                                                                 <!-- edit -->
-                                                                <a href="{{ route('offer_courses.edit', $item->id) }}"
+                                                                <a href="{{ route('enroll-students.edit', $item->id) }}"
                                                                     role="button" class="btn btn-sm btn-success"
                                                                     title="Edit">
                                                                     <i class="fa fa-pencil-square-o"></i>
@@ -82,7 +79,7 @@
                                                             @if (hasPermission('creator'))
                                                                 <!-- delete -->
                                                                 <button type="button"
-                                                                    onclick="delete_item(`{{ route('offer_courses.destroy', $item->id) }}`)"
+                                                                    onclick="delete_item(`{{ route('enroll-students.destroy', $item->id) }}`)"
                                                                     data-toggle="modal" data-target="#delete-modal"
                                                                     class="btn btn-sm btn-danger" title="Delete">
                                                                     <i class="fa fa-trash"></i>

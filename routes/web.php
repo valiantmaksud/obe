@@ -10,6 +10,8 @@ use App\Http\Controllers\SemisterController;
 use App\Http\Controllers\OfferCourseController;
 use App\Http\Controllers\CurrentEnrollSemisterController;
 use App\Http\Controllers\CurrentMarkEntrySemisterController;
+use App\Http\Controllers\EnrollStudentController;
+use App\Http\Controllers\MarkDistributionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,4 +52,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('current_mark_entry_semister',  CurrentMarkEntrySemisterController::class);
 
     Route::resource('offer_courses',                OfferCourseController::class);
+    Route::resource('mark-distributions',           MarkDistributionController::class);
+    Route::resource('enroll-students',              EnrollStudentController::class);
 });

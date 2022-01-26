@@ -9,5 +9,5 @@ class PoMarkDistribution extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $table = '_11_offercourses';
+    protected $table = '_18_pomarkdistribution';
 }

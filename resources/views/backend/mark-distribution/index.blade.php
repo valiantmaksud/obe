@@ -21,7 +21,7 @@
                 <div class="widget-header">
                     <h4 class="widget-title"> @yield('page-header')</h4>
                     <span class="widget-toolbar">
-                        <a href="{{ route('offer_courses.create') }}" class="">
+                        <a href="{{ route('mark-distributions.create') }}" class="">
                             <i class="fa fa-plus"></i> Add New
                         </a>
                     </span>
@@ -56,15 +56,15 @@
 
                                         <tbody>
 
-                                            @forelse ($offer_courses as $key => $item)
+                                            @forelse ($markDistributions as $key => $item)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $item->programcode }}</td>
-                                                    <td>{{ $item->semister }}</td>
-                                                    <td>{{ $item->year }}</td>
-                                                    <td>{{ $item->coursecode }}</td>
-                                                    <td>{{ $item->teacherid }}</td>
-                                                    <td>{{ $item->status_11 }}</td>
+                                                    <td>{{ $item->offer->programcode }}</td>
+                                                    <td>{{ $item->markofexam }}</td>
+                                                    <td>{{ $item->qid }}</td>
+                                                    <td>{{ $item->co }}</td>
+                                                    <td>{{ $item->po }}</td>
+                                                    <td>{{ $item->fullmark }}</td>
 
                                                     <td class="text-center">
                                                         <div class="btn-group btn-corner">

@@ -56,7 +56,7 @@
 
                                         <tbody>
 
-                                            @forelse ($currentEnrollSemisters as $key => $item)
+                                            @forelse ($currentMarkEntrySemisters as $key => $item)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MarkDistribution;
+use App\Models\OfferCourse;
 use Illuminate\Http\Request;
 
 class MarkDistributionController extends Controller
@@ -14,7 +15,9 @@ class MarkDistributionController extends Controller
      */
     public function index()
     {
-        //
+        $markDistributions  = MarkDistribution::latest()->get();
+        $offerCourses       = OfferCourse::get();
+        return view('backend.mark-distribution.index', compact('markDistributions', 'offerCourses'));
     }
 
     /**
@@ -24,7 +27,8 @@ class MarkDistributionController extends Controller
      */
     public function create()
     {
-        //
+        $offerCourses       = OfferCourse::get();
+        return view('backend.mark-distribution.create', compact('offerCourses'));
     }
 
     /**
@@ -35,7 +39,11 @@ class MarkDistributionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        MarkDistribution::create($data);
+
+        return redirect()->route('mark-distributions.index')->withMessage('Mark distribution added success');
     }
 
     /**
@@ -57,7 +65,8 @@ class MarkDistributionController extends Controller
      */
     public function edit(MarkDistribution $markDistribution)
     {
-        //
+        $offerCourses       = OfferCourse::get();
+        return view('backend.mark-distribution.edit', compact('markDistribution', 'offerCourses'));
     }
 
     /**
@@ -69,7 +78,8 @@ class MarkDistributionController extends Controller
      */
     public function update(Request $request, MarkDistribution $markDistribution)
     {
-        //
+        $markDistribution->update($request->all());
+        return redirect()->route('mark-distributions.index')->withMessage('Mark distribution updated success');
     }
 
     /**
@@ -80,6 +90,7 @@ class MarkDistributionController extends Controller
      */
     public function destroy(MarkDistribution $markDistribution)
     {
-        //
+        $markDistribution->delete();
+        return redirect()->route('mark-distributions.index')->withMessage('Mark distribution deleted success');
     }
 }

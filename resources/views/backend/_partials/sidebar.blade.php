@@ -206,6 +206,62 @@
     </li>
 
     <li>
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-list-alt"></i>
+            <span class="menu-text"> Mark distribution </span>
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+        <ul class="submenu">
+            @if (hasPermission('creator'))
+                <li>
+                    <a href="{{ route('mark-distributions.create') }}">
+                        <i class="menu-icon fa fa-exchange"></i>
+                        <span class="menu-text"> Add New </span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            @endif
+
+            <li>
+                <a href="{{ route('mark-distributions.index') }}">
+                    <i class="menu-icon fa fa-exchange"></i>
+                    <span class="menu-text"> List </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+
+        </ul>
+    </li>
+
+    <li>
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-list-alt"></i>
+            <span class="menu-text"> Enroll Student </span>
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+        <ul class="submenu">
+            @if (hasPermission('creator'))
+                <li>
+                    <a href="{{ route('enroll-students.create') }}">
+                        <i class="menu-icon fa fa-exchange"></i>
+                        <span class="menu-text"> Add New </span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            @endif
+
+            <li>
+                <a href="{{ route('enroll-students.index') }}">
+                    <i class="menu-icon fa fa-exchange"></i>
+                    <span class="menu-text"> List </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+
+        </ul>
+    </li>
+
+    <li>
         <a href="{{ route('profile') }}">
 
             <i class="fa fa-users"></i>

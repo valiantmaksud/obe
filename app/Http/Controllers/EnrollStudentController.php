@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EnrollStudent;
+use App\Models\OfferCourse;
 use Illuminate\Http\Request;
+use App\Models\EnrollStudent;
+use App\Models\Student;
 
 class EnrollStudentController extends Controller
 {
@@ -14,7 +16,8 @@ class EnrollStudentController extends Controller
      */
     public function index()
     {
-        //
+        $enrollStudents = EnrollStudent::paginate(25);
+        return view('backend.enroll-students.index', compact('enrollStudents'));
     }
 
     /**
@@ -24,7 +27,9 @@ class EnrollStudentController extends Controller
      */
     public function create()
     {
-        //
+        $offerCourses       = OfferCourse::get();
+        $students           = Student::get();
+        return view('backend.enroll-students.create', compact('offerCourses', 'students'));
     }
 
     /**
@@ -35,7 +40,15 @@ class EnrollStudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only('studentid', 'enrolltype');
+
+        $data['_11_cid'] = $request->offer_course_id;
+
+        // dd($data);
+
+        EnrollStudent::create($data);
+
+        return redirect()->route('enroll-students.index')->withMessage('Enroll Student added success');
     }
 
     /**
@@ -57,7 +70,9 @@ class EnrollStudentController extends Controller
      */
     public function edit(EnrollStudent $enrollStudent)
     {
-        //
+        $offerCourses       = OfferCourse::get();
+        $students           = Student::get();
+        return view('backend.enroll-students.create', compact('offerCourses', 'students', 'enrollStudent'));
     }
 
     /**
@@ -69,7 +84,8 @@ class EnrollStudentController extends Controller
      */
     public function update(Request $request, EnrollStudent $enrollStudent)
     {
-        //
+        $enrollStudent->update($request->all());
+        return redirect()->route('enroll-students.index')->withMessage('Enroll student update success');
     }
 
     /**
@@ -80,6 +96,7 @@ class EnrollStudentController extends Controller
      */
     public function destroy(EnrollStudent $enrollStudent)
     {
-        //
+        $enrollStudent->delete();
+        return redirect()->route('enroll-students.index')->withMessage('Enroll student deleted success');
     }
 }

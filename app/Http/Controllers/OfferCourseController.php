@@ -79,7 +79,7 @@ class OfferCourseController extends Controller
     public function update(Request $request, OfferCourse $offerCourse)
     {
         $offerCourse->update($request->all());
-        return redirect()->route('offer_courses.index')->withMessage('Po updated success');
+        return redirect()->route('offer_courses.index')->withMessage('Offer updated success');
     }
 
     /**

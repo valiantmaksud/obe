@@ -9,5 +9,11 @@ class MarkDistribution extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $table = '_18_pomarkdistribution';
+    protected $table = '_12_markdistribution';
+
+
+    public function offer()
+    {
+        return $this->belongsTo(OfferCourse::class, '_11_cid');
+    }
 }
