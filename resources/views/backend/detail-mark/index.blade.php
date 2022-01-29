@@ -1,10 +1,10 @@
 @extends('master')
 
 
-@section('title', 'Offer course List')
+@section('title', 'detail Mark List')
 
 @section('page-header')
-    <i class="fa fa-info-circle"></i> Offer course List
+    <i class="fa fa-info-circle"></i> detail Mark List
 @stop
 
 @section('main-content')
@@ -45,26 +45,30 @@
                                             <tr>
                                                 <th>Sl</th>
                                                 <th>Program Code</th>
-                                                <th>Mark of exam</th>
+                                                <th>Student ID</th>
+                                                <th>Exam type</th>
                                                 <th>Gid</th>
-                                                <th>Co</th>
+                                                <th>CO</th>
                                                 <th>PO</th>
-                                                <th>Full mark</th>
+                                                <th>Obtain Mark</th>
+                                                <th>Status</th>
                                                 <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
 
-                                            @forelse ($markDistributions as $key => $item)
+                                            @forelse ($detailMark as $key => $item)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ optional($item->offer)->programcode }}</td>
-                                                    <td>{{ $item->markofexam }}</td>
+                                                    <td>{{ optional($item->student)->studentid }}</td>
+                                                    <td>{{ $item->examtype }}</td>
                                                     <td>{{ $item->qid }}</td>
                                                     <td>{{ $item->co }}</td>
                                                     <td>{{ $item->po }}</td>
-                                                    <td>{{ $item->fullmark }}</td>
+                                                    <td>{{ $item->obtainedmark }}</td>
+                                                    <td>{{ $item->status_14 }}</td>
 
                                                     <td class="text-center">
                                                         <div class="btn-group btn-corner">
@@ -72,7 +76,7 @@
 
                                                             @if (hasPermission(['editor', 'creator']))
                                                                 <!-- edit -->
-                                                                <a href="{{ route('mark-distributions.edit', $item->id) }}"
+                                                                <a href="{{ route('detail-marks.edit', $item->id) }}"
                                                                     role="button" class="btn btn-sm btn-success"
                                                                     title="Edit">
                                                                     <i class="fa fa-pencil-square-o"></i>
@@ -82,7 +86,7 @@
                                                             @if (hasPermission('creator'))
                                                                 <!-- delete -->
                                                                 <button type="button"
-                                                                    onclick="delete_item(`{{ route('mark-distributions.destroy', $item->id) }}`)"
+                                                                    onclick="delete_item(`{{ route('detail-marks.destroy', $item->id) }}`)"
                                                                     data-toggle="modal" data-target="#delete-modal"
                                                                     class="btn btn-sm btn-danger" title="Delete">
                                                                     <i class="fa fa-trash"></i>

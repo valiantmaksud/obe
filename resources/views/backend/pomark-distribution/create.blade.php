@@ -1,9 +1,9 @@
 @extends('master')
 
-@section('title', 'Mark distribution List')
+@section('title', 'Create')
 
 @section('page-header')
-    <i class="fa fa-plus-circle"></i> Mark distribution List
+    <i class="fa fa-plus-circle"></i> Create
 @stop
 
 
@@ -34,12 +34,9 @@
 
 
 
-                        <form method="POST" action="{{ route('mark-distributions.update', $markDistribution->id) }}"
-                            class="form-horizontal" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('enroll-students.store') }}" class="form-horizontal"
+                            enctype="multipart/form-data">
                             @csrf
-                            @method('PUT')
-
-
 
 
 
@@ -60,67 +57,25 @@
 
 
 
-
                             <div class="form-group">
                                 <label class="control-label col-sm-3 col-sm-3">
-                                    Mark of exam<sup class="text-danger">*</sup>:
+                                    PO total Mark<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="markofexam" class="form-control" autocomplete="off"
-                                        value="{{ old('markofexam') }}" placeholder="mark of exam" required>
+                                    <input type="text" name="pototalmark" class="form-control" autocomplete="off"
+                                        value="{{ old('pototalmark') }}" placeholder="Enroll type" required>
                                 </div>
                             </div>
 
 
 
-
                             <div class="form-group">
                                 <label class="control-label col-sm-3 col-sm-3">
-                                    Gid<sup class="text-danger">*</sup>:
+                                    PO total Mark<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="qid" class="form-control" autocomplete="off"
-                                        value="{{ old('qid') }}" placeholder="qid" required>
-                                </div>
-                            </div>
-
-
-
-
-                            <div class="form-group">
-                                <label class="control-label col-sm-3 col-sm-3">
-                                    Co<sup class="text-danger">*</sup>:
-                                </label>
-                                <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="co" class="form-control" autocomplete="off"
-                                        value="{{ old('co') }}" placeholder="co" required>
-                                </div>
-                            </div>
-
-
-
-
-                            <div class="form-group">
-                                <label class="control-label col-sm-3 col-sm-3">
-                                    Po<sup class="text-danger">*</sup>:
-                                </label>
-                                <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="po" class="form-control" autocomplete="off"
-                                        value="{{ old('po') }}" placeholder="po" required>
-                                </div>
-                            </div>
-
-
-
-
-                            <div class="form-group">
-                                <label class="control-label col-sm-3 col-sm-3">
-                                    Full mark<sup class="text-danger">*</sup>:
-                                </label>
-                                <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="fullmark" class="form-control" autocomplete="off"
-                                        value="{{ old('fullmark') }}" placeholder="fullmark" required>
-                                    </select>
+                                    <input type="text" name="pototalmark" class="form-control" autocomplete="off"
+                                        value="{{ old('pototalmark') }}" placeholder="Enroll type" required>
                                 </div>
                             </div>
 
@@ -131,11 +86,10 @@
                                 <label class="control-label col-md-4 col-sm-4"></label>
                                 <div class="col-md-3 col-sm-3">
                                     <button type="submit" class="btn btn-primary col-md-12">
-                                        <i class="fa fa-save"></i> Update
+                                        <i class="fa fa-plus"></i> Add New
                                     </button>
                                 </div>
                             </div>
-
 
 
                         </form>

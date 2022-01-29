@@ -40,7 +40,7 @@ class OfferCourseController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $data['_11_cid'] = OfferCourse::max('id') + 1;
+        $data['cid_11'] = OfferCourse::max('id') + 1;
 
         OfferCourse::create($data);
 

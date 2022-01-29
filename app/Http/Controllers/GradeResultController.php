@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use App\Models\GradeResult;
+use App\Models\OfferCourse;
 use Illuminate\Http\Request;
 
 class GradeResultController extends Controller
@@ -14,7 +16,8 @@ class GradeResultController extends Controller
      */
     public function index()
     {
-        //
+        $gradeResult = GradeResult::paginate(25);
+        return view('backend.grade-result.index', compact('gradeResult'));
     }
 
     /**
@@ -24,7 +27,9 @@ class GradeResultController extends Controller
      */
     public function create()
     {
-        //
+        $offerCourses       = OfferCourse::get();
+        $students           = Student::get();
+        return view('backend.grade-result.create', compact('offerCourses', 'students'));
     }
 
     /**
@@ -35,7 +40,14 @@ class GradeResultController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+
+        // dd($data);
+
+        GradeResult::create($data);
+
+        return redirect()->route('grade-results.index')->withMessage('Enroll Student added success');
     }
 
     /**

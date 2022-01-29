@@ -10,8 +10,12 @@ use App\Http\Controllers\SemisterController;
 use App\Http\Controllers\OfferCourseController;
 use App\Http\Controllers\CurrentEnrollSemisterController;
 use App\Http\Controllers\CurrentMarkEntrySemisterController;
+use App\Http\Controllers\DetailMarkController;
 use App\Http\Controllers\EnrollStudentController;
+use App\Http\Controllers\GradeResultController;
 use App\Http\Controllers\MarkDistributionController;
+use App\Http\Controllers\PoMarkDistributionController;
+use App\Http\Controllers\PoObtainedMarkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,4 +58,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('offer_courses',                OfferCourseController::class);
     Route::resource('mark-distributions',           MarkDistributionController::class);
     Route::resource('enroll-students',              EnrollStudentController::class);
+
+    Route::resource('detail-marks',                 DetailMarkController::class);
+    Route::resource('grade-results',                GradeResultController::class);
+    Route::resource('pomark-distributions',         PoMarkDistributionController::class);
+    Route::resource('po-obtained-mark',             PoObtainedMarkController::class);
 });

@@ -26,7 +26,7 @@ class OfferCourse extends Model
              */
             static::creating(function ($model) {
                 $model->fill([
-                    '_11_cid' => $model::max('id') + 1,
+                    'cid_11' => $model::max('id') + 1,
                 ]);
             });
         }

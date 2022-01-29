@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use App\Models\DetailMark;
+use App\Models\OfferCourse;
 use Illuminate\Http\Request;
 
 class DetailMarkController extends Controller
@@ -14,7 +16,8 @@ class DetailMarkController extends Controller
      */
     public function index()
     {
-        //
+        $detailMark = DetailMark::paginate(25);
+        return view('backend.detail-mark.index', compact('detailMark'));
     }
 
     /**
@@ -24,7 +27,10 @@ class DetailMarkController extends Controller
      */
     public function create()
     {
-        //
+        $offerCourses       = OfferCourse::get();
+        $students           = Student::get();
+
+        return view('backend.detail-mark.create', compact('offerCourses', 'students'));
     }
 
     /**
@@ -35,7 +41,11 @@ class DetailMarkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        DetailMark::create($data);
+
+        return redirect()->route('detail-marks.index')->withMessage('Detail Mark added success');
     }
 
     /**
@@ -57,7 +67,9 @@ class DetailMarkController extends Controller
      */
     public function edit(DetailMark $detailMark)
     {
-        //
+        $offerCourses       = OfferCourse::get();
+        $students           = Student::get();
+        return view('backend.detail-mark.create', compact('offerCourses', 'students', 'enrollStudent'));
     }
 
     /**
@@ -69,7 +81,8 @@ class DetailMarkController extends Controller
      */
     public function update(Request $request, DetailMark $detailMark)
     {
-        //
+        $detailMark->update($request->all());
+        return redirect()->route('detail-marks.index')->withMessage('Detail Mark update success');
     }
 
     /**
@@ -80,6 +93,7 @@ class DetailMarkController extends Controller
      */
     public function destroy(DetailMark $detailMark)
     {
-        //
+        $detailMark->delete();
+        return redirect()->route('detail-marks.index')->withMessage('Detail Mark deleted success');
     }
 }

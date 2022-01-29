@@ -1,9 +1,9 @@
 @extends('master')
 
-@section('title', 'Mark distribution List')
+@section('title', 'Enroll Student List')
 
 @section('page-header')
-    <i class="fa fa-plus-circle"></i> Mark distribution List
+    <i class="fa fa-plus-circle"></i> Enroll Student List
 @stop
 
 
@@ -20,7 +20,7 @@
                 <div class="widget-header">
                     <h4 class="widget-title"> @yield('page-header')</h4>
                     <span class="widget-toolbar">
-                        <a href="{{ route('mark-distributions.index') }}" class="">
+                        <a href="{{ route('enroll-students.index') }}" class="">
                             <i class="fa fa-list-alt"></i> List
                         </a>
                     </span>
@@ -34,7 +34,7 @@
 
 
 
-                        <form method="POST" action="{{ route('mark-distributions.update', $markDistribution->id) }}"
+                        <form method="POST" action="{{ route('enroll-students.update', $offerCourse->id) }}"
                             class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -49,7 +49,7 @@
                                     Offer course<sup class="text-danger">*</sup> :
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="cid_11" class="chosen-select form-control">
+                                    <select name="offer_course_id" class="chosen-select form-control">
                                         <option></option>
                                         @foreach ($offerCourses as $item)
                                             <option value="{{ $item->id }}">{{ $item->programcode }}</option>
@@ -61,65 +61,49 @@
 
 
 
+
+
+
                             <div class="form-group">
-                                <label class="control-label col-sm-3 col-sm-3">
-                                    Mark of exam<sup class="text-danger">*</sup>:
+                                <label class="control-label col-sm-3 col-sm-3" for="product_name">
+                                    Student ID<sup class="text-danger">*</sup> :
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="markofexam" class="form-control" autocomplete="off"
-                                        value="{{ old('markofexam') }}" placeholder="mark of exam" required>
+                                    <select name="studentid" class="chosen-select form-control">
+                                        <option></option>
+                                        @foreach ($students as $item)
+                                            <option value="{{ $item->id }}">{{ $item->studentid }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3 col-sm-3">
+                                    Enroll type<sup class="text-danger">*</sup>:
+                                </label>
+                                <div class="col-md-5 col-sm-5">
+                                    <input type="text" name="enrolltype" class="form-control" autocomplete="off"
+                                        value="{{ old('enrolltype') }}" placeholder="Enroll type" required>
                                 </div>
                             </div>
 
 
 
 
+                            <!-- Type  -->
                             <div class="form-group">
                                 <label class="control-label col-sm-3 col-sm-3">
-                                    Gid<sup class="text-danger">*</sup>:
+                                    Status<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="qid" class="form-control" autocomplete="off"
-                                        value="{{ old('qid') }}" placeholder="qid" required>
-                                </div>
-                            </div>
+                                    <select name="status_11" class="chosen-select form-control" data-placeholder="--Type--"
+                                        required>
+                                        <option value=""></option>
+                                        <option value="Active" selected>Active</option>
+                                        <option value="Inactive">In Active</option>
 
-
-
-
-                            <div class="form-group">
-                                <label class="control-label col-sm-3 col-sm-3">
-                                    Co<sup class="text-danger">*</sup>:
-                                </label>
-                                <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="co" class="form-control" autocomplete="off"
-                                        value="{{ old('co') }}" placeholder="co" required>
-                                </div>
-                            </div>
-
-
-
-
-                            <div class="form-group">
-                                <label class="control-label col-sm-3 col-sm-3">
-                                    Po<sup class="text-danger">*</sup>:
-                                </label>
-                                <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="po" class="form-control" autocomplete="off"
-                                        value="{{ old('po') }}" placeholder="po" required>
-                                </div>
-                            </div>
-
-
-
-
-                            <div class="form-group">
-                                <label class="control-label col-sm-3 col-sm-3">
-                                    Full mark<sup class="text-danger">*</sup>:
-                                </label>
-                                <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="fullmark" class="form-control" autocomplete="off"
-                                        value="{{ old('fullmark') }}" placeholder="fullmark" required>
                                     </select>
                                 </div>
                             </div>

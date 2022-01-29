@@ -21,6 +21,6 @@ class EnrollStudent extends Model
 
     public function offer()
     {
-        return $this->belongsTo(OfferCourse::class, '_11_cid');
+        return $this->belongsTo(OfferCourse::class, 'cid_11');
     }
 }

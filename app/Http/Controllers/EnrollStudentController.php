@@ -40,9 +40,9 @@ class EnrollStudentController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only('studentid', 'enrolltype');
+        $data = $request->only('studentid', 'enrolltype', 'status_13');
 
-        $data['_11_cid'] = $request->offer_course_id;
+        $data['cid_11'] = $request->offer_course_id;
 
         // dd($data);
 

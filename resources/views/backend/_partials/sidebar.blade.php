@@ -262,6 +262,118 @@
     </li>
 
     <li>
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-list-alt"></i>
+            <span class="menu-text"> Detail Mark </span>
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+        <ul class="submenu">
+            @if (hasPermission('creator'))
+                <li>
+                    <a href="{{ route('detail-marks.create') }}">
+                        <i class="menu-icon fa fa-exchange"></i>
+                        <span class="menu-text"> Add New </span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            @endif
+
+            <li>
+                <a href="{{ route('detail-marks.index') }}">
+                    <i class="menu-icon fa fa-exchange"></i>
+                    <span class="menu-text"> List </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+
+        </ul>
+    </li>
+
+    <li>
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-list-alt"></i>
+            <span class="menu-text"> Grade Result </span>
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+        <ul class="submenu">
+            @if (hasPermission('creator'))
+                <li>
+                    <a href="{{ route('grade-results.create') }}">
+                        <i class="menu-icon fa fa-exchange"></i>
+                        <span class="menu-text"> Add New </span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            @endif
+
+            <li>
+                <a href="{{ route('grade-results.index') }}">
+                    <i class="menu-icon fa fa-exchange"></i>
+                    <span class="menu-text"> List </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+
+        </ul>
+    </li>
+
+    <li>
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-list-alt"></i>
+            <span class="menu-text"> PO mark distribution </span>
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+        <ul class="submenu">
+            @if (hasPermission('creator'))
+                <li>
+                    <a href="{{ route('pomark-distributions.create') }}">
+                        <i class="menu-icon fa fa-exchange"></i>
+                        <span class="menu-text"> Add New </span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            @endif
+
+            <li>
+                <a href="{{ route('pomark-distributions.index') }}">
+                    <i class="menu-icon fa fa-exchange"></i>
+                    <span class="menu-text"> List </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+
+        </ul>
+    </li>
+
+    <li>
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-list-alt"></i>
+            <span class="menu-text"> PO obtained Mark </span>
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+        <ul class="submenu">
+            @if (hasPermission('creator'))
+                <li>
+                    <a href="{{ route('po-obtained-mark.create') }}">
+                        <i class="menu-icon fa fa-exchange"></i>
+                        <span class="menu-text"> Add New </span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            @endif
+
+            <li>
+                <a href="{{ route('po-obtained-mark.index') }}">
+                    <i class="menu-icon fa fa-exchange"></i>
+                    <span class="menu-text"> List </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+
+        </ul>
+    </li>
+
+    <li>
         <a href="{{ route('profile') }}">
 
             <i class="fa fa-users"></i>

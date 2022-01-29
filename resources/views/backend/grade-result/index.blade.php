@@ -1,10 +1,10 @@
 @extends('master')
 
 
-@section('title', 'Offer course List')
+@section('title', 'grade result List')
 
 @section('page-header')
-    <i class="fa fa-info-circle"></i> Offer course List
+    <i class="fa fa-info-circle"></i> grade result List
 @stop
 
 @section('main-content')
@@ -21,7 +21,7 @@
                 <div class="widget-header">
                     <h4 class="widget-title"> @yield('page-header')</h4>
                     <span class="widget-toolbar">
-                        <a href="{{ route('mark-distributions.create') }}" class="">
+                        <a href="{{ route('grade-results.create') }}" class="">
                             <i class="fa fa-plus"></i> Add New
                         </a>
                     </span>
@@ -45,26 +45,34 @@
                                             <tr>
                                                 <th>Sl</th>
                                                 <th>Program Code</th>
-                                                <th>Mark of exam</th>
-                                                <th>Gid</th>
-                                                <th>Co</th>
-                                                <th>PO</th>
-                                                <th>Full mark</th>
+                                                <th>Student ID</th>
+                                                <th>Course code</th>
+                                                <th>Attendance</th>
+                                                <th>Class Performance</th>
+                                                <th>Mid exam</th>
+                                                <th>Final exam</th>
+                                                <th>Total</th>
+                                                <th>Grade</th>
+                                                <th>Status</th>
                                                 <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
 
-                                            @forelse ($markDistributions as $key => $item)
+                                            @forelse ($gradeResult as $key => $item)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ optional($item->offer)->programcode }}</td>
-                                                    <td>{{ $item->markofexam }}</td>
-                                                    <td>{{ $item->qid }}</td>
-                                                    <td>{{ $item->co }}</td>
-                                                    <td>{{ $item->po }}</td>
-                                                    <td>{{ $item->fullmark }}</td>
+                                                    <td>{{ $item->offer->programcode }}</td>
+                                                    <td>{{ $item->student->studentid }}</td>
+                                                    <td>{{ $item->coursecode }}</td>
+                                                    <td>{{ $item->attendance }}</td>
+                                                    <td>{{ $item->classperformanace }}</td>
+                                                    <td>{{ $item->midexam }}</td>
+                                                    <td>{{ $item->finalexam }}</td>
+                                                    <td>{{ $item->total }}</td>
+                                                    <td>{{ $item->grade }}</td>
+                                                    <td>{{ $item->status_15 }}</td>
 
                                                     <td class="text-center">
                                                         <div class="btn-group btn-corner">
@@ -72,7 +80,7 @@
 
                                                             @if (hasPermission(['editor', 'creator']))
                                                                 <!-- edit -->
-                                                                <a href="{{ route('mark-distributions.edit', $item->id) }}"
+                                                                <a href="{{ route('offer_courses.edit', $item->id) }}"
                                                                     role="button" class="btn btn-sm btn-success"
                                                                     title="Edit">
                                                                     <i class="fa fa-pencil-square-o"></i>
@@ -82,7 +90,7 @@
                                                             @if (hasPermission('creator'))
                                                                 <!-- delete -->
                                                                 <button type="button"
-                                                                    onclick="delete_item(`{{ route('mark-distributions.destroy', $item->id) }}`)"
+                                                                    onclick="delete_item(`{{ route('offer_courses.destroy', $item->id) }}`)"
                                                                     data-toggle="modal" data-target="#delete-modal"
                                                                     class="btn btn-sm btn-danger" title="Delete">
                                                                     <i class="fa fa-trash"></i>

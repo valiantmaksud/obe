@@ -10,4 +10,17 @@ class GradeResult extends Model
     use HasFactory;
     protected $guarded = [];
     protected $table = '_15_graderesult';
+
+
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class, 'studentid');
+    }
+
+
+    public function offer()
+    {
+        return $this->belongsTo(OfferCourse::class, 'cid_11');
+    }
 }
