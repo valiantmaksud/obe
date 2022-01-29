@@ -21,7 +21,7 @@
                 <div class="widget-header">
                     <h4 class="widget-title"> @yield('page-header')</h4>
                     <span class="widget-toolbar">
-                        <a href="{{ route('pomark-distributions.create') }}" class="">
+                        <a href="{{ route('po-obtained-mark.create') }}" class="">
                             <i class="fa fa-plus"></i> Add New
                         </a>
                     </span>
@@ -45,20 +45,28 @@
                                             <tr>
                                                 <th>Sl</th>
                                                 <th>Offer Course</th>
+                                                <th>Student ID</th>
                                                 <th>PO</th>
+                                                <th>PO obtained mark</th>
                                                 <th>PO total mark</th>
+                                                <th>Obtained Percentage</th>
+                                                <th>Status</th>
                                                 <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
 
-                                            @forelse ($poMarkDistribution as $key => $item)
+                                            @forelse ($poObtainedMark as $key => $item)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $item->offer->programcode }}</td>
+                                                    <td>{{ $item->student->studentid }}</td>
                                                     <td>{{ $item->po }}</td>
+                                                    <td>{{ $item->obtainedmark }}</td>
                                                     <td>{{ $item->pototalmark }}</td>
+                                                    <td>{{ $item->obtainedpercentage }}</td>
+                                                    <td>{{ $item->status_20 }}</td>
 
                                                     <td class="text-center">
                                                         <div class="btn-group btn-corner">

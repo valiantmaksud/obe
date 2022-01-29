@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PoMarkDistribution;
+use App\Models\OfferCourse;
 use Illuminate\Http\Request;
+use App\Models\PoMarkDistribution;
 
 class PoMarkDistributionController extends Controller
 {
@@ -14,7 +15,8 @@ class PoMarkDistributionController extends Controller
      */
     public function index()
     {
-        //
+        $poMarkDistribution = PoMarkDistribution::latest()->get();
+        return view('backend.pomark-distribution.index', compact('poMarkDistribution'));
     }
 
     /**
@@ -24,7 +26,8 @@ class PoMarkDistributionController extends Controller
      */
     public function create()
     {
-        //
+        $offerCourses       = OfferCourse::get();
+        return view('backend.pomark-distribution.create', compact('offerCourses'));
     }
 
     /**
@@ -35,7 +38,11 @@ class PoMarkDistributionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        PoMarkDistribution::create($data);
+
+        return redirect()->route('pomark-distributions.index')->withMessage('Enroll Student added success');
     }
 
     /**

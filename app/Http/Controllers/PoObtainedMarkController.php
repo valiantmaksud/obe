@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PoObtainedMark;
+use App\Models\OfferCourse;
 use Illuminate\Http\Request;
+use App\Models\PoObtainedMark;
+use App\Models\Student;
 
 class PoObtainedMarkController extends Controller
 {
@@ -14,7 +16,8 @@ class PoObtainedMarkController extends Controller
      */
     public function index()
     {
-        //
+        $poObtainedMark = PoObtainedMark::latest()->get();
+        return view('backend.po-obtainedmark.index', compact('poObtainedMark'));
     }
 
     /**
@@ -24,7 +27,9 @@ class PoObtainedMarkController extends Controller
      */
     public function create()
     {
-        //
+        $offerCourses       = OfferCourse::get();
+        $students           = Student::get();
+        return view('backend.po-obtainedmark.create', compact('offerCourses', 'students'));
     }
 
     /**
@@ -35,7 +40,11 @@ class PoObtainedMarkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        PoObtainedMark::create($data);
+
+        return redirect()->route('po-obtained-mark.index')->withMessage('Enroll Student added success');
     }
 
     /**
