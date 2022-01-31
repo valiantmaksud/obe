@@ -44,8 +44,8 @@
                                         <thead>
                                             <tr>
                                                 <th>Sl</th>
-                                                <th>Program Name</th>
                                                 <th>Program Code</th>
+                                                <th>Program Name</th>
                                                 <th>Dept Code</th>
                                                 <th>Dept Name</th>
                                                 <th>Institute code</th>
@@ -61,8 +61,8 @@
                                             @forelse ($programs as $key => $item)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $item->programname }}</td>
                                                     <td>{{ $item->programcode }}</td>
+                                                    <td>{{ $item->programname }}</td>
                                                     <td>{{ $item->deptcode }}</td>
                                                     <td>{{ $item->deptname }}</td>
                                                     <td>{{ $item->institutecode }}</td>

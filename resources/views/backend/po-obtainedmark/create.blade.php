@@ -55,6 +55,15 @@
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <label class="control-label col-sm-3 col-sm-3">
+                                    Course Code<sup class="text-danger">*</sup>:
+                                </label>
+                                <div class="col-md-5 col-sm-5">
+                                    <input type="text" name="coursecode" class="form-control" autocomplete="off"
+                                        value="{{ old('coursecode') }}" placeholder="coursecode" required>
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3 col-sm-3" for="product_name">

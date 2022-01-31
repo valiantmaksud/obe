@@ -62,7 +62,7 @@
 
                                                     <td>{{ $item->institutecode }}</td>
                                                     <td>{{ $item->programcode }}</td>
-                                                    <td>{{ $item->semister }}</td>
+                                                    <td>{{ $item->semester }}</td>
                                                     <td>{{ $item->year }}</td>
 
                                                     <td class="text-center">

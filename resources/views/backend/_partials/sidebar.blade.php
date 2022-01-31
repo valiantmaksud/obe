@@ -62,6 +62,15 @@
     </li>
 
     <li>
+        <a href="{{ route('semisters.index') }}">
+            <i class="menu-icon fa fa-list"></i>
+            <span class="menu-text"> Semister </span>
+        </a>
+        <b class="arrow"></b>
+    </li>
+
+
+    <li>
         <a href="#" class="dropdown-toggle">
             <i class="menu-icon fa fa-list-alt"></i>
             <span class="menu-text"> Current Enroll Sem. </span>
@@ -88,11 +97,29 @@
     </li>
 
     <li>
-        <a href="{{ route('semisters.index') }}">
-            <i class="menu-icon fa fa-list"></i>
-            <span class="menu-text"> Semister </span>
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-list-alt"></i>
+            <span class="menu-text">Current Mark Entry </span>
+            <b class="arrow fa fa-angle-down"></b>
         </a>
-        <b class="arrow"></b>
+        <ul class="submenu">
+            @if (hasPermission('creator'))
+                <li>
+                    <a href="{{ route('current_mark_entry_semister.create') }}">
+                        <i class="menu-icon fa fa-exchange"></i>
+                        <span class="menu-text"> Add New </span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            @endif
+            <li>
+                <a href="{{ route('current_mark_entry_semister.index') }}">
+                    <i class="menu-icon fa fa-exchange"></i>
+                    <span class="menu-text"> List </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+        </ul>
     </li>
 
     <li>
@@ -122,31 +149,7 @@
     </li>
 
 
-    <li>
-        <a href="#" class="dropdown-toggle">
-            <i class="menu-icon fa fa-list-alt"></i>
-            <span class="menu-text">Mark Entry </span>
-            <b class="arrow fa fa-angle-down"></b>
-        </a>
-        <ul class="submenu">
-            @if (hasPermission('creator'))
-                <li>
-                    <a href="{{ route('current_mark_entry_semister.create') }}">
-                        <i class="menu-icon fa fa-exchange"></i>
-                        <span class="menu-text"> Add New </span>
-                    </a>
-                    <b class="arrow"></b>
-                </li>
-            @endif
-            <li>
-                <a href="{{ route('current_mark_entry_semister.index') }}">
-                    <i class="menu-icon fa fa-exchange"></i>
-                    <span class="menu-text"> List </span>
-                </a>
-                <b class="arrow"></b>
-            </li>
-        </ul>
-    </li>
+
 
 
     <li>
