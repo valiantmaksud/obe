@@ -46,7 +46,7 @@
                                                 <th>Sl</th>
                                                 <th>Program Code</th>
                                                 <th>Mark of exam</th>
-                                                <th>Gid</th>
+                                                <th>QID</th>
                                                 <th>Co</th>
                                                 <th>PO</th>
                                                 <th>Full mark</th>

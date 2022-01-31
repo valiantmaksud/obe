@@ -47,7 +47,7 @@
                                                 <th>Program Code</th>
                                                 <th>Student ID</th>
                                                 <th>Exam type</th>
-                                                <th>Gid</th>
+                                                <th>QID</th>
                                                 <th>CO</th>
                                                 <th>PO</th>
                                                 <th>Obtain Mark</th>
