@@ -41,7 +41,7 @@
                 </a>
             </div>
 
-            {{-- @include('backend._partials.topmenu') --}}
+            @include('backend._partials.topmenu')
 
         </div>
     </div>

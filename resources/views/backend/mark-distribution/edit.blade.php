@@ -52,7 +52,9 @@
                                     <select name="cid_11" class="chosen-select form-control">
                                         <option></option>
                                         @foreach ($offerCourses as $item)
-                                            <option value="{{ $item->id }}">{{ $item->programcode }}</option>
+                                            <option value="{{ $item->id }}"
+                                                {{ $item->id == $markDistribution->cid_11 ? 'selected' : '' }}>
+                                                {{ $item->programcode }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -67,7 +69,8 @@
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <input type="text" name="markofexam" class="form-control" autocomplete="off"
-                                        value="{{ old('markofexam') }}" placeholder="mark of exam" required>
+                                        value="{{ old('markofexam', $markDistribution->markofexam) }}"
+                                        placeholder="mark of exam" required>
                                 </div>
                             </div>
 
@@ -80,7 +83,7 @@
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <input type="text" name="qid" class="form-control" autocomplete="off"
-                                        value="{{ old('qid') }}" placeholder="qid" required>
+                                        value="{{ old('qid', $markDistribution->qid) }}" placeholder="qid" required>
                                 </div>
                             </div>
 
@@ -93,7 +96,7 @@
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <input type="text" name="co" class="form-control" autocomplete="off"
-                                        value="{{ old('co') }}" placeholder="co" required>
+                                        value="{{ old('co', $markDistribution->co) }}" placeholder="co" required>
                                 </div>
                             </div>
 
@@ -106,7 +109,7 @@
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <input type="text" name="po" class="form-control" autocomplete="off"
-                                        value="{{ old('po') }}" placeholder="po" required>
+                                        value="{{ old('po', $markDistribution->po) }}" placeholder="po" required>
                                 </div>
                             </div>
 
@@ -119,7 +122,8 @@
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <input type="text" name="fullmark" class="form-control" autocomplete="off"
-                                        value="{{ old('fullmark') }}" placeholder="fullmark" required>
+                                        value="{{ old('fullmark', $markDistribution->fullmark) }}" placeholder="fullmark"
+                                        required>
                                     </select>
                                 </div>
                             </div>

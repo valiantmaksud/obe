@@ -34,7 +34,7 @@
 
 
 
-                        <form method="POST" action="{{ route('enroll-students.update', $offerCourse->id) }}"
+                        <form method="POST" action="{{ route('enroll-students.update', $enrollStudent->id) }}"
                             class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -49,10 +49,12 @@
                                     Offer course<sup class="text-danger">*</sup> :
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="offer_course_id" class="chosen-select form-control">
+                                    <select name="cid_11" class="chosen-select form-control">
                                         <option></option>
                                         @foreach ($offerCourses as $item)
-                                            <option value="{{ $item->id }}">{{ $item->programcode }}</option>
+                                            <option value="{{ $item->id }}"
+                                                {{ $item->id == $enrollStudent->cid_11 ? 'selected' : '' }}>
+                                                {{ $item->programcode }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -72,7 +74,9 @@
                                     <select name="studentid" class="chosen-select form-control">
                                         <option></option>
                                         @foreach ($students as $item)
-                                            <option value="{{ $item->id }}">{{ $item->studentid }}</option>
+                                            <option value="{{ $item->id }}"
+                                                {{ $item->id == $enrollStudent->studentid ? 'selected' : '' }}>
+                                                {{ $item->studentid }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -85,7 +89,8 @@
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <input type="text" name="enrolltype" class="form-control" autocomplete="off"
-                                        value="{{ old('enrolltype') }}" placeholder="Enroll type" required>
+                                        value="{{ old('enrolltype', $enrollStudent->enrolltype) }}"
+                                        placeholder="Enroll type" required>
                                 </div>
                             </div>
 
@@ -98,7 +103,7 @@
                                     Status<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="status_11" class="chosen-select form-control" data-placeholder="--Type--"
+                                    <select name="status_13" class="chosen-select form-control" data-placeholder="--Type--"
                                         required>
                                         <option value=""></option>
                                         <option value="Active" selected>Active</option>

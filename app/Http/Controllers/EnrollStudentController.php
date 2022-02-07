@@ -72,7 +72,7 @@ class EnrollStudentController extends Controller
     {
         $offerCourses       = OfferCourse::get();
         $students           = Student::get();
-        return view('backend.enroll-students.create', compact('offerCourses', 'students', 'enrollStudent'));
+        return view('backend.enroll-students.edit', compact('offerCourses', 'students', 'enrollStudent'));
     }
 
     /**
