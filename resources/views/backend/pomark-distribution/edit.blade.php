@@ -1,9 +1,9 @@
 @extends('master')
 
-@section('title', 'Enroll Student List')
+@section('title', 'PO Mark Distribution')
 
 @section('page-header')
-    <i class="fa fa-plus-circle"></i> Enroll Student List
+    <i class="fa fa-plus-circle"></i> PO Mark Distribution
 @stop
 
 
@@ -20,28 +20,21 @@
                 <div class="widget-header">
                     <h4 class="widget-title"> @yield('page-header')</h4>
                     <span class="widget-toolbar">
-                        <a href="{{ route('enroll-students.index') }}" class="">
+                        <a href="{{ route('pomark-distributions.index') }}" class="">
                             <i class="fa fa-list-alt"></i> List
                         </a>
                     </span>
                 </div>
 
 
-
                 <!-- body -->
                 <div class="widget-body">
                     <div class="widget-main">
 
-
-
-                        <form method="POST" action="{{ route('enroll-students.update', $offerCourse->id) }}"
+                        <form method="POST" action="{{ route('pomark-distributions.update', $pomarkDistribution->id) }}"
                             class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-
-
-
-
 
 
                             <div class="form-group">
@@ -49,30 +42,12 @@
                                     Offer course<sup class="text-danger">*</sup> :
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="offer_course_id" class="chosen-select form-control">
+                                    <select name="cid_11" class="chosen-select form-control">
                                         <option></option>
                                         @foreach ($offerCourses as $item)
-                                            <option value="{{ $item->id }}">{{ $item->programcode }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
-
-
-
-
-
-
-                            <div class="form-group">
-                                <label class="control-label col-sm-3 col-sm-3" for="product_name">
-                                    Student ID<sup class="text-danger">*</sup> :
-                                </label>
-                                <div class="col-md-5 col-sm-5">
-                                    <select name="studentid" class="chosen-select form-control">
-                                        <option></option>
-                                        @foreach ($students as $item)
-                                            <option value="{{ $item->id }}">{{ $item->studentid }}</option>
+                                            <option value="{{ $item->id }}"
+                                                {{ $item->id == $pomarkDistribution->cid_11 ? 'selected' : '' }}>
+                                                {{ $item->programcode }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -81,30 +56,24 @@
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3 col-sm-3">
-                                    Enroll type<sup class="text-danger">*</sup>:
+                                    PO<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="enrolltype" class="form-control" autocomplete="off"
-                                        value="{{ old('enrolltype') }}" placeholder="Enroll type" required>
+                                    <input type="text" name="po" class="form-control" autocomplete="off"
+                                        value="{{ old('po', $pomarkDistribution->po) }}" placeholder="PO" required>
                                 </div>
                             </div>
 
 
 
-
-                            <!-- Type  -->
                             <div class="form-group">
                                 <label class="control-label col-sm-3 col-sm-3">
-                                    Status<sup class="text-danger">*</sup>:
+                                    PO total Mark<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="status_11" class="chosen-select form-control" data-placeholder="--Type--"
-                                        required>
-                                        <option value=""></option>
-                                        <option value="Active" selected>Active</option>
-                                        <option value="Inactive">In Active</option>
-
-                                    </select>
+                                    <input type="text" name="pototalmark" class="form-control" autocomplete="off"
+                                        value="{{ old('pototalmark', $pomarkDistribution->pototalmark) }}"
+                                        placeholder="Enroll type" required>
                                 </div>
                             </div>
 

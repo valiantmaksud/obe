@@ -1,10 +1,10 @@
 @extends('master')
 
 
-@section('title', 'Enroll Student List')
+@section('title', 'PO Mark Distribution')
 
 @section('page-header')
-    <i class="fa fa-info-circle"></i> Enroll Student List
+    <i class="fa fa-info-circle"></i> PO Mark Distribution
 @stop
 
 @section('main-content')

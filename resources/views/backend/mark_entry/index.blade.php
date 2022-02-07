@@ -1,10 +1,10 @@
 @extends('master')
 
 
-@section('title', 'Current Enroll Semister List')
+@section('title', 'Current Mark Entry List')
 
 @section('page-header')
-    <i class="fa fa-info-circle"></i> Current Enroll Semister List
+    <i class="fa fa-info-circle"></i> Current Mark Entry List
 @stop
 
 @section('main-content')
@@ -21,7 +21,7 @@
                 <div class="widget-header">
                     <h4 class="widget-title"> @yield('page-header')</h4>
                     <span class="widget-toolbar">
-                        <a href="{{ route('current_semister.create') }}" class="">
+                        <a href="{{ route('current_mark_entry_semister.create') }}" class="">
                             <i class="fa fa-plus"></i> Add New
                         </a>
                     </span>
@@ -47,7 +47,7 @@
 
                                                 <th>Institute code</th>
                                                 <th>Program Code</th>
-                                                <th>Semister</th>
+                                                <th>Semester</th>
                                                 <th>Year</th>
 
                                                 <th class="text-center">Action</th>
@@ -70,7 +70,7 @@
 
                                                             @if (hasPermission(['editor', 'creator']))
                                                                 <!-- edit -->
-                                                                <a href="{{ route('current_semister.edit', $item->id) }}"
+                                                                <a href="{{ route('current_mark_entry_semister.edit', $item->id) }}"
                                                                     role="button" class="btn btn-sm btn-success"
                                                                     title="Edit">
                                                                     <i class="fa fa-pencil-square-o"></i>
@@ -80,7 +80,7 @@
                                                             @if (hasPermission('creator'))
                                                                 <!-- delete -->
                                                                 <button type="button"
-                                                                    onclick="delete_item(`{{ route('current_semister.destroy', $item->id) }}`)"
+                                                                    onclick="delete_item(`{{ route('current_mark_entry_semister.destroy', $item->id) }}`)"
                                                                     data-toggle="modal" data-target="#delete-modal"
                                                                     class="btn btn-sm btn-danger" title="Delete">
                                                                     <i class="fa fa-trash"></i>

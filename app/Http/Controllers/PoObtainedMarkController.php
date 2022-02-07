@@ -66,7 +66,9 @@ class PoObtainedMarkController extends Controller
      */
     public function edit(PoObtainedMark $poObtainedMark)
     {
-        //
+        $offerCourses       = OfferCourse::get();
+        $students           = Student::get();
+        return view('backend.po-obtainedmark.edit', compact('offerCourses', 'students', 'poObtainedMark'));
     }
 
     /**
@@ -78,7 +80,8 @@ class PoObtainedMarkController extends Controller
      */
     public function update(Request $request, PoObtainedMark $poObtainedMark)
     {
-        //
+        $poObtainedMark->update($request->all());
+        return redirect()->back()->withMessage('update success');
     }
 
     /**
@@ -89,6 +92,7 @@ class PoObtainedMarkController extends Controller
      */
     public function destroy(PoObtainedMark $poObtainedMark)
     {
-        //
+        $poObtainedMark->delete();
+        return redirect()->back()->withMessage('delete success');
     }
 }

@@ -20,7 +20,7 @@
                 <div class="widget-header">
                     <h4 class="widget-title"> @yield('page-header')</h4>
                     <span class="widget-toolbar">
-                        <a href="{{ route('mark-distributions.index') }}" class="">
+                        <a href="{{ route('detail-marks.index') }}" class="">
                             <i class="fa fa-list-alt"></i> List
                         </a>
                     </span>

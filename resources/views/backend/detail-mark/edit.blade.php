@@ -1,9 +1,9 @@
 @extends('master')
 
-@section('title', 'Mark distribution List')
+@section('title', 'Detail Mark List')
 
 @section('page-header')
-    <i class="fa fa-plus-circle"></i> Mark distribution List
+    <i class="fa fa-plus-circle"></i>Detail Mark List
 @stop
 
 
@@ -34,12 +34,10 @@
 
 
 
-                        <form method="POST" action="{{ route('mark-distributions.update', $offerCourse->id) }}"
+                        <form method="POST" action="{{ route('detail-marks.update', $detailMark->id) }}"
                             class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-
-
 
 
 
@@ -52,22 +50,40 @@
                                     <select name="cid_11" class="chosen-select form-control">
                                         <option></option>
                                         @foreach ($offerCourses as $item)
-                                            <option value="{{ $item->id }}">{{ $item->programcode }}</option>
+                                            <option value="{{ $item->id }}"
+                                                {{ $item->id == $detailMark->cid_11 ? 'selected' : '' }}>
+                                                {{ $item->programcode }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
 
 
+                            <div class="form-group">
+                                <label class="control-label col-sm-3 col-sm-3" for="product_name">
+                                    Student ID<sup class="text-danger">*</sup> :
+                                </label>
+                                <div class="col-md-5 col-sm-5">
+                                    <select name="studentid" class="chosen-select form-control">
+                                        <option></option>
+                                        @foreach ($students as $item)
+                                            <option value="{{ $item->id }}"
+                                                {{ $item->id == $detailMark->studentid ? 'selected' : '' }}>
+                                                {{ $item->studentid }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
 
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3 col-sm-3">
-                                    Mark of exam<sup class="text-danger">*</sup>:
+                                    Exam Type<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="markofexam" class="form-control" autocomplete="off"
-                                        value="{{ old('markofexam') }}" placeholder="mark of exam" required>
+                                    <input type="text" name="examtype" class="form-control" autocomplete="off"
+                                        value="{{ old('examtype', $detailMark->examtype) }}" placeholder="exam type"
+                                        required>
                                 </div>
                             </div>
 
@@ -80,7 +96,7 @@
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <input type="text" name="qid" class="form-control" autocomplete="off"
-                                        value="{{ old('qid') }}" placeholder="qid" required>
+                                        value="{{ old('qid', $detailMark->qid) }}" placeholder="qid" required>
                                 </div>
                             </div>
 
@@ -93,7 +109,7 @@
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <input type="text" name="co" class="form-control" autocomplete="off"
-                                        value="{{ old('co') }}" placeholder="co" required>
+                                        value="{{ old('co', $detailMark->co) }}" placeholder="co" required>
                                 </div>
                             </div>
 
@@ -106,7 +122,7 @@
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <input type="text" name="po" class="form-control" autocomplete="off"
-                                        value="{{ old('po') }}" placeholder="po" required>
+                                        value="{{ old('po', $detailMark->po) }}" placeholder="po" required>
                                 </div>
                             </div>
 
@@ -115,11 +131,28 @@
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3 col-sm-3">
-                                    Full mark<sup class="text-danger">*</sup>:
+                                    Obtain mark<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="fullmark" class="form-control" autocomplete="off"
-                                        value="{{ old('fullmark') }}" placeholder="fullmark" required>
+                                    <input type="text" name="obtainedmark" class="form-control" autocomplete="off"
+                                        value="{{ old('obtainedmark', $detailMark->obtainedmark) }}"
+                                        placeholder="obtainedmark" required>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3 col-sm-3">
+                                    Status<sup class="text-danger">*</sup>:
+                                </label>
+                                <div class="col-md-5 col-sm-5">
+                                    <select name="status_14" class="chosen-select form-control" data-placeholder="--Type--"
+                                        required>
+                                        <option value=""></option>
+                                        <option value="Active" selected>Active</option>
+                                        <option value="Inactive">In Active</option>
+
                                     </select>
                                 </div>
                             </div>

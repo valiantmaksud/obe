@@ -69,7 +69,9 @@ class GradeResultController extends Controller
      */
     public function edit(GradeResult $gradeResult)
     {
-        //
+        $offerCourses       = OfferCourse::get();
+        $students           = Student::get();
+        return view('backend.grade-result.edit', compact('offerCourses', 'students', 'gradeResult'));
     }
 
     /**
@@ -81,7 +83,8 @@ class GradeResultController extends Controller
      */
     public function update(Request $request, GradeResult $gradeResult)
     {
-        //
+        $gradeResult->update($request->all());
+        return redirect()->route('grade-results.index')->withMessage('grade result update success');
     }
 
     /**
@@ -92,6 +95,7 @@ class GradeResultController extends Controller
      */
     public function destroy(GradeResult $gradeResult)
     {
-        //
+        $gradeResult->delete();
+        return redirect()->route('grade-results.index')->withMessage('delete success');
     }
 }

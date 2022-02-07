@@ -69,7 +69,7 @@ class DetailMarkController extends Controller
     {
         $offerCourses       = OfferCourse::get();
         $students           = Student::get();
-        return view('backend.detail-mark.create', compact('offerCourses', 'students', 'enrollStudent'));
+        return view('backend.detail-mark.edit', compact('offerCourses', 'students', 'detailMark'));
     }
 
     /**

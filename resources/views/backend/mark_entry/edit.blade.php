@@ -35,7 +35,7 @@
 
 
                         <form method="POST"
-                            action="{{ route('current_mark_entry_semister.update', $currentEnrollSemister->id) }}"
+                            action="{{ route('current_mark_entry_semister.update', $currentMarkEntrySemister->id) }}"
                             class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -49,7 +49,7 @@
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <input type="text" name="institutecode" class="form-control" autocomplete="off"
-                                        value="{{ old('institutecode', $currentEnrollSemister->institutecode) }}"
+                                        value="{{ old('institutecode', $currentMarkEntrySemister->institutecode) }}"
                                         placeholder="institutecode" required>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <input type="text" name="programcode" class="form-control" autocomplete="off"
-                                        value="{{ old('programcode', $currentEnrollSemister->programcode) }}"
+                                        value="{{ old('programcode', $currentMarkEntrySemister->programcode) }}"
                                         placeholder="programcode" required>
                                 </div>
                             </div>
@@ -79,7 +79,7 @@
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <input type="text" name="semester" class="form-control" autocomplete="off"
-                                        value="{{ old('semester', $currentEnrollSemister->semester) }}"
+                                        value="{{ old('semester', $currentMarkEntrySemister->semester) }}"
                                         placeholder="semester" required>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <input type="text" name="year" class="form-control" autocomplete="off"
-                                        value="{{ old('year', $currentEnrollSemister->year) }}" placeholder="year"
+                                        value="{{ old('year', $currentMarkEntrySemister->year) }}" placeholder="year"
                                         required>
                                 </div>
                             </div>

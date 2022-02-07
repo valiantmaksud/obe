@@ -62,9 +62,11 @@ class PoMarkDistributionController extends Controller
      * @param  \App\Models\PoMarkDistribution  $poMarkDistribution
      * @return \Illuminate\Http\Response
      */
-    public function edit(PoMarkDistribution $poMarkDistribution)
+    public function edit(PoMarkDistribution $pomarkDistribution)
     {
-        //
+        $offerCourses       = OfferCourse::get();
+
+        return view('backend.pomark-distribution.edit', compact('offerCourses', 'pomarkDistribution'));
     }
 
     /**
@@ -74,9 +76,10 @@ class PoMarkDistributionController extends Controller
      * @param  \App\Models\PoMarkDistribution  $poMarkDistribution
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PoMarkDistribution $poMarkDistribution)
+    public function update(Request $request, PoMarkDistribution $pomarkDistribution)
     {
-        //
+        $pomarkDistribution->update($request->all());
+        return redirect()->back()->withMessage('update success');
     }
 
     /**
@@ -85,8 +88,9 @@ class PoMarkDistributionController extends Controller
      * @param  \App\Models\PoMarkDistribution  $poMarkDistribution
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PoMarkDistribution $poMarkDistribution)
+    public function destroy(PoMarkDistribution $pomarkDistribution)
     {
-        //
+        $pomarkDistribution->delete();
+        return redirect()->back()->withMessage('delete success');
     }
 }

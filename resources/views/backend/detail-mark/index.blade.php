@@ -21,7 +21,7 @@
                 <div class="widget-header">
                     <h4 class="widget-title"> @yield('page-header')</h4>
                     <span class="widget-toolbar">
-                        <a href="{{ route('mark-distributions.create') }}" class="">
+                        <a href="{{ route('detail-marks.create') }}" class="">
                             <i class="fa fa-plus"></i> Add New
                         </a>
                     </span>
