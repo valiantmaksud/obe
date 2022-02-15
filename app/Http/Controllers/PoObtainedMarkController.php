@@ -95,4 +95,22 @@ class PoObtainedMarkController extends Controller
         $poObtainedMark->delete();
         return redirect()->back()->withMessage('delete success');
     }
+
+
+
+
+
+
+
+    public function studentPo(Request $request)
+    {
+        if ($request->filled('student_id')) {
+            $data['poObtainedMarks'] = PoObtainedMark::with(['student' => function ($query) use ($request) {
+                $query->where('studentid', $request->student_id);
+            }])->get();
+        }
+
+
+        return view('final-outcomes.index', $data);
+    }
 }

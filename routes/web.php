@@ -63,4 +63,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('grade-results',                GradeResultController::class);
     Route::resource('pomark-distributions',         PoMarkDistributionController::class);
     Route::resource('po-obtained-mark',             PoObtainedMarkController::class);
+
+
+    Route::group(['prefix' => 'outcomes'], function () {
+        Route::get('student-po',                    [PoObtainedMarkController::class, 'studentPo'])->name('student-po');
+    });
 });
