@@ -15,7 +15,6 @@
         </a>
         <ul class="submenu">
             @if (hasPermission('creator'))
-
                 <li>
                     <a href="{{ route('programs.create') }}">
                         <i class="menu-icon fa fa-exchange"></i>
@@ -372,6 +371,42 @@
                 </a>
                 <b class="arrow"></b>
             </li>
+
+        </ul>
+    </li>
+
+    <li>
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-list-alt"></i>
+            <span class="menu-text"> Final Outcome </span>
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+        <ul class="submenu">
+            @if (hasPermission('creator'))
+                <li>
+                    <a href="{{ route('student-po') }}">
+                        <i class="menu-icon fa fa-exchange"></i>
+                        <span class="menu-text"> Student PO </span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li>
+                    <a href="{{ route('student-po-course-wise') }}">
+                        <i class="menu-icon fa fa-exchange"></i>
+                        <span class="menu-text"> Student PO Course Wise </span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li>
+                    <a href="{{ route('student-po-batch-wise') }}">
+                        <i class="menu-icon fa fa-exchange"></i>
+                        <span class="menu-text"> Student PO Batch Wise </span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            @endif
+
+
 
         </ul>
     </li>

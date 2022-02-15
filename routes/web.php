@@ -67,5 +67,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'outcomes'], function () {
         Route::get('student-po',                    [PoObtainedMarkController::class, 'studentPo'])->name('student-po');
+        Route::get('student-po-course-wise',        [PoObtainedMarkController::class, 'studentPoCourseWise'])->name('student-po-course-wise');
+        Route::get('student-po-batch-wise',        [PoObtainedMarkController::class, 'studentPoBatchWise'])->name('student-po-batch-wise');
     });
 });

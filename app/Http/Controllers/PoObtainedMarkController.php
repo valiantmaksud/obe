@@ -104,13 +104,66 @@ class PoObtainedMarkController extends Controller
 
     public function studentPo(Request $request)
     {
+        $data = [];
         if ($request->filled('student_id')) {
-            $data['poObtainedMarks'] = PoObtainedMark::with(['student' => function ($query) use ($request) {
+            $data['poObtainedMarks'] = PoObtainedMark::whereHas('student', function ($query) use ($request) {
                 $query->where('studentid', $request->student_id);
-            }])->get();
+            })->get();
+            $data['student'] = Student::where('studentid', $request->student_id)->first();
         }
 
 
-        return view('final-outcomes.index', $data);
+        return view('backend.final-outcomes.index', $data);
+    }
+
+
+
+
+
+
+    public function studentPoCourseWise(Request $request)
+    {
+        $data = [];
+        if ($request->filled('coursecode') || $request->filled('semister') || $request->filled('year')) {
+
+            $data['poObtainedMarks'] = OfferCourse::has('ObtainedMark')
+                ->with('ObtainedMark')
+                ->when($request->filled('coursecode'), function ($query) use ($request) {
+                    $query->where('coursecode', $request->coursecode);
+                })
+                ->when($request->filled('year'), function ($query) use ($request) {
+                    $query->where('year', $request->year);
+                })
+                ->when($request->filled('semister'), function ($query) use ($request) {
+                    $query->where('semister', $request->coursecode);
+                })
+                ->where('status_11', 'Active')->get();
+        }
+
+
+        return view('backend.final-outcomes.course-wise', $data);
+    }
+
+
+
+
+
+
+    public function studentPoBatchWise(Request $request)
+    {
+        $data = [];
+        if ($request->filled('batch_no')) {
+            $data['poObtainedMarks'] = Student::whereHas('obtainedMark', function ($query) {
+                $query->whereHas('offer', function ($query) {
+                    $query->where('status_11', 'Active');
+                });
+            })
+                ->with('obtainedMark')
+                ->where('batch', $request->batch_no)
+                ->get();
+        }
+
+
+        return view('backend.final-outcomes.batch-wise', $data);
     }
 }

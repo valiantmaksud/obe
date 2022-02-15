@@ -37,8 +37,18 @@
 
                                         <tr>
                                             <td>
-                                                <input type="text" name="student_id" class="form-control"
-                                                    value="{{ request('student_id') }}" placeholder="Student ID">
+                                                <input type="text" name="coursecode" class="form-control"
+                                                    value="{{ request('coursecode') }}" placeholder="Course Code">
+                                            </td>
+
+                                            <td>
+                                                <input type="text" name="year" class="form-control"
+                                                    value="{{ request('year') }}" placeholder="Year">
+                                            </td>
+
+                                            <td>
+                                                <input type="text" name="semister" class="form-control"
+                                                    value="{{ request('semister') }}" placeholder="Semister">
                                             </td>
 
                                             <td class="text-center">
@@ -60,16 +70,11 @@
                         <div class="row">
                             <div class="col-sm-10 col-sm-offset-1">
 
-                                @if (request()->filled('student_id'))
+                                @if (request()->filled('coursecode') || request()->filled('semister') || request()->filled('year'))
                                     <div class="row" style="margin-bottom: 20px">
                                         <div class="col-sm-10 col-sm-offset-1">
                                             <div class="row">
-                                                <div class="col-sm-6 text-center">Name: <strong></strong></div>
-                                                <div class="col-sm-6 text-center">Phone: <strong></strong></div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-6 text-center">ID: <strong></strong></div>
-                                                <div class="col-sm-6 text-center">Batch: <strong></strong></div>
+                                                <div class="col-sm-8 text-center">Course Name: <strong></strong></div>
                                             </div>
                                         </div>
                                     </div>
@@ -80,10 +85,10 @@
                                             <thead>
                                                 <tr>
                                                     <th>PO</th>
-
                                                     <th>Total PO Marks</th>
                                                     <th>Obtain PO Marks</th>
-                                                    <th>Attendant</th>
+                                                    <th>Attainment</th>
+                                                    <th>Percentage(%)</th>
                                                 </tr>
                                             </thead>
 
@@ -91,11 +96,13 @@
 
                                                 @forelse ($poObtainedMarks as $key => $item)
                                                     <tr>
-                                                        <td>{{ $item->po }}</td>
+                                                        <td>{{ $item->ObtainedMark->po }}</td>
 
-                                                        <td>{{ $item->pototalmark }}</td>
-                                                        <td>{{ $item->obtainedmark }}</td>
-                                                        <td>{{ $item->obtainedmark > 200 ? 'T' : 'F' }}</td>
+                                                        <td>{{ $item->ObtainedMark->pototalmark }}</td>
+                                                        <td>{{ $item->ObtainedMark->obtainedmark }}</td>
+                                                        <td>{{ $item->ObtainedMark->obtainedmark > 200 ? 'T' : 'F' }}
+                                                        </td>
+                                                        <td>{{ $item->ObtainedMark->obtainedpercentage }}</td>
                                                     </tr>
                                                 @empty
                                                     <tr>
