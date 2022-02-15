@@ -119,8 +119,8 @@
                                                     <td colspan="30" class="text-right">
                                                         <div class="btn-group btn-corner">
 
-                                                            <a href="{{ request()->url() }}"
-                                                                class="btn btn-purple btn-lg">
+                                                            <a href="javascript:void(0)" class="btn btn-purple btn-lg"
+                                                                onclick="exportToExcel()">
                                                                 <i class="fa fa-refresh"></i>
                                                                 Export To Excel
                                                             </a>
@@ -144,9 +144,17 @@
 
 
 @section('inline-js')
+    <script src="{{ asset('assets/custom-js/jquery.table2excel.js') }}"></script>
+
     <script>
-        function delete_item(url) {
-            $('#deleteItemForm').attr('action', url)
+        function exportToExcel() {
+            $("#dynamic-table").table2excel({
+                exclude: ".noExl",
+                name: "Final Outcome",
+                filename: "final-outcome",
+                fileext: ".xls",
+                preserveColors: true
+            });
         }
     </script>
 
