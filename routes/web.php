@@ -6,16 +6,17 @@ use App\Http\Controllers\PoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\AjaxDataController;
 use App\Http\Controllers\SemisterController;
-use App\Http\Controllers\OfferCourseController;
-use App\Http\Controllers\CurrentEnrollSemisterController;
-use App\Http\Controllers\CurrentMarkEntrySemisterController;
 use App\Http\Controllers\DetailMarkController;
-use App\Http\Controllers\EnrollStudentController;
 use App\Http\Controllers\GradeResultController;
+use App\Http\Controllers\OfferCourseController;
+use App\Http\Controllers\EnrollStudentController;
+use App\Http\Controllers\PoObtainedMarkController;
 use App\Http\Controllers\MarkDistributionController;
 use App\Http\Controllers\PoMarkDistributionController;
-use App\Http\Controllers\PoObtainedMarkController;
+use App\Http\Controllers\CurrentEnrollSemisterController;
+use App\Http\Controllers\CurrentMarkEntrySemisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,5 +70,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('student-po',                    [PoObtainedMarkController::class, 'studentPo'])->name('student-po');
         Route::get('student-po-course-wise',        [PoObtainedMarkController::class, 'studentPoCourseWise'])->name('student-po-course-wise');
         Route::get('student-po-batch-wise',        [PoObtainedMarkController::class, 'studentPoBatchWise'])->name('student-po-batch-wise');
+    });
+
+
+    Route::group(['prefix' => 'ajax'], function () {
+        Route::get('get-qid', [AjaxDataController::class, 'getQID'])->name('get-qid');
     });
 });

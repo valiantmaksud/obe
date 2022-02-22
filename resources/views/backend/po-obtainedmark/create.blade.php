@@ -46,10 +46,11 @@
                                     Offer course<sup class="text-danger">*</sup> :
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="cid_11" class="chosen-select form-control">
+                                    <select name="cid_11" class="chosen-select form-control"
+                                        data-selected="{{ old('cid') }}" onchange="cid(this)">
                                         <option></option>
                                         @foreach ($offerCourses as $item)
-                                            <option value="{{ $item->id }}">{{ $item->programcode }}</option>
+                                            <option value="{{ $item->id }}">{{ $item->coursecode }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -61,7 +62,7 @@
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <input type="text" name="coursecode" class="form-control" autocomplete="off"
-                                        value="{{ old('coursecode') }}" placeholder="coursecode" required>
+                                        value="{{ old('coursecode') }}" placeholder="coursecode" required readonly>
                                 </div>
                             </div>
 
@@ -70,7 +71,8 @@
                                     Student ID<sup class="text-danger">*</sup> :
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="studentid" class="chosen-select form-control">
+                                    <select name="studentid" class="chosen-select form-control"
+                                        data-selected="{{ old('studentid') }}">
                                         <option></option>
                                         @foreach ($students as $item)
                                             <option value="{{ $item->id }}">{{ $item->studentid }}</option>
@@ -133,7 +135,7 @@
                                     Status<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="status_20" class="chosen-select form-control" data-placeholder="--Type--"
+                                    <select name="status_20" class="chosen-select form-control" data-selected="{{ old('status_20') }}"
                                         required>
                                         <option value=""></option>
                                         <option value="Active" selected>Active</option>
@@ -169,5 +171,10 @@
 
 @section('inline-js')
 
+    <script>
+        function cid(obj) {
 
+            $('input[name=coursecode]').val($(obj).text().trim())
+        }
+    </script>
 @endsection

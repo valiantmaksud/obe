@@ -44,7 +44,8 @@
                                     Offer course<sup class="text-danger">*</sup> :
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="cid_11" class="chosen-select form-control">
+                                    <select name="cid_11" class="chosen-select form-control cid"
+                                        data-selected="{{ old('cid') }}">
                                         <option></option>
                                         @foreach ($offerCourses as $item)
                                             <option value="{{ $item->id }}">{{ $item->programcode }}</option>
@@ -59,7 +60,8 @@
                                     Student ID<sup class="text-danger">*</sup> :
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="studentid" class="chosen-select form-control">
+                                    <select name="studentid" class="chosen-select form-control"
+                                        data-selected="{{ old('studentid') }}">
                                         <option></option>
                                         @foreach ($students as $item)
                                             <option value="{{ $item->id }}">{{ $item->studentid }}</option>
@@ -68,14 +70,17 @@
                                 </div>
                             </div>
 
-
                             <div class="form-group">
                                 <label class="control-label col-sm-3 col-sm-3">
                                     Exam Type<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="examtype" class="form-control" autocomplete="off"
-                                        value="{{ old('examtype') }}" placeholder="exam type" required>
+                                    <select name="examtype" class="form-control chosen-select"
+                                        data-selected="{{ old('examtype') }}" required onchange="getQID(this)">
+                                        <option></option>
+                                        <option value="Mid Term">Mid Term</option>
+                                        <option value="Final Term">Final Term</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -123,6 +128,19 @@
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3 col-sm-3">
+                                    Full mark<sup class="text-danger">*</sup>:
+                                </label>
+                                <div class="col-md-5 col-sm-5">
+                                    <input type="text" name="fullmark" class="form-control" autocomplete="off"
+                                        value="{{ old('fullmark') }}" placeholder="fullmark" readonly>
+                                    </select>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3 col-sm-3">
                                     Obtain mark<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
@@ -138,8 +156,8 @@
                                     Status<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="status_14" class="chosen-select form-control" data-placeholder="--Type--"
-                                        required>
+                                    <select name="status_14" class="chosen-select form-control"
+                                        data-selected="{{ old('status_14') }}" required>
                                         <option value=""></option>
                                         <option value="Active" selected>Active</option>
                                         <option value="Inactive">In Active</option>
@@ -172,5 +190,23 @@
 
 @section('inline-js')
 
+    <script>
+        function getQID(obj) {
+            let cid = $('.cid option:selected').val();
+
+            let examtype = $(obj).val();
+            console.log(cid, examtype);
+            $.get('{{ route('get-qid') }}', {
+                qid: cid,
+                examtype: examtype
+            }, function(response) {
+                $('input[name=qid]').val(response.qid)
+                $('input[name=co]').val(response.co)
+                $('input[name=po]').val(response.po)
+                $('input[name=fullmark]').val(response.fullmark)
+                console.log(response);
+            })
+        }
+    </script>
 
 @endsection

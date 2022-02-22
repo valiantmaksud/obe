@@ -46,10 +46,11 @@
                                     Offer course<sup class="text-danger">*</sup> :
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="cid_11" class="chosen-select form-control">
+                                    <select name="cid_11" class="chosen-select form-control"
+                                        data-selected="{{ old('cid_11') }}">
                                         <option></option>
                                         @foreach ($offerCourses as $item)
-                                            <option value="{{ $item->id }}">{{ $item->programcode }}</option>
+                                            <option value="{{ $item->id }}">{{ $item->coursecode }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -60,11 +61,15 @@
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3 col-sm-3">
-                                    Mark of exam<sup class="text-danger">*</sup>:
+                                    Exam Type<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="markofexam" class="form-control" autocomplete="off"
-                                        value="{{ old('markofexam') }}" placeholder="mark of exam" required>
+                                    <select name="markofexam" class="form-control chosen-select"
+                                        data-selected="{{ old('markofexam') }}" required>
+                                        <option></option>
+                                        <option value="Mid Term">Mid Term</option>
+                                        <option value="Final Term">Final Term</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -112,7 +117,7 @@
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3 col-sm-3">
-                                    Full mark<sup class="text-danger">*</sup>:
+                                    PO Full mark<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <input type="text" name="fullmark" class="form-control" autocomplete="off"

@@ -44,7 +44,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Sl</th>
-                                                <th>Program Code</th>
+                                                <th>Course Code</th>
                                                 <th>Student ID</th>
                                                 <th>Exam type</th>
                                                 <th>QID</th>
@@ -61,7 +61,7 @@
                                             @forelse ($detailMark as $key => $item)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ optional($item->offer)->programcode }}</td>
+                                                    <td>{{ optional($item->offer)->coursecode }}</td>
                                                     <td>{{ optional($item->student)->studentid }}</td>
                                                     <td>{{ $item->examtype }}</td>
                                                     <td>{{ $item->qid }}</td>

@@ -131,7 +131,7 @@
                                     Status<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="status_11" class="chosen-select form-control" data-placeholder="--Type--"
+                                    <select name="status_11" class="chosen-select form-control" data-selected="{{ old('status_11') }}"
                                         required>
                                         <option value=""></option>
                                         <option value="Active" selected>Active</option>

@@ -44,12 +44,12 @@
                                         <thead>
                                             <tr>
                                                 <th>Sl</th>
-                                                <th>Program Code</th>
-                                                <th>Mark of exam</th>
+                                                <th>Course Code</th>
+                                                <th>Exam type</th>
                                                 <th>QID</th>
                                                 <th>Co</th>
                                                 <th>PO</th>
-                                                <th>Full mark</th>
+                                                <th>PO Full mark</th>
                                                 <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
@@ -59,7 +59,7 @@
                                             @forelse ($markDistributions as $key => $item)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ optional($item->offer)->programcode }}</td>
+                                                    <td>{{ optional($item->offer)->coursecode }}</td>
                                                     <td>{{ $item->markofexam }}</td>
                                                     <td>{{ $item->qid }}</td>
                                                     <td>{{ $item->co }}</td>

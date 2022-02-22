@@ -66,7 +66,7 @@
                                     Student ID<sup class="text-danger">*</sup> :
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="studentid" class="chosen-select form-control">
+                                    <select name="studentid" class="chosen-select form-control" data-selected="{{ old('studentid') }}">
                                         <option></option>
                                         @foreach ($students as $item)
                                             <option value="{{ $item->id }}">{{ $item->studentid }}</option>
@@ -94,9 +94,9 @@
                                     Status<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="status_13" class="chosen-select form-control" data-placeholder="--Type--"
+                                    <select name="status_13" class="chosen-select form-control" data-selected="{{ old('status_13') }}"
                                         required>
-                                        <option value=""></option>
+                                        <option></option>
                                         <option value="Active" selected>Active</option>
                                         <option value="Inactive">In Active</option>
 

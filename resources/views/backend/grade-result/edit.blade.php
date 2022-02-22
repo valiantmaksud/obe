@@ -45,12 +45,13 @@
                                     Offer course<sup class="text-danger">*</sup> :
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="cid_11" class="chosen-select form-control">
+                                    <select name="cid_11" class="chosen-select form-control"
+                                        data-selected="{{ old('cid') }}">
                                         <option></option>
                                         @foreach ($offerCourses as $item)
                                             <option value="{{ $item->id }}"
                                                 {{ $item->id == $gradeResult->cid_11 ? 'selected' : '' }}>
-                                                {{ $item->programcode }}</option>
+                                                {{ $item->coursecode }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -62,7 +63,8 @@
                                     Student ID<sup class="text-danger">*</sup> :
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="studentid" class="chosen-select form-control">
+                                    <select name="studentid" class="chosen-select form-control"
+                                        data-selected="{{ old('studentid') }}">
                                         <option></option>
                                         @foreach ($students as $item)
                                             <option value="{{ $item->id }}"
@@ -80,8 +82,8 @@
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <input type="text" name="coursecode" class="form-control" autocomplete="off"
-                                        value="{{ old('coursecode', $gradeResult->coursecode) }}" placeholder="coursecode"
-                                        required>
+                                        value="{{ old('coursecode', $gradeResult->coursecode) }}"
+                                        placeholder="coursecode" required readonly>
                                 </div>
                             </div>
 
@@ -93,9 +95,9 @@
                                     Attendance<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="attendance" class="form-control" autocomplete="off"
-                                        value="{{ old('attendance', $gradeResult->attendance) }}" placeholder="attendance"
-                                        required>
+                                    <input type="text" name="attendance" class="form-control att" autocomplete="off"
+                                        value="{{ old('attendance', $gradeResult->attendance) }}"
+                                        placeholder="attendance" required>
                                 </div>
                             </div>
 
@@ -107,7 +109,7 @@
                                     Class performanace<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="classperformanace" class="form-control" autocomplete="off"
+                                    <input type="text" name="classperformanace" class="form-control cp" autocomplete="off"
                                         value="{{ old('classperformanace', $gradeResult->classperformanace) }}"
                                         placeholder="classperformanace" required>
                                 </div>
@@ -121,7 +123,7 @@
                                     Mid exam<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="midexam" class="form-control" autocomplete="off"
+                                    <input type="text" name="midexam" class="form-control mid" autocomplete="off"
                                         value="{{ old('midexam', $gradeResult->midexam) }}" placeholder="midexam"
                                         required>
                                 </div>
@@ -136,7 +138,7 @@
                                     Final exam<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="finalexam" class="form-control" autocomplete="off"
+                                    <input type="text" name="finalexam" class="form-control final" autocomplete="off"
                                         value="{{ old('finalexam', $gradeResult->finalexam) }}" placeholder="finalexam"
                                         required>
                                     </select>
@@ -171,8 +173,8 @@
                                     Status<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="status_15" class="chosen-select form-control" data-placeholder="--Type--"
-                                        required>
+                                    <select name="status_15" class="chosen-select form-control"
+                                        data-selected="{{ old('status_15') }}" required>
                                         <option value=""></option>
                                         <option value="Active" selected>Active</option>
                                         <option value="Inactive">In Active</option>
@@ -191,8 +193,6 @@
                                 </div>
                             </div>
 
-
-
                         </form>
                     </div>
                 </div>
@@ -205,5 +205,46 @@
 
 @section('inline-js')
 
+    <script>
+        $('.att,.cp,.mid,.final').on('keyup', function() {
+            total()
+        })
+
+        function total() {
+            let attendance = Number($('input[name=attendance]').val())
+            let classperformanace = Number($('input[name=classperformanace]').val())
+            let midexam = Number($('input[name=midexam]').val())
+            let finalexam = Number($('input[name=finalexam]').val())
+
+            let total = attendance + classperformanace + midexam + finalexam
+            $('input[name=total]').val(total)
+
+
+            $('input[name=grade]').val(grade(total))
+        }
+
+        function cid(obj) {
+
+            $('input[name=coursecode]').val($(obj).text().trim())
+        }
+
+        function grade(total) {
+            if (total >= 80) {
+                return 'A+'
+            } else if (total >= 75 && total < 80) {
+                return 'A'
+            } else if (total >= 70 && total < 75) {
+                return 'A-'
+            } else if (total >= 60 && total < 70) {
+                return 'B'
+            } else if (total >= 50 && total < 60) {
+                return 'C'
+            } else if (total > 39 && total < 50) {
+                return 'D'
+            } else {
+                return 'F'
+            }
+        }
+    </script>
 
 @endsection

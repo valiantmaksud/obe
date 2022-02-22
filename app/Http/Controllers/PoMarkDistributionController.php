@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\OfferCourse;
+use App\Models\Po;
 use Illuminate\Http\Request;
 use App\Models\PoMarkDistribution;
 
@@ -27,7 +28,8 @@ class PoMarkDistributionController extends Controller
     public function create()
     {
         $offerCourses       = OfferCourse::get();
-        return view('backend.pomark-distribution.create', compact('offerCourses'));
+        $pos                = Po::where('status_06', 'Active')->get();
+        return view('backend.pomark-distribution.create', compact('offerCourses', 'pos'));
     }
 
     /**

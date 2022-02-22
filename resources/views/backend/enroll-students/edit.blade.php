@@ -49,7 +49,8 @@
                                     Offer course<sup class="text-danger">*</sup> :
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="cid_11" class="chosen-select form-control">
+                                    <select name="cid_11" class="chosen-select form-control"
+                                        data-selected="{{ old('cid') }}">
                                         <option></option>
                                         @foreach ($offerCourses as $item)
                                             <option value="{{ $item->id }}"
@@ -71,7 +72,8 @@
                                     Student ID<sup class="text-danger">*</sup> :
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="studentid" class="chosen-select form-control">
+                                    <select name="studentid" class="chosen-select form-control"
+                                        data-selected="{{ old('studentid') }}">
                                         <option></option>
                                         @foreach ($students as $item)
                                             <option value="{{ $item->id }}"
@@ -103,9 +105,9 @@
                                     Status<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="status_13" class="chosen-select form-control" data-placeholder="--Type--"
-                                        required>
-                                        <option value=""></option>
+                                    <select name="status_13" class="chosen-select form-control"
+                                        data-selected="{{ old('status_13') }}" required>
+                                        <option></option>
                                         <option value="Active" selected>Active</option>
                                         <option value="Inactive">In Active</option>
 
