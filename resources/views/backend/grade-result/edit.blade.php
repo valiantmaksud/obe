@@ -76,7 +76,7 @@
                             </div>
 
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label class="control-label col-sm-3 col-sm-3">
                                     Course code<sup class="text-danger">*</sup>:
                                 </label>
@@ -85,7 +85,7 @@
                                         value="{{ old('coursecode', $gradeResult->coursecode) }}"
                                         placeholder="coursecode" required readonly>
                                 </div>
-                            </div>
+                            </div> --}}
 
 
 
@@ -223,10 +223,10 @@
             $('input[name=grade]').val(grade(total))
         }
 
-        function cid(obj) {
+        // function cid(obj) {
 
-            $('input[name=coursecode]').val($(obj).text().trim())
-        }
+        //     $('input[name=coursecode]').val($(obj).text().trim())
+        // }
 
         function grade(total) {
             if (total >= 80) {

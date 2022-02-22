@@ -69,7 +69,6 @@
                                             <option value="{{ $item->po }}">{{ $item->po }}</option>
                                         @endforeach
                                     </select>
-
                                 </div>
                             </div>
 

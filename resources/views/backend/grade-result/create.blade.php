@@ -20,7 +20,7 @@
                 <div class="widget-header">
                     <h4 class="widget-title"> @yield('page-header')</h4>
                     <span class="widget-toolbar">
-                        <a href="{{ route('mark-distributions.index') }}" class="">
+                        <a href="{{ route('grade-results.index') }}" class="">
                             <i class="fa fa-list-alt"></i> List
                         </a>
                     </span>
@@ -47,7 +47,7 @@
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <select name="cid_11" class="chosen-select form-control"
-                                        data-selected="{{ old('cid') }}" onchange="cid(this)">
+                                        data-selected="{{ old('cid') }}">
                                         <option></option>
                                         @foreach ($offerCourses as $item)
                                             <option value="{{ $item->id }}">{{ $item->coursecode }}</option>
@@ -72,8 +72,7 @@
                                 </div>
                             </div>
 
-
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label class="control-label col-sm-3 col-sm-3">
                                     Course code<sup class="text-danger">*</sup>:
                                 </label>
@@ -81,8 +80,7 @@
                                     <input type="text" name="coursecode" class="form-control" autocomplete="off"
                                         value="{{ old('coursecode') }}" placeholder="coursecode" required readonly>
                                 </div>
-                            </div>
-
+                            </div> --}}
 
 
 
@@ -214,10 +212,10 @@
 
         })
 
-        function cid(obj) {
+        // function cid(obj) {
 
-            $('input[name=coursecode]').val($(obj).text().trim())
-        }
+        //     $('input[name=coursecode]').val($(obj).text().trim())
+        // }
 
         function grade(total) {
             if (total >= 80) {

@@ -47,7 +47,7 @@
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <select name="cid_11" class="chosen-select form-control"
-                                        data-selected="{{ old('cid') }}" onchange="cid(this)">
+                                        data-selected="{{ old('cid') }}">
                                         <option></option>
                                         @foreach ($offerCourses as $item)
                                             <option value="{{ $item->id }}">{{ $item->coursecode }}</option>
@@ -56,15 +56,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label class="control-label col-sm-3 col-sm-3">
-                                    Course Code<sup class="text-danger">*</sup>:
-                                </label>
-                                <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="coursecode" class="form-control" autocomplete="off"
-                                        value="{{ old('coursecode') }}" placeholder="coursecode" required readonly>
-                                </div>
-                            </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3 col-sm-3" for="product_name">
@@ -135,8 +126,8 @@
                                     Status<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="status_20" class="chosen-select form-control" data-selected="{{ old('status_20') }}"
-                                        required>
+                                    <select name="status_20" class="chosen-select form-control"
+                                        data-selected="{{ old('status_20') }}" required>
                                         <option value=""></option>
                                         <option value="Active" selected>Active</option>
                                         <option value="Inactive">In Active</option>

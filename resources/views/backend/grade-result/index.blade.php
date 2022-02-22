@@ -44,9 +44,8 @@
                                         <thead>
                                             <tr>
                                                 <th>Sl</th>
-                                                <th>Program Code</th>
+                                                <th>Course Code</th>
                                                 <th>Student ID</th>
-                                                <th>Course code</th>
                                                 <th>Attendance</th>
                                                 <th>Class Performance</th>
                                                 <th>Mid exam</th>
@@ -63,9 +62,8 @@
                                             @forelse ($gradeResult as $key => $item)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $item->offer->programcode }}</td>
+                                                    <td>{{ optional($item->offer)->coursecode }}</td>
                                                     <td>{{ $item->student->studentid }}</td>
-                                                    <td>{{ $item->coursecode }}</td>
                                                     <td>{{ $item->attendance }}</td>
                                                     <td>{{ $item->classperformanace }}</td>
                                                     <td>{{ $item->midexam }}</td>
