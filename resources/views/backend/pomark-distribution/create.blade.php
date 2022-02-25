@@ -46,7 +46,7 @@
                                     Offer course<sup class="text-danger">*</sup> :
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="cid_11" class="chosen-select form-control"
+                                    <select name="cid_11" class="chosen-select form-control cid"
                                         data-selected="{{ old('cid') }}">
                                         <option></option>
                                         @foreach ($offerCourses as $item)
@@ -63,7 +63,8 @@
                                     PO<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="po" class="form-control chosen-select" required>
+                                    <select name="po" class="form-control chosen-select po" onchange="getPoTotalmark()"
+                                        required>
                                         <option></option>
                                         @foreach ($pos as $item)
                                             <option value="{{ $item->po }}">{{ $item->po }}</option>
@@ -109,5 +110,20 @@
 
 @section('inline-js')
 
+    <script>
+        function getPoTotalmark() {
 
+            let cid = $('.cid option:selected').val();
+            let po = $('.po option:selected').val();
+
+
+            $.get('{{ route('get-po-total-mark') }}', {
+                qid: cid,
+                po: po
+            }, function(response) {
+                $('input[name=pototalmark]').val(response)
+
+            })
+        }
+    </script>
 @endsection

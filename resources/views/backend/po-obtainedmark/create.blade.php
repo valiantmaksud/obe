@@ -46,7 +46,7 @@
                                     Offer course<sup class="text-danger">*</sup> :
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="cid_11" class="chosen-select form-control"
+                                    <select name="cid_11" class="chosen-select form-control cid"
                                         data-selected="{{ old('cid') }}">
                                         <option></option>
                                         @foreach ($offerCourses as $item)
@@ -58,7 +58,7 @@
 
 
                             <div class="form-group">
-                                <label class="control-label col-sm-3 col-sm-3" for="product_name">
+                                <label class="control-label col-sm-3 col-sm-3">
                                     Student ID<sup class="text-danger">*</sup> :
                                 </label>
                                 <div class="col-md-5 col-sm-5">
@@ -79,22 +79,16 @@
                                     PO<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="po" class="form-control" autocomplete="off"
-                                        value="{{ old('po') }}" placeholder="PO" required>
+                                    <select name="po" class="form-control chosen-select po" onchange="getPoTotalmark()"
+                                        required>
+                                        <option></option>
+                                        @foreach ($pos as $item)
+                                            <option value="{{ $item->po }}">{{ $item->po }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
 
-
-
-                            <div class="form-group">
-                                <label class="control-label col-sm-3 col-sm-3">
-                                    Obtained Mark<sup class="text-danger">*</sup>:
-                                </label>
-                                <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="obtainedmark" class="form-control" autocomplete="off"
-                                        value="{{ old('obtainedmark') }}" placeholder="Enroll type" required>
-                                </div>
-                            </div>
 
 
                             <div class="form-group">
@@ -104,6 +98,20 @@
                                 <div class="col-md-5 col-sm-5">
                                     <input type="text" name="pototalmark" class="form-control" autocomplete="off"
                                         value="{{ old('pototalmark') }}" placeholder="Enroll type" required>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3 col-sm-3">
+                                    Obtained Mark<sup class="text-danger">*</sup>:
+                                </label>
+                                <div class="col-md-5 col-sm-5">
+                                    <input type="text" name="obtainedmark" class="form-control" autocomplete="off"
+                                        value="{{ old('obtainedmark') }}" placeholder="Enroll type" required
+                                        onkeyup="obtainedPercentage(this)">
                                 </div>
                             </div>
 
@@ -163,9 +171,28 @@
 @section('inline-js')
 
     <script>
-        function cid(obj) {
+        function getPoTotalmark(obj) {
 
-            $('input[name=coursecode]').val($(obj).text().trim())
+
+            let cid = $('.cid option:selected').val();
+            let po = $('.po option:selected').val();
+
+
+            $.get('{{ route('get-po-total-mark') }}', {
+                qid: cid,
+                po: po
+            }, function(response) {
+                $('input[name=pototalmark]').val(response)
+
+            })
+        }
+
+        function obtainedPercentage(obj) {
+            let mark = Number($(obj).val())
+
+            let percentage = mark / 100 * 100
+
+            $('input[name=obtainedpercentage]').val(percentage);
         }
     </script>
 @endsection

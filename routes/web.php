@@ -74,6 +74,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 
     Route::group(['prefix' => 'ajax'], function () {
-        Route::get('get-qid', [AjaxDataController::class, 'getQID'])->name('get-qid');
+        Route::get('get-qid',           [AjaxDataController::class, 'getQID'])->name('get-qid');
+        Route::get('get-po-total-mark', [AjaxDataController::class, 'getPoMark'])->name('get-po-total-mark');
     });
 });

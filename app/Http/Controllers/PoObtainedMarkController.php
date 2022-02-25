@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Po;
+use App\Models\Student;
 use App\Models\OfferCourse;
 use Illuminate\Http\Request;
 use App\Models\PoObtainedMark;
-use App\Models\Student;
 
 class PoObtainedMarkController extends Controller
 {
@@ -29,7 +30,9 @@ class PoObtainedMarkController extends Controller
     {
         $offerCourses       = OfferCourse::get();
         $students           = Student::get();
-        return view('backend.po-obtainedmark.create', compact('offerCourses', 'students'));
+        $pos                = Po::where('status_06', 'Active')->get();
+
+        return view('backend.po-obtainedmark.create', compact('offerCourses', 'students', 'pos'));
     }
 
     /**
