@@ -72,8 +72,8 @@
                                     <select name="markofexam" class="form-control chosen-select"
                                         data-selected="{{ old('markofexam', $markDistribution->markofexam) }}" required>
                                         <option></option>
-                                        <option value="Mid Term">Mid Term</option>
-                                        <option value="Final Term">Final Term</option>
+                                        <option value="Mid Term" {{ $markDistribution->markofexam=='Mid Term' ? 'selected' : '' }}>Mid Term</option>
+                                        <option value="Final Term" {{ $markDistribution->markofexam=='Final Term' ? 'selected' : '' }}>Final Term</option>
                                     </select>
                                 </div>
                             </div>

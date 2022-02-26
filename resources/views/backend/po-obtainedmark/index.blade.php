@@ -60,7 +60,7 @@
                                             @forelse ($poObtainedMark as $key => $item)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $item->offer->programcode }}</td>
+                                                    <td>{{ $item->offer->coursecode }}</td>
                                                     <td>{{ $item->student->studentid }}</td>
                                                     <td>{{ $item->po }}</td>
                                                     <td>{{ $item->obtainedmark }}</td>

@@ -43,7 +43,9 @@ class GradeResultController extends Controller
         $data = $request->all();
 
 
-        // dd($data);
+        if (GradeResult::where('cid_11', $request->cid_11)->where('studentid', $request->studentid)->first()) {
+            return redirect()->back()->withError('Enroll Student already generate');
+        }
 
         GradeResult::create($data);
 

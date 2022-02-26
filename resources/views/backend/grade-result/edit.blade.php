@@ -41,12 +41,12 @@
 
 
                             <div class="form-group">
-                                <label class="control-label col-sm-3 col-sm-3" for="product_name">
+                                <label class="control-label col-sm-3 col-sm-3">
                                     Offer course<sup class="text-danger">*</sup> :
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <select name="cid_11" class="chosen-select form-control"
-                                        data-selected="{{ old('cid') }}">
+                                        data-selected="{{ old('cid') }}" disabled>
                                         <option></option>
                                         @foreach ($offerCourses as $item)
                                             <option value="{{ $item->id }}"
@@ -64,7 +64,7 @@
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <select name="studentid" class="chosen-select form-control"
-                                        data-selected="{{ old('studentid') }}">
+                                        data-selected="{{ old('studentid') }}" disabled>
                                         <option></option>
                                         @foreach ($students as $item)
                                             <option value="{{ $item->id }}"
