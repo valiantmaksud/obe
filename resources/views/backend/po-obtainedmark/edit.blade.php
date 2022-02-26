@@ -117,7 +117,7 @@
                                 <div class="col-md-5 col-sm-5">
                                     <input type="text" name="obtainedmark" class="form-control" autocomplete="off"
                                         value="{{ old('obtainedmark', $poObtainedMark->obtainedmark) }}"
-                                        placeholder="Enroll type" required>
+                                        placeholder="Enroll type" required onkeyup="obtainedPercentage(this)">
                                 </div>
                             </div>
 
@@ -190,6 +190,15 @@
                 $('input[name=pototalmark]').val(response)
 
             })
+        }
+
+        function obtainedPercentage(obj) {
+            let mark = Number($(obj).val())
+            let pototalmark = $('input[name=pototalmark]').val()
+
+            let percentage = (mark * 100) / pototalmark
+
+            $('input[name=obtainedpercentage]').val(percentage.toFixed(2));
         }
     </script>
 @endsection

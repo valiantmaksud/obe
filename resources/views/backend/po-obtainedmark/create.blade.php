@@ -191,9 +191,9 @@
             let mark = Number($(obj).val())
             let pototalmark = $('input[name=pototalmark]').val()
 
-            let percentage = pototalmark / mark
+            let percentage = (mark * 100) / pototalmark
 
-            $('input[name=obtainedpercentage]').val(percentage);
+            $('input[name=obtainedpercentage]').val(percentage.toFixed(2));
         }
     </script>
 @endsection
