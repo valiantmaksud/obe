@@ -67,8 +67,9 @@ class PoMarkDistributionController extends Controller
     public function edit(PoMarkDistribution $pomarkDistribution)
     {
         $offerCourses       = OfferCourse::get();
+        $pos                = Po::where('status_06', 'Active')->get();
 
-        return view('backend.pomark-distribution.edit', compact('offerCourses', 'pomarkDistribution'));
+        return view('backend.pomark-distribution.edit', compact('offerCourses', 'pomarkDistribution', 'pos'));
     }
 
     /**

@@ -46,19 +46,19 @@
                                     Offer course<sup class="text-danger">*</sup> :
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="cid_11" class="chosen-select form-control"
-                                        data-selected="{{ old('cid') }}">
+                                    <select name="cid_11" class="chosen-select form-control cid"
+                                        data-selected="{{ old('cid_11') }}">
                                         <option></option>
                                         @foreach ($offerCourses as $item)
                                             <option value="{{ $item->id }}"
                                                 {{ $poObtainedMark->cid_11 == $item->id ? 'selected' : '' }}>
-                                                {{ $item->programcode }}</option>
+                                                {{ $item->coursecode }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
 
-                            
+
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3 col-sm-3" for="product_name">
@@ -84,21 +84,16 @@
                                     PO<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="po" class="form-control" autocomplete="off"
-                                        value="{{ old('po', $poObtainedMark->po) }}" placeholder="PO" required>
-                                </div>
-                            </div>
+                                    <select name="po" class="form-control chosen-select po" onchange="getPoTotalmark()"
+                                        required>
+                                        <option></option>
+                                        @foreach ($pos as $item)
+                                            <option value="{{ $item->po }}"
+                                                {{ $poObtainedMark->po == $item->po ? 'selected' : '' }}>
+                                                {{ $item->po }}</option>
+                                        @endforeach
+                                    </select>
 
-
-
-                            <div class="form-group">
-                                <label class="control-label col-sm-3 col-sm-3">
-                                    Obtained Mark<sup class="text-danger">*</sup>:
-                                </label>
-                                <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="obtainedmark" class="form-control" autocomplete="off"
-                                        value="{{ old('obtainedmark', $poObtainedMark->obtainedmark) }}"
-                                        placeholder="Enroll type" required>
                                 </div>
                             </div>
 
@@ -113,6 +108,19 @@
                                         placeholder="Enroll type" required>
                                 </div>
                             </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3 col-sm-3">
+                                    Obtained Mark<sup class="text-danger">*</sup>:
+                                </label>
+                                <div class="col-md-5 col-sm-5">
+                                    <input type="text" name="obtainedmark" class="form-control" autocomplete="off"
+                                        value="{{ old('obtainedmark', $poObtainedMark->obtainedmark) }}"
+                                        placeholder="Enroll type" required>
+                                </div>
+                            </div>
+
 
 
                             <div class="form-group">
@@ -168,5 +176,20 @@
 
 @section('inline-js')
 
+    <script>
+        function getPoTotalmark() {
 
+            let cid = $('.cid option:selected').val();
+            let po = $('.po option:selected').val();
+
+
+            $.get('{{ route('get-po-total-mark') }}', {
+                qid: cid,
+                po: po
+            }, function(response) {
+                $('input[name=pototalmark]').val(response)
+
+            })
+        }
+    </script>
 @endsection

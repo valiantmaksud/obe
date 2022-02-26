@@ -15,6 +15,6 @@ class AjaxDataController extends Controller
 
     public function getPoMark(Request $request)
     {
-        return MarkDistribution::where('po', $request->po)->where('cid_11', $request->qid)->sum('po');
+        return MarkDistribution::where('po', $request->po)->where('cid_11', $request->qid)->sum('fullmark');
     }
 }

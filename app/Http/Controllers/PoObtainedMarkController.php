@@ -71,7 +71,9 @@ class PoObtainedMarkController extends Controller
     {
         $offerCourses       = OfferCourse::get();
         $students           = Student::get();
-        return view('backend.po-obtainedmark.edit', compact('offerCourses', 'students', 'poObtainedMark'));
+        $pos                = Po::where('status_06', 'Active')->get();
+
+        return view('backend.po-obtainedmark.edit', compact('offerCourses', 'students', 'poObtainedMark', 'pos'));
     }
 
     /**
