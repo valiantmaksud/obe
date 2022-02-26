@@ -45,9 +45,13 @@ class PoObtainedMarkController extends Controller
     {
         $data = $request->all();
 
+        if (PoObtainedMark::where('cid_11', $request->cid_11)->where('studentid', $request->studentid)->where('po', $request->po)->first()) {
+            return redirect()->back()->withError('Obtained mark already generate for this student');
+        }
+
         PoObtainedMark::create($data);
 
-        return redirect()->route('po-obtained-mark.index')->withMessage('Enroll Student added success');
+        return redirect()->route('po-obtained-mark.index')->withMessage('Obtained mark added success');
     }
 
     /**

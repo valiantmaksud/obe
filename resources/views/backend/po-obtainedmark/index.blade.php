@@ -65,7 +65,7 @@
                                                     <td>{{ $item->po }}</td>
                                                     <td>{{ $item->obtainedmark }}</td>
                                                     <td>{{ $item->pototalmark }}</td>
-                                                    <td>{{ $item->obtainedpercentage }}</td>
+                                                    <td>{{ (int) $item->obtainedpercentage }}%</td>
                                                     <td>{{ $item->status_20 }}</td>
 
                                                     <td class="text-center">

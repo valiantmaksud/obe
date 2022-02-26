@@ -110,7 +110,7 @@
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <input type="text" name="obtainedmark" class="form-control" autocomplete="off"
-                                        value="{{ old('obtainedmark') }}" placeholder="Enroll type" required
+                                        value="{{ old('obtainedmark') }}" placeholder="Obtained Mark" required
                                         onkeyup="obtainedPercentage(this)">
                                 </div>
                             </div>
@@ -122,7 +122,8 @@
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <input type="text" name="obtainedpercentage" class="form-control" autocomplete="off"
-                                        value="{{ old('obtainedpercentage') }}" placeholder="Enroll type" required>
+                                        value="{{ old('obtainedpercentage') }}" placeholder="Obtained Percentage"
+                                        required>
                                 </div>
                             </div>
 
