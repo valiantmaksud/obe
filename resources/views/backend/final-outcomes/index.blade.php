@@ -64,12 +64,20 @@
                                     <div class="row" style="margin-bottom: 20px">
                                         <div class="col-sm-10 col-sm-offset-1">
                                             <div class="row">
-                                                <div class="col-sm-6 text-center">Name: <strong></strong></div>
-                                                <div class="col-sm-6 text-center">Phone: <strong></strong></div>
+                                                <div class="col-sm-6 text-center">Name:
+                                                    <strong>{{ $student->studentname }}</strong>
+                                                </div>
+                                                <div class="col-sm-6 text-center">Dept Code:
+                                                    <strong>{{ $student->deptcode }}</strong>
+                                                </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-sm-6 text-center">ID: <strong></strong></div>
-                                                <div class="col-sm-6 text-center">Batch: <strong></strong></div>
+                                                <div class="col-sm-6 text-center">ID:
+                                                    <strong>{{ $student->studentid }}</strong>
+                                                </div>
+                                                <div class="col-sm-6 text-center">Batch:
+                                                    <strong>{{ $student->batch }}</strong>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -95,7 +103,7 @@
 
                                                         <td>{{ $item->pototalmark }}</td>
                                                         <td>{{ $item->obtainedmark }}</td>
-                                                        <td>{{ $item->obtainedmark > 200 ? 'T' : 'F' }}</td>
+                                                        <td>{{ $item->obtainedmark > 40 ? 'True' : 'False' }}</td>
                                                     </tr>
                                                 @empty
                                                     <tr>
