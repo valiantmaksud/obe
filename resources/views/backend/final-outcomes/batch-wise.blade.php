@@ -95,7 +95,9 @@
                                                         <td>{{ $item->obtainedMark->pototalmark }}</td>
                                                         <td>{{ $item->obtainedMark->obtainedmark }}</td>
                                                         <td>{{ $item->obtainedMark->obtainedpercentage }}</td>
-                                                        <td>{{ $item->obtainedMark->obtainedmark > 200 ? 'T' : 'F' }}</td>
+                                                        <td>
+                                                            {{ ($item->obtainedMark->obtainedmark * 100) / $item->obtainedMark->pototalmark > 40 ? 'True' : 'False' }}
+                                                        </td>
                                                     </tr>
                                                 @empty
                                                     <tr>
@@ -108,7 +110,7 @@
                                             </tbody>
 
                                             <tfoot class="hidden_print">
-                                                <tr>
+                                                <tr class="noExl">
                                                     <td colspan="30" class="text-right">
                                                         <div class="btn-group btn-corner">
 
@@ -137,18 +139,18 @@
 
 
 @section('inline-js')
-<script src="{{ asset('assets/custom-js/jquery.table2excel.js') }}"></script>
+    <script src="{{ asset('assets/custom-js/jquery.table2excel.js') }}"></script>
 
-<script>
-    function exportToExcel() {
-        $("#dynamic-table").table2excel({
-            exclude: ".noExl",
-            name: "Final Outcome",
-            filename: "final-outcome",
-            fileext: ".xls",
-            preserveColors: true
-        });
-    }
-</script>
+    <script>
+        function exportToExcel() {
+            $("#dynamic-table").table2excel({
+                exclude: ".noExl",
+                name: "Final Outcome",
+                filename: "final-outcome",
+                fileext: ".xls",
+                preserveColors: true
+            });
+        }
+    </script>
 
 @stop

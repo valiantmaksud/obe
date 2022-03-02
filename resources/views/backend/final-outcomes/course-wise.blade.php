@@ -74,7 +74,8 @@
                                     <div class="row" style="margin-bottom: 20px">
                                         <div class="col-sm-10 col-sm-offset-1">
                                             <div class="row">
-                                                <div class="col-sm-8 text-center">Course Name: <strong></strong></div>
+                                                <div class="col-sm-8 text-center">Course Name:
+                                                    <strong>{{ request('coursecode') }}</strong></div>
                                             </div>
                                         </div>
                                     </div>
@@ -100,7 +101,8 @@
 
                                                         <td>{{ $item->ObtainedMark->pototalmark }}</td>
                                                         <td>{{ $item->ObtainedMark->obtainedmark }}</td>
-                                                        <td>{{ $item->ObtainedMark->obtainedmark > 200 ? 'T' : 'F' }}
+                                                        <td>
+                                                            {{ ($item->obtainedMark->obtainedmark * 100) / $item->obtainedMark->pototalmark > 40 ? 'True' : 'False' }}
                                                         </td>
                                                         <td>{{ $item->ObtainedMark->obtainedpercentage }}</td>
                                                     </tr>
@@ -115,7 +117,7 @@
                                             </tbody>
 
                                             <tfoot class="hidden_print">
-                                                <tr>
+                                                <tr class="noExl">
                                                     <td colspan="30" class="text-right">
                                                         <div class="btn-group btn-corner">
 

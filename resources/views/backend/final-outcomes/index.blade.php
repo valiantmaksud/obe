@@ -103,7 +103,9 @@
 
                                                         <td>{{ $item->pototalmark }}</td>
                                                         <td>{{ $item->obtainedmark }}</td>
-                                                        <td>{{ $item->obtainedmark > 40 ? 'True' : 'False' }}</td>
+                                                        <td>
+                                                            {{ ($item->obtainedmark * 100) / $item->pototalmark > 40 ? 'True' : 'False' }}
+                                                        </td>
                                                     </tr>
                                                 @empty
                                                     <tr>
@@ -116,7 +118,7 @@
                                             </tbody>
 
                                             <tfoot class="hidden_print">
-                                                <tr>
+                                                <tr class="noExl">
                                                     <td colspan="30" class="text-right">
                                                         <div class="btn-group btn-corner">
 
