@@ -14,8 +14,7 @@ class CreateGradeResultsTable extends Migration
     public function up()
     {
         Schema::create('_15_graderesult', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('_11_cid');
+            $table->string('cid_11');
             $table->string('coursecode');
             $table->string('studentid');
             $table->string('attendance');
@@ -24,8 +23,10 @@ class CreateGradeResultsTable extends Migration
             $table->decimal('finalexam');
             $table->decimal('total');
             $table->string('grade');
-            $table->string('status_15');
-            $table->timestamps();
+            $table->boolean('status_15');
+
+            $table->foreign('cid_11')->references('cid_11')->on('_11_offercourses');
+            $table->foreign('studentid')->references('studentid')->on('_07_student');
         });
     }
 

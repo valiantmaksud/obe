@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSemistersTable extends Migration
+class CreateDeptinfoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateSemistersTable extends Migration
      */
     public function up()
     {
-        Schema::create('_03_semisters', function (Blueprint $table) {
-            $table->string('semister')->primary();
+        Schema::create('_01_deptinfo', function (Blueprint $table) {
+            $table->string('deptcode')->primary();
+            $table->string('deptname');
         });
     }
 
@@ -25,6 +26,6 @@ class CreateSemistersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_03_semisters');
+        Schema::dropIfExists('programs');
     }
 }

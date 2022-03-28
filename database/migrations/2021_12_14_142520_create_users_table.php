@@ -20,10 +20,13 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('usertype');
             $table->string('userrole');
-            $table->string('deptcode')->nullable();
-            $table->string('institutecode')->nullable();
+            $table->string('usermail')->nullable();
+            $table->string('deptcode');
+            $table->string('institutecode');
             $table->string('status_02')->default('active');
-            $table->timestamps();
+
+            $table->foreign('deptcode')->references('deptcode')->on('_01_deptinfo');
+            $table->foreign('institutecode')->references('institutecode')->on('_01_institute');
         });
     }
 

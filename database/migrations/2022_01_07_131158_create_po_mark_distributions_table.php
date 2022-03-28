@@ -14,11 +14,12 @@ class CreatePoMarkDistributionsTable extends Migration
     public function up()
     {
         Schema::create('_18_pomarkdistribution', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('_11_cid');
+            $table->string('cid_11');
             $table->string('po');
             $table->decimal('pototalmark');
-            $table->timestamps();
+
+            $table->foreign('cid_11')->references('cid_11')->on('_11_offercourses');
+            $table->foreign('po')->references('po')->on('_06_po');
         });
     }
 

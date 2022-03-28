@@ -14,14 +14,15 @@ class CreateMarkDistributionsTable extends Migration
     public function up()
     {
         Schema::create('_12_markdistribution', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('_11_cid');
+            $table->string('cid_11');
             $table->decimal('markofexam');
             $table->string('qid');
             $table->string('co');
             $table->string('po');
             $table->decimal('fullmark');
-            $table->timestamps();
+
+            $table->foreign('cid_11')->references('cid_11')->on('_11_offercourses');
+            $table->foreign('po')->references('po')->on('_06_po');
         });
     }
 

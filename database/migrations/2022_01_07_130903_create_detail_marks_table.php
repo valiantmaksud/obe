@@ -14,16 +14,18 @@ class CreateDetailMarksTable extends Migration
     public function up()
     {
         Schema::create('_14_detailmarks', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('_11_cid');
+            $table->string('cid_11');
             $table->string('studentid');
             $table->string('examtype');
             $table->string('qid');
             $table->string('co');
             $table->string('po');
             $table->decimal('obtainedmark');
-            $table->string('status_14');
-            $table->timestamps();
+            $table->boolean('status_14');
+
+            $table->foreign('cid_11')->references('cid_11')->on('_11_offercourses');
+            $table->foreign('studentid')->references('studentid')->on('_07_student');
+            $table->foreign('po')->references('po')->on('_06_po');
         });
     }
 

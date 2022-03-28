@@ -14,12 +14,12 @@ class CreateCurrentMarkEntrySemistersTable extends Migration
     public function up()
     {
         Schema::create('_05_currentmarkentrysemester', function (Blueprint $table) {
-            $table->id();
             $table->string('institutecode');
             $table->string('programcode');
             $table->string('semester');
             $table->string('year');
-            $table->timestamps();
+            $table->foreign('institutecode')->references('institutecode')->on('_01_institute');
+            $table->foreign('programcode')->references('programcode')->on('_01_programs');
         });
     }
 

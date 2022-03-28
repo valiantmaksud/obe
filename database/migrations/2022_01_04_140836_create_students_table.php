@@ -14,15 +14,17 @@ class CreateStudentsTable extends Migration
     public function up()
     {
         Schema::create('_07_student', function (Blueprint $table) {
-            $table->id();
-            $table->string('studentid');
+            $table->string('studentid')->primary();
             $table->string('studentname');
             $table->string('batch');
             $table->string('programcode');
             $table->string('deptcode');
             $table->string('institutecode');
-            $table->string('status_07');
-            $table->timestamps();
+            $table->boolean('status_07');
+
+            $table->foreign('programcode')->references('programcode')->on('_01_programs');
+            $table->foreign('deptcode')->references('deptcode')->on('_01_deptinfo');
+            $table->foreign('institutecode')->references('institutecode')->on('_01_institute');
         });
     }
 
