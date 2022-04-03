@@ -15,11 +15,11 @@ class CreateDetailMarksTable extends Migration
     {
         Schema::create('_14_detailmarks', function (Blueprint $table) {
             $table->string('cid_11');
-            $table->string('studentid');
+            $table->string('studentid',50);
             $table->string('examtype');
             $table->string('qid');
             $table->string('co');
-            $table->string('po');
+            $table->string('po',50);
             $table->decimal('obtainedmark');
             $table->boolean('status_14');
 

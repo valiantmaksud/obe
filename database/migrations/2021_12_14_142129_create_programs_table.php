@@ -14,11 +14,11 @@ class CreateProgramsTable extends Migration
     public function up()
     {
         Schema::create('_01_programs', function (Blueprint $table) {
-            $table->string('programcode')->primary();
+            $table->string('programcode',50)->primary();
             $table->string('programname');
-            $table->string('deptcode');
-            $table->string('institutecode');
-            $table->string('status_01');
+            $table->string('deptcode',50);
+            $table->string('institutecode',50);
+            $table->boolean('status_01');
 
             $table->foreign('deptcode')->references('deptcode')->on('_01_deptinfo');
             $table->foreign('institutecode')->references('institutecode')->on('_01_institute');

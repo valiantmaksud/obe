@@ -15,12 +15,12 @@ class CreatePoObtainedMarksTable extends Migration
     {
         Schema::create('_20_poobtainedmarks', function (Blueprint $table) {
             $table->string('cid_11');
-            $table->string('coursecode');
-            $table->string('studentid');
-            $table->string('po');
-            $table->decimal('obtainedmark');
-            $table->decimal('pototalmark');
-            $table->string('obtainedpercentage');
+            $table->string('coursecode',50);
+            $table->string('studentid',50);
+            $table->string('po',50);
+            $table->float('obtainedmark');
+            $table->float('pototalmark');
+            $table->float('obtainedpercentage');
             $table->boolean('status_20');
 
             $table->foreign('cid_11')->references('cid_11')->on('_11_offercourses');

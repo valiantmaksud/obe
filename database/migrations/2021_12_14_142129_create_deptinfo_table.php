@@ -14,7 +14,7 @@ class CreateDeptinfoTable extends Migration
     public function up()
     {
         Schema::create('_01_deptinfo', function (Blueprint $table) {
-            $table->string('deptcode')->primary();
+            $table->string('deptcode',50)->primary();
             $table->string('deptname');
         });
     }

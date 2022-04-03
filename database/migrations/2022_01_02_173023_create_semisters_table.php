@@ -14,7 +14,7 @@ class CreateSemistersTable extends Migration
     public function up()
     {
         Schema::create('_03_semisters', function (Blueprint $table) {
-            $table->string('semister')->primary();
+            $table->string('semister',50)->primary();
         });
     }
 

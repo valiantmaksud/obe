@@ -15,12 +15,12 @@ class CreateOfferCoursesTable extends Migration
     {
         Schema::create('_11_offercourses', function (Blueprint $table) {
             $table->string('cid_11')->primary();
-            $table->string('programcode');
-            $table->string('semister');
-            $table->string('year');
+            $table->string('programcode',50);
+            $table->string('semister',50);
+            $table->integer('year');
             $table->string('coursecode');
-            $table->string('teacherid');
-            $table->string('finalized_status');
+            $table->string('teacherid',50);
+            $table->boolean('finalized_status');
             $table->boolean('status_11');
 
             $table->foreign('programcode')->references('programcode')->on('_01_programs');

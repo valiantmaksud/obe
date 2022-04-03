@@ -14,10 +14,11 @@ class CreateCurrentEnrollSemistersTable extends Migration
     public function up()
     {
         Schema::create('_04_currentenrollsemester', function (Blueprint $table) {
-            $table->string('institutecode');
-            $table->string('programcode');
-            $table->string('semister');
-            $table->string('year');
+            $table->string('institutecode',50);
+            $table->string('programcode',50);
+            $table->string('semister',50);
+            $table->integer('year');
+
             $table->foreign('institutecode')->references('institutecode')->on('_01_institute');
             $table->foreign('programcode')->references('programcode')->on('_01_programs');
         });

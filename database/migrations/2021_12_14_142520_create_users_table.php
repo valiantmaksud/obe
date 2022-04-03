@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('usermail')->nullable();
             $table->string('deptcode');
             $table->string('institutecode');
-            $table->string('status_02')->default('active');
+            $table->boolean('status_02')->default(true);
 
             $table->foreign('deptcode')->references('deptcode')->on('_01_deptinfo');
             $table->foreign('institutecode')->references('institutecode')->on('_01_institute');

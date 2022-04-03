@@ -14,10 +14,10 @@ class CreatePosTable extends Migration
     public function up()
     {
         Schema::create('_06_po', function (Blueprint $table) {
-            $table->string('po')->primary();
+            $table->string('po',50)->primary();
             $table->string('pokeywords');
-            $table->string('programcode');
-            $table->string('institutecode');
+            $table->string('programcode',50);
+            $table->string('institutecode',50);
             $table->string('peo');
             $table->boolean('status_06');
 

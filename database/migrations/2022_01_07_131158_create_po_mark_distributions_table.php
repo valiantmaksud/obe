@@ -15,8 +15,8 @@ class CreatePoMarkDistributionsTable extends Migration
     {
         Schema::create('_18_pomarkdistribution', function (Blueprint $table) {
             $table->string('cid_11');
-            $table->string('po');
-            $table->decimal('pototalmark');
+            $table->string('po',4);
+            $table->float('pototalmark');
 
             $table->foreign('cid_11')->references('cid_11')->on('_11_offercourses');
             $table->foreign('po')->references('po')->on('_06_po');

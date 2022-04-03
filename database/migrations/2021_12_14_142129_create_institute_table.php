@@ -14,7 +14,7 @@ class CreateInstituteTable extends Migration
     public function up()
     {
         Schema::create('_01_institute', function (Blueprint $table) {
-            $table->string('institutecode')->primary();
+            $table->string('institutecode',50)->primary();
             $table->string('institutename');
         });
     }

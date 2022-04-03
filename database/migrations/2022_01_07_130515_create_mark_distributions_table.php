@@ -18,8 +18,8 @@ class CreateMarkDistributionsTable extends Migration
             $table->decimal('markofexam');
             $table->string('qid');
             $table->string('co');
-            $table->string('po');
-            $table->decimal('fullmark');
+            $table->string('po',50);
+            $table->integer('fullmark');
 
             $table->foreign('cid_11')->references('cid_11')->on('_11_offercourses');
             $table->foreign('po')->references('po')->on('_06_po');
