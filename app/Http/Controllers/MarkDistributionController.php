@@ -15,7 +15,7 @@ class MarkDistributionController extends Controller
      */
     public function index()
     {
-        $markDistributions  = MarkDistribution::latest()->get();
+        $markDistributions  = MarkDistribution::get();
         $offerCourses       = OfferCourse::get();
         return view('backend.mark-distribution.index', compact('markDistributions', 'offerCourses'));
     }

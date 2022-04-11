@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\Model;
 
-class CurrentEnrollSemister extends Model
+class Institute extends Model
 {
     use HasFactory;
-    
-    protected $table = '_04_currentenrollsemester';
+
+    protected $table = '_01_institute';
 }

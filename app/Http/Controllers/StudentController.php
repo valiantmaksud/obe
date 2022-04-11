@@ -16,8 +16,7 @@ class StudentController extends Controller
      */
     public function index(Request $request)
     {
-        $students = Student::latest()
-            ->when($request->filled('studentid'), function ($q) use ($request) {
+        $students = Student::when($request->filled('studentid'), function ($q) use ($request) {
                 $q->where('studentid', $request->studentid);
             })
             ->when($request->filled('studentname'), function ($q) use ($request) {

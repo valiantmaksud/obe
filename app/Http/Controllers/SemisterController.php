@@ -14,7 +14,7 @@ class SemisterController extends Controller
      */
     public function index()
     {
-        $semisters = Semister::latest()->get();
+        $semisters = Semister::get();
         return view('backend.semisters.index', compact('semisters'));
     }
 

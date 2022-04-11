@@ -133,7 +133,7 @@
                                         required>
                                         <option value=""></option>
                                         <option value="Ictive" selected>Active</option>
-                                        <option value="Inactive">In Active</option>
+                                        <option value=0>In Active</option>
 
                                     </select>
                                 </div>

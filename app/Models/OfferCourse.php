@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Support\Facades\App;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class OfferCourse extends Model
@@ -11,10 +11,7 @@ class OfferCourse extends Model
 
     use HasFactory;
 
-    protected $guarded = [];
     protected $table = '_11_offercourses';
-
-
 
     public static function boot()
     {

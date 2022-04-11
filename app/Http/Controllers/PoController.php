@@ -14,7 +14,7 @@ class PoController extends Controller
      */
     public function index()
     {
-        $pos = Po::latest()->get();
+        $pos = Po::get();
         return view('backend.pos.index', compact('pos'));
     }
 

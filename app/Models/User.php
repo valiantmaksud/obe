@@ -14,6 +14,8 @@ class User extends Authenticatable
 
     protected $guarded = [];
     protected $table = '_02_users';
+    public $timestamps = false;
+    protected $primaryKey = 'userid';
 
 
     protected $hidden = [

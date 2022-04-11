@@ -3,14 +3,13 @@
 namespace App\Models;
 
 use App\Models\PoObtainedMark;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Student extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
     protected $table = '_07_student';
 
     public function obtainedMarks()

@@ -16,7 +16,7 @@ class PoMarkDistributionController extends Controller
      */
     public function index()
     {
-        $poMarkDistribution = PoMarkDistribution::latest()->get();
+        $poMarkDistribution = PoMarkDistribution::get();
         return view('backend.pomark-distribution.index', compact('poMarkDistribution'));
     }
 

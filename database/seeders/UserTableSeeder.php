@@ -22,7 +22,9 @@ class UserTableSeeder extends Seeder
             'password'      => Hash::make(12345678),
             'usertype'      => 'Admin',
             'userrole'      => 'Admin',
-            'status_02'     => 'active',
+            'deptcode'      => 'cse',
+            'institutecode' => 'sub',
+            'status_02'     => 1,
         ]);
     }
 }

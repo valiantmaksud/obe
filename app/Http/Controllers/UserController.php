@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::latest()
+        $users = User::latest('userid')
             ->when($request->filled('username'), function ($q) use ($request) {
                 $q->where('username', 'like', '%' . $request->username . '%');
             })

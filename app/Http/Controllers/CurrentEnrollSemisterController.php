@@ -14,7 +14,7 @@ class CurrentEnrollSemisterController extends Controller
      */
     public function index()
     {
-        $currentEnrollSemisters = CurrentEnrollSemister::latest()->get();
+        $currentEnrollSemisters = CurrentEnrollSemister::get();
         return view('backend.current_semister.index', compact('currentEnrollSemisters'));
     }
 

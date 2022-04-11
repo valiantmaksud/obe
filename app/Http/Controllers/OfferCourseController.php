@@ -17,7 +17,7 @@ class OfferCourseController extends Controller
      */
     public function index()
     {
-        $offer_courses = OfferCourse::latest()->get();
+        $offer_courses = OfferCourse::get();
         return view('backend.offer_courses.index', compact('offer_courses'));
     }
 

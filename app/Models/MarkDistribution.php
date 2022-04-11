@@ -3,12 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Model;
 
 class MarkDistribution extends Model
 {
     use HasFactory;
-    protected $guarded = [];
     protected $table = '_12_markdistribution';
 
 

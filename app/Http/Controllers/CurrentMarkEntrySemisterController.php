@@ -14,7 +14,7 @@ class CurrentMarkEntrySemisterController extends Controller
      */
     public function index()
     {
-        $currentMarkEntrySemisters = CurrentMarkEntrySemister::latest()->get();
+        $currentMarkEntrySemisters = CurrentMarkEntrySemister::get();
         return view('backend.mark_entry.index', compact('currentMarkEntrySemisters'));
     }
 

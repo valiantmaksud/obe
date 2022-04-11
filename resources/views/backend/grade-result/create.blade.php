@@ -166,8 +166,8 @@
                                     <select name="status_15" class="chosen-select form-control"
                                         data-selected="{{ old('status_15') }}" required>
                                         <option></option>
-                                        <option value="Active" selected>Active</option>
-                                        <option value="Inactive">In Active</option>
+                                        <option value=1 selected>Active</option>
+                                        <option value=0>In Active</option>
 
                                     </select>
                                 </div>

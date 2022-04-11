@@ -17,7 +17,7 @@ class PoObtainedMarkController extends Controller
      */
     public function index()
     {
-        $poObtainedMark = PoObtainedMark::latest()->get();
+        $poObtainedMark = PoObtainedMark::get();
         return view('backend.po-obtainedmark.index', compact('poObtainedMark'));
     }
 

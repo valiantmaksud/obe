@@ -92,8 +92,8 @@
         <div class="col-md-5 col-sm-5">
             <select name="status_07" class="chosen-select form-control" data-placeholder="--Type--" required>
                 <option value=""></option>
-                <option value="Active" selected>Active</option>
-                <option value="Inactive">In Active</option>
+                <option value=1 selected>Active</option>
+                <option value=0>In Active</option>
 
             </select>
         </div>

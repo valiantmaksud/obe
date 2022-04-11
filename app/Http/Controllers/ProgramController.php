@@ -11,7 +11,7 @@ class ProgramController extends Controller
 
     public function index()
     {
-        $programs = Program::latest()->get();
+        $programs = Program::get();
         return view('backend.programs.index', compact('programs'));
     }
 
