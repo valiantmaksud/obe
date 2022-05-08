@@ -14,15 +14,15 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('_02_users', function (Blueprint $table) {
-            $table->bigIncrements('userid');
+            $table->string('userid',50)->primary()->autoIncrement();
             $table->string('username');
             $table->string('email');
             $table->string('password');
             $table->string('usertype');
             $table->string('userrole');
             $table->string('usermail')->nullable();
-            $table->string('deptcode');
-            $table->string('institutecode');
+            $table->string('deptcode',50);
+            $table->string('institutecode',50);
             $table->boolean('status_02')->default(true);
 
             $table->foreign('deptcode')->references('deptcode')->on('_01_deptinfo');
