@@ -15,7 +15,7 @@ class CreatePoObtainedMarksTable extends Migration
     {
         Schema::create('_20_poobtainedmarks', function (Blueprint $table) {
             $table->string('cid_11');
-            $table->string('coursecode',50);
+            $table->string('coursecode',50)->nullable();
             $table->string('studentid',50);
             $table->string('po',50);
             $table->float('obtainedmark');

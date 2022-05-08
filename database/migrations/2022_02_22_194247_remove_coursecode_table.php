@@ -13,13 +13,13 @@ class RemoveCoursecodeTable extends Migration
      */
     public function up()
     {
-        Schema::table('_15_graderesult', function (Blueprint $table) {
-            $table->dropColumn(['coursecode']);
-        });
+        // Schema::table('_15_graderesult', function (Blueprint $table) {
+        //     $table->dropColumn(['coursecode']);
+        // });
 
-        Schema::table('_20_poobtainedmarks', function (Blueprint $table) {
-            $table->dropColumn(['coursecode']);
-        });
+        // Schema::table('_20_poobtainedmarks', function (Blueprint $table) {
+        //     $table->dropColumn(['coursecode']);
+        // });
     }
 
     /**

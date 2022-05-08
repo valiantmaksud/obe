@@ -15,7 +15,7 @@ class CreateGradeResultsTable extends Migration
     {
         Schema::create('_15_graderesult', function (Blueprint $table) {
             $table->string('cid_11');
-            $table->string('coursecode');
+            $table->string('coursecode')->nullable();
             $table->string('studentid',50);
             $table->float('attendance');
             $table->float('classperformanace');
