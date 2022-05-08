@@ -18,7 +18,7 @@ class UpdaateMarkofexamColumns extends Migration
         });
 
         Schema::table('_14_detailmarks', function (Blueprint $table) {
-            $table->decimal('fullmark')->nullable();
+            $table->float('fullmark')->nullable();
         });
 
         // Schema::table('_12_markdistribution', function (Blueprint $table) {

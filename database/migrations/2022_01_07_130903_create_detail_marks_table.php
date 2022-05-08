@@ -20,7 +20,7 @@ class CreateDetailMarksTable extends Migration
             $table->string('qid');
             $table->string('co');
             $table->string('po',50);
-            $table->decimal('obtainedmark');
+            $table->float('obtainedmark');
             $table->boolean('status_14');
 
             $table->foreign('cid_11')->references('cid_11')->on('_11_offercourses');
