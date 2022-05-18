@@ -14,7 +14,7 @@ class CreateMarkDistributionsTable extends Migration
     public function up()
     {
         Schema::create('_12_markdistribution', function (Blueprint $table) {
-            $table->string('cid_11');
+            $table->unsignedBigInteger('cid_11');
             $table->float('markofexam');
             $table->string('qid');
             $table->string('co');

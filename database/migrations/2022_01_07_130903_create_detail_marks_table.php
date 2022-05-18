@@ -14,7 +14,7 @@ class CreateDetailMarksTable extends Migration
     public function up()
     {
         Schema::create('_14_detailmarks', function (Blueprint $table) {
-            $table->string('cid_11');
+            $table->unsignedBigInteger('cid_11');
             $table->string('studentid',50);
             $table->string('examtype');
             $table->string('qid');

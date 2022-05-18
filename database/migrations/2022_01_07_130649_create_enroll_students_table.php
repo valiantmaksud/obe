@@ -14,7 +14,7 @@ class CreateEnrollStudentsTable extends Migration
     public function up()
     {
         Schema::create('_13_enrolledstudents', function (Blueprint $table) {
-            $table->string('cid_11');
+            $table->unsignedBigInteger('cid_11');
             $table->string('studentid',50);
             $table->string('enrolltype');
             $table->boolean('status_13');

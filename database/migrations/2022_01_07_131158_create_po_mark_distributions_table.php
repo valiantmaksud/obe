@@ -14,7 +14,7 @@ class CreatePoMarkDistributionsTable extends Migration
     public function up()
     {
         Schema::create('_18_pomarkdistribution', function (Blueprint $table) {
-            $table->string('cid_11');
+            $table->unsignedBigInteger('cid_11');
             $table->string('po',4);
             $table->float('pototalmark');
 
