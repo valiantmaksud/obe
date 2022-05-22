@@ -114,7 +114,7 @@
                                     <div class="btn-group btn-corner">
 
                                         @if (hasPermission(['editor', 'creator']))
-                                            <a href="#edit{{ $item->id }}" role="button" data-toggle="modal"
+                                            <a href="#edit{{ $item->semister }}" role="button" data-toggle="modal"
                                                 class="btn btn-sm btn-success" title="Edit">
                                                 <i class="fa fa-pencil-square-o"></i>
                                             </a>
@@ -122,7 +122,7 @@
 
                                         @if (hasPermission('creator'))
                                             <button type="button"
-                                                onclick="delete_item(`{{ route('semisters.destroy', $item->id) }}`)"
+                                                onclick="delete_item(`{{ route('semisters.destroy', $item->semister) }}`)"
                                                 data-toggle="modal" data-target="#delete-modal"
                                                 class="btn btn-sm btn-danger" title="Delete">
                                                 <i class="fa fa-trash"></i>
@@ -145,7 +145,7 @@
 
     @foreach ($semisters as $item)
 
-        <div id="edit{{ $item->id }}" class="modal" tabindex="-1">
+        <div id="edit{{ $item->semister }}" class="modal" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -158,7 +158,7 @@
 
                             <div class="col-sm-12">
 
-                                <form action="{{ route('semisters.update', $item->id) }}" method="post"
+                                <form action="{{ route('semisters.update', $item->semister) }}" method="post"
                                     class="form-horizontal">
                                     @csrf
                                     @method('PUT')

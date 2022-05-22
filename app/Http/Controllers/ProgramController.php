@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DeptInfo;
+use App\Models\Institute;
 use App\Models\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -18,7 +20,10 @@ class ProgramController extends Controller
 
     public function create()
     {
-        return view('backend.programs.create');
+        $data['depts'] = DeptInfo::pluck('deptname','deptcode');
+        $data['inst'] = Institute::pluck('institutename', 'institutecode');
+
+        return view('backend.programs.create', $data);
     }
 
 
@@ -43,15 +48,20 @@ class ProgramController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function edit(Program $program)
+    public function edit($programcode)
     {
-        return view('backend.programs.edit', compact('program'));
+        $data['program']  = Program::where('programcode', $programcode)->first();
+        $data['depts'] = DeptInfo::pluck('deptname','deptcode');
+        $data['inst'] = Institute::pluck('institutename', 'institutecode');
+
+        return view('backend.programs.edit', $data);
     }
 
 
-    public function update(Request $request, Program $program)
+    public function update(Request $request, $programcode)
     {
-        $program->update($request->all());
+       Program::where('programcode', $programcode)->update($request->except('_token', '_method'));
+
         return redirect()->route('programs.index')->withMessage('Program updated success');
     }
 

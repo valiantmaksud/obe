@@ -34,7 +34,7 @@
 
 
 
-                        <form method="POST" action="{{ route('programs.update', $program->id) }}" class="form-horizontal"
+                        <form method="POST" action="{{ route('programs.update', $program->programcode) }}" class="form-horizontal"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -75,24 +75,14 @@
                                     Dept Code<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="deptcode" class="form-control" autocomplete="off"
-                                        value="{{ old('deptcode', $program->deptcode) }}" placeholder="deptcode" required>
+                                    <select name="deptcode" class="form-control chosen-select">
+                                        <option></option>
+                                        @foreach ($depts as $code => $name)
+                                            <option value="{{ $code }}">{{ $name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
-
-
-
-
-                            <div class="form-group">
-                                <label class="control-label col-sm-3 col-sm-3">
-                                    Dept Name<sup class="text-danger">*</sup>:
-                                </label>
-                                <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="deptname" class="form-control" autocomplete="off"
-                                        value="{{ old('deptname', $program->deptcode) }}" placeholder="deptname" required>
-                                </div>
-                            </div>
-
 
 
 
@@ -101,22 +91,12 @@
                                     Institute Code<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="institutecode" class="form-control" autocomplete="off"
-                                        value="{{ old('institutecode', $program->institutecode) }}"
-                                        placeholder="institutecode" required>
-                                </div>
-                            </div>
-
-
-
-                            <div class="form-group">
-                                <label class="control-label col-sm-3 col-sm-3">
-                                    Institute Name<sup class="text-danger">*</sup>:
-                                </label>
-                                <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="institutename" class="form-control" autocomplete="off"
-                                        value="{{ old('institutename', $program->institutename) }}"
-                                        placeholder="institutename" required>
+                                    <select name="institutecode" class="form-control chosen-select">
+                                        <option></option>
+                                        @foreach ($inst as $code => $name)
+                                            <option value="{{ $code }}">{{ $name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
 
@@ -132,7 +112,7 @@
                                     <select name="status_01" class="chosen-select form-control" data-placeholder="--Type--"
                                         required>
                                         <option value=""></option>
-                                        <option value="Ictive" selected>Active</option>
+                                        <option value="1" selected>Active</option>
                                         <option value=0>In Active</option>
 
                                     </select>

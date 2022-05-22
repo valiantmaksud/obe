@@ -47,9 +47,7 @@
                                                 <th>Program Code</th>
                                                 <th>Program Name</th>
                                                 <th>Dept Code</th>
-                                                <th>Dept Name</th>
                                                 <th>Institute code</th>
-                                                <th>Institute name</th>
                                                 <th>Status</th>
 
                                                 <th class="text-center">Action</th>
@@ -64,9 +62,7 @@
                                                     <td>{{ $item->programcode }}</td>
                                                     <td>{{ $item->programname }}</td>
                                                     <td>{{ $item->deptcode }}</td>
-                                                    <td>{{ $item->deptname }}</td>
                                                     <td>{{ $item->institutecode }}</td>
-                                                    <td>{{ $item->institutename }}</td>
                                                     <td>{{ $item->status_01 }}</td>
 
                                                     <td class="text-center">
@@ -74,7 +70,7 @@
 
                                                             @if (hasPermission(['editor', 'creator']))
                                                                 <!-- edit -->
-                                                                <a href="{{ route('programs.edit', $item->id) }}"
+                                                                <a href="{{ route('programs.edit', $item->programcode) }}"
                                                                     role="button" class="btn btn-sm btn-success"
                                                                     title="Edit">
                                                                     <i class="fa fa-pencil-square-o"></i>
@@ -84,7 +80,7 @@
                                                             @if (hasPermission('creator'))
                                                                 <!-- delete -->
                                                                 <button type="button"
-                                                                    onclick="delete_item(`{{ route('programs.destroy', $item->id) }}`)"
+                                                                    onclick="delete_item(`{{ route('programs.destroy', $item->programcode) }}`)"
                                                                     data-toggle="modal" data-target="#delete-modal"
                                                                     class="btn btn-sm btn-danger" title="Delete">
                                                                     <i class="fa fa-trash"></i>

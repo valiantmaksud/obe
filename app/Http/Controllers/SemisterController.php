@@ -75,7 +75,7 @@ class SemisterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Semister::find($id)->update($request->all());
+        Semister::where('semister',$id)->update($request->except('_token', '_method'));
 
         return redirect()->route('semisters.index')->withMessage('Semister update success');
     }
@@ -88,7 +88,7 @@ class SemisterController extends Controller
      */
     public function destroy($id)
     {
-        Semister::find($id)->delete();
+        Semister::where('semister',$id)->delete();
 
         return redirect()->route('semisters.index')->withMessage('Semister delete success');
     }
