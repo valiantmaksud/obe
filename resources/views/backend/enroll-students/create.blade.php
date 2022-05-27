@@ -46,10 +46,10 @@
                                     Offer course<sup class="text-danger">*</sup> :
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="offer_course_id" class="chosen-select form-control">
+                                    <select name="cid_11" class="chosen-select form-control">
                                         <option></option>
                                         @foreach ($offerCourses as $item)
-                                            <option value="{{ $item->id }}">{{ $item->programcode }}</option>
+                                            <option value="{{ $item->cid_11 }}">{{ $item->programcode }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -69,7 +69,7 @@
                                     <select name="studentid" class="chosen-select form-control" data-selected="{{ old('studentid') }}">
                                         <option></option>
                                         @foreach ($students as $item)
-                                            <option value="{{ $item->id }}">{{ $item->studentid }}</option>
+                                            <option value="{{ $item->studentid }}">{{ $item->studentid }}</option>
                                         @endforeach
                                     </select>
                                 </div>

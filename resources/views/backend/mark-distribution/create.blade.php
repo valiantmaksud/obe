@@ -50,7 +50,7 @@
                                         data-selected="{{ old('cid_11') }}">
                                         <option></option>
                                         @foreach ($offerCourses as $item)
-                                            <option value="{{ $item->id }}">{{ $item->coursecode }}</option>
+                                            <option value="{{ $item->cid_11 }}">{{ $item->coursecode }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -120,7 +120,7 @@
                                     PO Full mark<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="fullmark" class="form-control" autocomplete="off"
+                                    <input type="number" name="fullmark" class="form-control" autocomplete="off"
                                         value="{{ old('fullmark') }}" placeholder="fullmark" required>
                                     </select>
                                 </div>

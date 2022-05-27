@@ -13,22 +13,7 @@ class OfferCourse extends Model
 
     protected $table = '_11_offercourses';
 
-    public static function boot()
-    {
-        parent::boot();
-
-        if (!App::runningInConsole()) {
-            /**
-             * Auto create created_by field when create anything through model
-             */
-            static::creating(function ($model) {
-                $model->fill([
-                    'cid_11' => $model::max('id') + 1,
-                ]);
-            });
-        }
-    }
-
+ 
 
     public function ObtainedMark()
     {

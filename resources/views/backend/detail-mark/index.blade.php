@@ -76,7 +76,7 @@
 
                                                             @if (hasPermission(['editor', 'creator']))
                                                                 <!-- edit -->
-                                                                <a href="{{ route('detail-marks.edit', $item->id) }}"
+                                                                <a href="{{ route('detail-marks.edit', $item->cid_11) }}"
                                                                     role="button" class="btn btn-sm btn-success"
                                                                     title="Edit">
                                                                     <i class="fa fa-pencil-square-o"></i>
@@ -86,7 +86,7 @@
                                                             @if (hasPermission('creator'))
                                                                 <!-- delete -->
                                                                 <button type="button"
-                                                                    onclick="delete_item(`{{ route('detail-marks.destroy', $item->id) }}`)"
+                                                                    onclick="delete_item(`{{ route('detail-marks.destroy', $item->cid_11) }}`)"
                                                                     data-toggle="modal" data-target="#delete-modal"
                                                                     class="btn btn-sm btn-danger" title="Delete">
                                                                     <i class="fa fa-trash"></i>

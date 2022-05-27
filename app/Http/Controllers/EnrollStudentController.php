@@ -42,9 +42,7 @@ class EnrollStudentController extends Controller
     {
         $data = $request->only('studentid', 'enrolltype', 'status_13');
 
-        $data['cid_11'] = $request->offer_course_id;
-
-        // dd($data);
+        $data['cid_11'] = $request->cid_11;
 
         EnrollStudent::create($data);
 
@@ -68,10 +66,11 @@ class EnrollStudentController extends Controller
      * @param  \App\Models\EnrollStudent  $enrollStudent
      * @return \Illuminate\Http\Response
      */
-    public function edit(EnrollStudent $enrollStudent)
+    public function edit($cid)
     {
         $offerCourses       = OfferCourse::get();
         $students           = Student::get();
+        $enrollStudent      = EnrollStudent::where('cid_11', $cid)->first();
         return view('backend.enroll-students.edit', compact('offerCourses', 'students', 'enrollStudent'));
     }
 
@@ -82,9 +81,9 @@ class EnrollStudentController extends Controller
      * @param  \App\Models\EnrollStudent  $enrollStudent
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EnrollStudent $enrollStudent)
+    public function update(Request $request, $cid)
     {
-        $enrollStudent->update($request->all());
+        EnrollStudent::where('cid_11', $cid)->update($request->except('_token', '_method'));
         return redirect()->route('enroll-students.index')->withMessage('Enroll student update success');
     }
 
@@ -94,9 +93,9 @@ class EnrollStudentController extends Controller
      * @param  \App\Models\EnrollStudent  $enrollStudent
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EnrollStudent $enrollStudent)
+    public function destroy($cid)
     {
-        $enrollStudent->delete();
+        EnrollStudent::where('cid_11', $cid)->delete();
         return redirect()->route('enroll-students.index')->withMessage('Enroll student deleted success');
     }
 }

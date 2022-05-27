@@ -60,8 +60,9 @@ class PoController extends Controller
      * @param  \App\Models\Po  $po
      * @return \Illuminate\Http\Response
      */
-    public function edit(Po $po)
+    public function edit($po)
     {
+        $po = Po::where('po',$po)->first();
         return view('backend.pos.edit', compact('po'));
     }
 
@@ -72,9 +73,9 @@ class PoController extends Controller
      * @param  \App\Models\Po  $po
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Po $po)
+    public function update(Request $request, $po)
     {
-        $po->update($request->all());
+        Po::where('po', $po)->update($request->except('_token', '_method'));
         return redirect()->route('pos.index')->withMessage('Po updated success');
     }
 

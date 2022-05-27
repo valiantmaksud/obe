@@ -30,7 +30,7 @@ class PoObtainedMarkController extends Controller
     {
         $offerCourses       = OfferCourse::get();
         $students           = Student::get();
-        $pos                = Po::where('status_06', 'Active')->get();
+        $pos                = Po::where('status_06', '1')->get();
 
         return view('backend.po-obtainedmark.create', compact('offerCourses', 'students', 'pos'));
     }
@@ -146,7 +146,7 @@ class PoObtainedMarkController extends Controller
                 ->when($request->filled('semister'), function ($query) use ($request) {
                     $query->where('semister', $request->coursecode);
                 })
-                ->where('status_11', 'Active')->get();
+                ->where('status_11', '1')->get();
         }
 
 
@@ -164,7 +164,7 @@ class PoObtainedMarkController extends Controller
         if ($request->filled('batch_no')) {
             $data['poObtainedMarks'] = Student::whereHas('obtainedMark', function ($query) {
                 $query->whereHas('offer', function ($query) {
-                    $query->where('status_11', 'Active');
+                    $query->where('status_11', '1');
                 });
             })
                 ->with('obtainedMark')

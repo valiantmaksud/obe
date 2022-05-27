@@ -14,11 +14,11 @@ class Student extends Model
 
     public function obtainedMarks()
     {
-        return $this->hasMany(PoObtainedMark::class, 'studentid');
+        return $this->hasMany(PoObtainedMark::class, 'studentid', 'studentid');
     }
 
     public function obtainedMark()
     {
-        return $this->hasOne(PoObtainedMark::class, 'studentid')->where('status_20', 'Active');
+        return $this->hasOne(PoObtainedMark::class, 'studentid' , 'studentid')->where('status_20', '1');
     }
 }

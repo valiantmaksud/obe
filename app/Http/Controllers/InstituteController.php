@@ -6,8 +6,9 @@ use App\Models\OfferCourse;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Traits\CheckPermission;
+use App\Models\Institute;
 
-class OfferCourseController extends Controller
+class InstituteController extends Controller
 {
     use CheckPermission;
 
@@ -18,8 +19,8 @@ class OfferCourseController extends Controller
      */
     public function index()
     {
-        $offer_courses = OfferCourse::get();
-        return view('backend.offer_courses.index', compact('offer_courses'));
+        $depts = Institute::get();
+        return view('backend.institutes.index', compact('depts'));
     }
 
     /**
@@ -29,7 +30,7 @@ class OfferCourseController extends Controller
      */
     public function create()
     {
-        return view('backend.offer_courses.create');
+
     }
 
     /**
@@ -40,12 +41,11 @@ class OfferCourseController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $data['cid_11'] = Str::uuid();
+        $data = $request->only('institutecode', 'institutename');
 
-        OfferCourse::create($data);
+        Institute::create($data);
 
-        return redirect()->route('offer_courses.index')->withMessage('Po added success');
+        return redirect()->route('departments.index')->withMessage('Dept added success');
     }
 
     /**
@@ -67,8 +67,7 @@ class OfferCourseController extends Controller
      */
     public function edit($offerCourse)
     {
-        $offerCourse = OfferCourse::where('cid_11',$offerCourse)->first();
-        return view('backend.offer_courses.edit', compact('offerCourse'));
+        
     }
     
 
@@ -79,11 +78,11 @@ class OfferCourseController extends Controller
      * @param  \App\Models\OfferCourse  $offerCourse
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $offerCourse)
+    public function update(Request $request, $code)
     {
-        $offerCourse = OfferCourse::where('cid_11',$offerCourse)->first();
-        $offerCourse->update($request->all());
-        return redirect()->route('offer_courses.index')->withMessage('Offer updated success');
+        $dept = Institute::where('institutecode',$code)->first();
+        $dept->update($request->only('institutename', 'institutecode'));
+        return redirect()->route('departments.index')->withMessage('Dept updated success');
     }
 
     /**
@@ -92,10 +91,9 @@ class OfferCourseController extends Controller
      * @param  \App\Models\OfferCourse  $offerCourse
      * @return \Illuminate\Http\Response
      */
-    public function destroy($offerCourse)
+    public function destroy($code)
     {
-        $offerCourse = OfferCourse::where('cid_11',$offerCourse)->first();
-        $offerCourse->delete();
-        return redirect()->route('offer_courses.index')->withMessage('offerCourse deleted success');
+        Institute::where('institutecode',$code)->first()->delete();
+        return redirect()->route('departments.index')->withMessage('Dept deleted success');
     }
 }

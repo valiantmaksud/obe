@@ -14,12 +14,12 @@ class PoObtainedMark extends Model
 
     public function student()
     {
-        return $this->belongsTo(Student::class, 'studentid');
+        return $this->belongsTo(Student::class, 'studentid', 'studentid');
     }
 
 
     public function offer()
     {
-        return $this->belongsTo(OfferCourse::class, 'cid_11');
+        return $this->belongsTo(OfferCourse::class, 'cid_11', 'cid_11');
     }
 }

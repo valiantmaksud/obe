@@ -14,6 +14,16 @@
         </div>
     </div>
 
+    <div class="form-group">
+        <label class="control-label col-sm-3 col-sm-3" for="product_name">
+            User ID<sup class="text-danger">*</sup> :
+        </label>
+        <div class="col-md-5 col-sm-5">
+            <input class="form-control" type="text" name="userid" autocomplete="off" value="{{ old('userid') }}"
+                placeholder="user id" required />
+        </div>
+    </div>
+
 
 
 
@@ -79,8 +89,12 @@
             Dept Code<sup class="text-danger">*</sup>:
         </label>
         <div class="col-md-5 col-sm-5">
-            <input type="text" name="deptcode" class="form-control" autocomplete="off" value="{{ old('deptcode') }}"
-                placeholder="deptcode" required>
+            <select name="deptcode" class="form-control chosen-select">
+                <option></option>
+                @foreach ($depts as $code => $name)
+                    <option value="{{ $code }}">{{ $name }}</option>
+                @endforeach
+            </select>
         </div>
     </div>
 
@@ -91,8 +105,12 @@
             Institute code<sup class="text-danger">*</sup>:
         </label>
         <div class="col-md-5 col-sm-5">
-            <input type="text" name="institutecode" class="form-control" autocomplete="off"
-                value="{{ old('institutecode') }}" placeholder="institutecode" required>
+            <select name="institutecode" class="form-control chosen-select">
+                <option></option>
+                @foreach ($inst as $code => $name)
+                    <option value="{{ $code }}">{{ $name }}</option>
+                @endforeach
+            </select>
         </div>
     </div>
 

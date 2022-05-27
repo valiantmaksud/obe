@@ -35,7 +35,7 @@
 
 
                         <form method="POST"
-                            action="{{ route('pos.update', $po->id) }}"
+                            action="{{ route('pos.update', $po->po) }}"
                             class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')

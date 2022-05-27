@@ -42,6 +42,8 @@ class GradeResultController extends Controller
     {
         $data = $request->all();
 
+        $data['coursecode'] = $request->cid_11;
+
 
         if (GradeResult::where('cid_11', $request->cid_11)->where('studentid', $request->studentid)->first()) {
             return redirect()->back()->withError('Grade result already generate');

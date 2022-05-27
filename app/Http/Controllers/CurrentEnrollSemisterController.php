@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CurrentEnrollSemister;
+use App\Models\Semister;
 use Illuminate\Http\Request;
 
 class CurrentEnrollSemisterController extends Controller
@@ -25,7 +26,8 @@ class CurrentEnrollSemisterController extends Controller
      */
     public function create()
     {
-        return view('backend.current_semister.create');
+        $data['semister'] = Semister::pluck('semister');
+        return view('backend.current_semister.create', $data);
     }
 
     /**
@@ -61,9 +63,11 @@ class CurrentEnrollSemisterController extends Controller
      * @param  \App\Models\CurrentEnrollSemister  $currentEnrollSemister
      * @return \Illuminate\Http\Response
      */
-    public function edit(CurrentEnrollSemister $currentEnrollSemister)
+    public function edit($instcode)
     {
-        return view('backend.current_semister.edit', compact('currentEnrollSemister'));
+        $data['semister'] = Semister::pluck('semister');
+        $data['currentEnrollSemister'] = CurrentEnrollSemister::where('institutecode', $instcode)->first();
+        return view('backend.current_semister.edit', $data);
     }
 
     /**
@@ -73,8 +77,10 @@ class CurrentEnrollSemisterController extends Controller
      * @param  \App\Models\CurrentEnrollSemister  $currentEnrollSemister
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CurrentEnrollSemister $currentEnrollSemister)
+    public function update(Request $request, $currentEnrollSemister)
     {
+        $currentEnrollSemister =  CurrentEnrollSemister::where('institutecode', $currentEnrollSemister)->first();
+
         $currentEnrollSemister->update($request->all());
         return redirect()->route('current_semister.index')->withMessage('Semister updated success');
     }
@@ -85,9 +91,9 @@ class CurrentEnrollSemisterController extends Controller
      * @param  \App\Models\CurrentEnrollSemister  $currentEnrollSemister
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CurrentEnrollSemister $currentEnrollSemister)
+    public function destroy($currentEnrollSemister)
     {
-        $currentEnrollSemister->delete();
+        CurrentEnrollSemister::where('institutecode', $currentEnrollSemister)->delete();
         return redirect()->route('current_semister.index')->withMessage('Semister deleted success');
     }
 }

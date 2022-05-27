@@ -20,6 +20,6 @@ class PoMarkDistribution extends Model
 
     public function offer()
     {
-        return $this->belongsTo(OfferCourse::class, 'cid_11');
+        return $this->belongsTo(OfferCourse::class, 'cid_11', 'cid_11');
     }
 }

@@ -72,7 +72,7 @@
 
                                                             @if (hasPermission(['editor', 'creator']))
                                                                 <!-- edit -->
-                                                                <a href="{{ route('pos.edit', $item->id) }}" role="button"
+                                                                <a href="{{ route('pos.edit', $item->po) }}" role="button"
                                                                     class="btn btn-sm btn-success" title="Edit">
                                                                     <i class="fa fa-pencil-square-o"></i>
                                                                 </a>
@@ -81,7 +81,7 @@
                                                             @if (hasPermission('creator'))
                                                                 <!-- delete -->
                                                                 <button type="button"
-                                                                    onclick="delete_item(`{{ route('pos.destroy', $item->id) }}`)"
+                                                                    onclick="delete_item(`{{ route('pos.destroy', $item->po) }}`)"
                                                                     data-toggle="modal" data-target="#delete-modal"
                                                                     class="btn btn-sm btn-danger" title="Delete">
                                                                     <i class="fa fa-trash"></i>

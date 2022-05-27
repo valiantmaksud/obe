@@ -44,12 +44,10 @@
                                         <thead>
                                             <tr>
                                                 <th>Sl</th>
-
                                                 <th>Institute code</th>
                                                 <th>Program Code</th>
                                                 <th>Semister</th>
                                                 <th>Year</th>
-
                                                 <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
@@ -70,7 +68,7 @@
 
                                                             @if (hasPermission(['editor', 'creator']))
                                                                 <!-- edit -->
-                                                                <a href="{{ route('current_semister.edit', $item->id) }}"
+                                                                <a href="{{ route('current_semister.edit', $item->institutecode) }}"
                                                                     role="button" class="btn btn-sm btn-success"
                                                                     title="Edit">
                                                                     <i class="fa fa-pencil-square-o"></i>
@@ -80,7 +78,7 @@
                                                             @if (hasPermission('creator'))
                                                                 <!-- delete -->
                                                                 <button type="button"
-                                                                    onclick="delete_item(`{{ route('current_semister.destroy', $item->id) }}`)"
+                                                                    onclick="delete_item(`{{ route('current_semister.destroy', $item->institutecode) }}`)"
                                                                     data-toggle="modal" data-target="#delete-modal"
                                                                     class="btn btn-sm btn-danger" title="Delete">
                                                                     <i class="fa fa-trash"></i>

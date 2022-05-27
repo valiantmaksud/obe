@@ -72,8 +72,12 @@
                                     <sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="semester" class="form-control" autocomplete="off"
-                                        value="{{ old('semester') }}" placeholder="semester" required>
+                                    <select name="semester" class="form-control chosen-select">
+                                        <option></option>
+                                        @foreach ($semister as $name)
+                                            <option value="{{ $name }}">{{ $name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
 

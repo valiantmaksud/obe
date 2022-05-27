@@ -63,9 +63,10 @@ class MarkDistributionController extends Controller
      * @param  \App\Models\MarkDistribution  $markDistribution
      * @return \Illuminate\Http\Response
      */
-    public function edit(MarkDistribution $markDistribution)
+    public function edit($markDistribution)
     {
         $offerCourses       = OfferCourse::get();
+        $markDistribution   = MarkDistribution::where('institutecode',$markDistribution)->first();
         return view('backend.mark-distribution.edit', compact('markDistribution', 'offerCourses'));
     }
 

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Imports\UserCSV;
 use App\Models\User;
+use App\Imports\UserCSV;
+use App\Models\DeptInfo;
+use App\Models\Institute;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
@@ -21,6 +23,7 @@ class UserController extends Controller
             ->when($request->filled('username'), function ($q) use ($request) {
                 $q->where('username', 'like', '%' . $request->username . '%');
             })
+            ->where('userid', '!=', '1')
             ->get();
 
         return view('backend.users.index', compact('users'));
@@ -33,7 +36,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('backend.users.create');
+        $data['depts']  = DeptInfo::pluck('deptname','deptcode');
+        $data['inst']   = Institute::pluck('institutename', 'institutecode');
+        return view('backend.users.create', $data);
     }
 
     /**
@@ -77,7 +82,10 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('backend.users.edit', compact('user'));
+        $data['depts'] = DeptInfo::pluck('deptname','deptcode');
+        $data['inst'] = Institute::pluck('institutename', 'institutecode');
+        $data['user']   = $user;
+        return view('backend.users.edit', $data);
     }
 
     /**

@@ -34,7 +34,7 @@
 
 
 
-                        <form method="POST" action="{{ route('students.update', $student->id) }}" class="form-horizontal"
+                        <form method="POST" action="{{ route('students.update', $student->studentid) }}" class="form-horizontal"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')

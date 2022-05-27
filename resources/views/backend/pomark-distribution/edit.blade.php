@@ -31,7 +31,7 @@
                 <div class="widget-body">
                     <div class="widget-main">
 
-                        <form method="POST" action="{{ route('pomark-distributions.update', $pomarkDistribution->id) }}"
+                        <form method="POST" action="{{ route('pomark-distributions.update', $pomarkDistribution->cid_11) }}"
                             class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -47,7 +47,7 @@
                                         <option></option>
                                         @foreach ($offerCourses as $item)
                                             <option value="{{ $item->id }}"
-                                                {{ $item->id == $pomarkDistribution->cid_11 ? 'selected' : '' }}>
+                                                {{ $item->cid_11 == $pomarkDistribution->cid_11 ? 'selected' : '' }}>
                                                 {{ $item->coursecode }}</option>
                                         @endforeach
                                     </select>

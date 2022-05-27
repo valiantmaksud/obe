@@ -82,6 +82,7 @@
                     @yield('breadcum_link')
                 </div>
                 <!-- Modal -->
+                <div style="margin-bottom: 10px"></div>
 
                 @include('_partials._flash_message')
 
@@ -112,6 +113,8 @@
             var path = window.location.href.split('?')[0];
 
             path = path.replace('#', '')
+            path = path.replace('/create', '')
+            path = path.replace('/edit', '')
 
             let selector = "a[href='" + path + "']"
             let a_tag = $(selector)

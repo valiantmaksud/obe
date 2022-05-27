@@ -28,7 +28,7 @@ class PoMarkDistributionController extends Controller
     public function create()
     {
         $offerCourses       = OfferCourse::get();
-        $pos                = Po::where('status_06', 'Active')->get();
+        $pos                = Po::where('status_06', '1')->get();
         return view('backend.pomark-distribution.create', compact('offerCourses', 'pos'));
     }
 

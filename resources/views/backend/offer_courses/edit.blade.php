@@ -34,7 +34,7 @@
 
 
 
-                        <form method="POST" action="{{ route('offer_courses.update', $offerCourse->id) }}"
+                        <form method="POST" action="{{ route('offer_courses.update', $offerCourse->cid_11) }}"
                             class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
