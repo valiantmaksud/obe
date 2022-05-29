@@ -83,7 +83,7 @@
                                     <table id="dynamic-table" class="table table-striped table-bordered table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Sl</th>
+                                                <th>User ID name</th>
                                                 <th>User Name</th>
                                                 <th>User Type</th>
                                                 <th>User role</th>

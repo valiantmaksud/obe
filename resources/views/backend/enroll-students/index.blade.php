@@ -45,7 +45,7 @@
                                             <tr>
                                                 <th>Sl</th>
                                                 <th>Offer Course</th>
-                                                <th>Student</th>
+                                                <th>Student ID</th>
                                                 <th>Enroll type</th>
 
                                                 <th>Status</th>
