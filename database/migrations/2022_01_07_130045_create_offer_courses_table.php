@@ -14,7 +14,7 @@ class CreateOfferCoursesTable extends Migration
     public function up()
     {
         Schema::create('_11_offercourses', function (Blueprint $table) {
-            $table->id('cid_11');
+            $table->id('cid_11')->autoIncrement();
             $table->string('programcode',50);
             $table->string('semister',50);
             $table->integer('year');

@@ -14,7 +14,7 @@ class CreatePoObtainedMarksTable extends Migration
     public function up()
     {
         Schema::create('_20_poobtainedmarks', function (Blueprint $table) {
-            $table->string('cid_11');
+            $table->unsignedBigInteger('cid_11');
             $table->string('coursecode')->nullable();
             $table->string('studentid',50);
             $table->string('po',50);
