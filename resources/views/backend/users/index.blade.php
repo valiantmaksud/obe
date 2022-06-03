@@ -100,7 +100,7 @@
 
                                             @forelse ($users as $key => $item)
                                                 <tr>
-                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>{{ $loop->userid }}</td>
                                                     <td>{{ $item->username }}</td>
                                                     <td>{{ $item->usertype }}</td>
                                                     <td>{{ $item->userrole }}</td>

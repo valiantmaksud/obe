@@ -66,8 +66,9 @@ class ProgramController extends Controller
     }
 
 
-    public function destroy(Program $program)
+    public function destroy($program)
     {
-        //
+        Program::where('programcode', $program)->delete();
+        return redirect()->back()->withMessage('delete success');
     }
 }
