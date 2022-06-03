@@ -93,7 +93,7 @@ class InstituteController extends Controller
      */
     public function destroy($code)
     {
-        Institute::where('institutecode',$code)->first()->delete();
+        Institute::where('institutecode',$code)->delete();
 
         return redirect()->route('institutes.index')->withMessage('Dept deleted success');
     }
