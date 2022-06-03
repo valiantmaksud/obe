@@ -88,8 +88,7 @@ class StudentController extends Controller
      */
     public function update(Request $request, $studentid)
     {
-        $student = Student::where('studentid',$studentid)->first();
-        $student->update($request->all());
+        $student = Student::where('studentid',$studentid)->update($request->except('_token', '_method'));
         return redirect()->route('students.index')->withMessage('Student updated success');
     }
 
@@ -99,9 +98,9 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy($student)
     {
-        $student->delete();
+        Student::where('studentid', $student)->delete();
         return redirect()->route('students.index')->withMessage('Student deleted success');
     }
 

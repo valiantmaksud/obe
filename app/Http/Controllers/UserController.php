@@ -80,11 +80,11 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function edit(User $user)
+    public function edit($user)
     {
         $data['depts'] = DeptInfo::pluck('deptname','deptcode');
         $data['inst'] = Institute::pluck('institutename', 'institutecode');
-        $data['user']   = $user;
+        $data['user']   = User::where('userid', $user)->first();
         return view('backend.users.edit', $data);
     }
 
@@ -96,9 +96,10 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, User $user)
+    public function update(Request $request, $user)
     {
-        $user->update($request->all());
+        User::where('userid', $user)->update($request->except('_token', '_method'));
+
         return redirect()->route('users.index')->withMessage('User updated success');
     }
 
@@ -108,9 +109,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($user)
     {
-        $user->delete();
+        User::where('userid', $user)->delete();
         return redirect()->route('users.index')->withMessage('User deleted success');
     }
 

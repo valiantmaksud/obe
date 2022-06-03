@@ -45,7 +45,7 @@ class InstituteController extends Controller
 
         Institute::create($data);
 
-        return redirect()->route('departments.index')->withMessage('Dept added success');
+        return redirect()->route('institutes.index')->withMessage('Dept added success');
     }
 
     /**
@@ -80,9 +80,9 @@ class InstituteController extends Controller
      */
     public function update(Request $request, $code)
     {
-        $dept = Institute::where('institutecode',$code)->first();
-        $dept->update($request->only('institutename', 'institutecode'));
-        return redirect()->route('departments.index')->withMessage('Dept updated success');
+        $dept = Institute::where('institutecode',$code)->update($request->only('institutename'));
+
+        return redirect()->route('institutes.index')->withMessage('Institute updated success');
     }
 
     /**
@@ -94,6 +94,7 @@ class InstituteController extends Controller
     public function destroy($code)
     {
         Institute::where('institutecode',$code)->first()->delete();
-        return redirect()->route('departments.index')->withMessage('Dept deleted success');
+
+        return redirect()->route('institutes.index')->withMessage('Dept deleted success');
     }
 }

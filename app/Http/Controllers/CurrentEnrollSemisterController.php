@@ -79,9 +79,7 @@ class CurrentEnrollSemisterController extends Controller
      */
     public function update(Request $request, $currentEnrollSemister)
     {
-        $currentEnrollSemister =  CurrentEnrollSemister::where('institutecode', $currentEnrollSemister)->first();
-
-        $currentEnrollSemister->update($request->all());
+        $currentEnrollSemister =  CurrentEnrollSemister::where('institutecode', $currentEnrollSemister)->update($request->except('_token', '_method'));
         return redirect()->route('current_semister.index')->withMessage('Semister updated success');
     }
 

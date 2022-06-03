@@ -80,8 +80,7 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $code)
     {
-        $dept = DeptInfo::where('deptcode',$code)->first();
-        $dept->update($request->only('deptname', 'deptcode'));
+        $dept = DeptInfo::where('deptcode',$code)->update($request->only('deptname', 'deptcode'));
         return redirect()->route('departments.index')->withMessage('Dept updated success');
     }
 
@@ -93,7 +92,7 @@ class DepartmentController extends Controller
      */
     public function destroy($code)
     {
-        DeptInfo::where('deptcode',$code)->first()->delete();
+        DeptInfo::where('deptcode',$code)->delete();
         return redirect()->route('departments.index')->withMessage('Dept deleted success');
     }
 }

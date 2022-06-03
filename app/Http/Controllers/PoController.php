@@ -85,9 +85,9 @@ class PoController extends Controller
      * @param  \App\Models\Po  $po
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Po $po)
+    public function destroy($po)
     {
-        $po->delete();
+        Po::where('po', $po)->delete();
         return redirect()->route('pos.index')->withMessage('Po deleted success');
     }
 }
