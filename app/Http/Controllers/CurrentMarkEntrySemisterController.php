@@ -86,9 +86,9 @@ class CurrentMarkEntrySemisterController extends Controller
      * @param  \App\Models\CurrentMarkEntrySemister  $currentMarkEntrySemister
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CurrentMarkEntrySemister $currentMarkEntrySemister)
+    public function destroy($institutecode)
     {
-        $currentMarkEntrySemister->delete();
+        CurrentMarkEntrySemister::where('institutecode', $institutecode)->delete();
         return redirect()->route('current_mark_entry_semister.index')->withMessage('Mark Entry deleted success');
     }
 }
