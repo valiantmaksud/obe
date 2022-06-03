@@ -34,7 +34,7 @@
 
 
 
-                        <form method="POST" action="{{ route('po-obtained-mark.update', $poObtainedMark->id) }}"
+                        <form method="POST" action="{{ route('po-obtained-mark.update', $poObtainedMark->cid_11) }}"
                             class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -50,8 +50,8 @@
                                         data-selected="{{ old('cid_11') }}">
                                         <option></option>
                                         @foreach ($offerCourses as $item)
-                                            <option value="{{ $item->id }}"
-                                                {{ $poObtainedMark->cid_11 == $item->id ? 'selected' : '' }}>
+                                            <option value="{{ $item->cid_11 }}"
+                                                {{ $poObtainedMark->cid_11 == $item->cid_11 ? 'selected' : '' }}>
                                                 {{ $item->coursecode }}</option>
                                         @endforeach
                                     </select>
@@ -69,8 +69,8 @@
                                         data-selected="{{ old('studentid') }}">
                                         <option></option>
                                         @foreach ($students as $item)
-                                            <option value="{{ $item->id }}"
-                                                {{ $poObtainedMark->studentid == $item->id ? 'selected' : '' }}>
+                                            <option value="{{ $item->studentid }}"
+                                                {{ $poObtainedMark->studentid == $item->studentid ? 'selected' : '' }}>
                                                 {{ $item->studentid }}</option>
                                         @endforeach
                                     </select>

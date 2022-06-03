@@ -64,10 +64,12 @@ class PoMarkDistributionController extends Controller
      * @param  \App\Models\PoMarkDistribution  $poMarkDistribution
      * @return \Illuminate\Http\Response
      */
-    public function edit(PoMarkDistribution $pomarkDistribution)
+    public function edit( $cid)
     {
         $offerCourses       = OfferCourse::get();
-        $pos                = Po::where('status_06', 'Active')->get();
+        $pos                = Po::where('status_06', '1')->get();
+
+        $pomarkDistribution = PoMarkDistribution::where('cid_11',$cid)->first();
 
         return view('backend.pomark-distribution.edit', compact('offerCourses', 'pomarkDistribution', 'pos'));
     }
@@ -79,9 +81,9 @@ class PoMarkDistributionController extends Controller
      * @param  \App\Models\PoMarkDistribution  $poMarkDistribution
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PoMarkDistribution $pomarkDistribution)
+    public function update(Request $request, $cid)
     {
-        $pomarkDistribution->update($request->all());
+        PoMarkDistribution::where('cid_11', $cid)->update($request->except('_token', '_method'));
         return redirect()->back()->withMessage('update success');
     }
 
@@ -91,9 +93,9 @@ class PoMarkDistributionController extends Controller
      * @param  \App\Models\PoMarkDistribution  $poMarkDistribution
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PoMarkDistribution $pomarkDistribution)
+    public function destroy($cid)
     {
-        $pomarkDistribution->delete();
+        PoMarkDistribution::where('cid_11', $cid)->delete();
         return redirect()->back()->withMessage('delete success');
     }
 }

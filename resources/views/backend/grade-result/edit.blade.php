@@ -34,7 +34,7 @@
 
 
 
-                        <form method="POST" action="{{ route('grade-results.update', $gradeResult->id) }}"
+                        <form method="POST" action="{{ route('grade-results.update', $gradeResult->cid_11) }}"
                             class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -46,11 +46,11 @@
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <select name="cid_11" class="chosen-select form-control"
-                                        data-selected="{{ old('cid') }}" disabled>
+                                        data-selected="{{ old('cid_11') }}" disabled>
                                         <option></option>
                                         @foreach ($offerCourses as $item)
-                                            <option value="{{ $item->id }}"
-                                                {{ $item->id == $gradeResult->cid_11 ? 'selected' : '' }}>
+                                            <option value="{{ $item->cid_11 }}"
+                                                {{ $item->cid_11 == $gradeResult->cid_11 ? 'selected' : '' }}>
                                                 {{ $item->coursecode }}</option>
                                         @endforeach
                                     </select>
@@ -67,8 +67,8 @@
                                         data-selected="{{ old('studentid') }}" disabled>
                                         <option></option>
                                         @foreach ($students as $item)
-                                            <option value="{{ $item->id }}"
-                                                {{ $item->id == $gradeResult->studentid ? 'selected' : '' }}>
+                                            <option value="{{ $item->studentid }}"
+                                                {{ $item->studentid == $gradeResult->studentid ? 'selected' : '' }}>
                                                 {{ $item->studentid }}</option>
                                         @endforeach
                                     </select>

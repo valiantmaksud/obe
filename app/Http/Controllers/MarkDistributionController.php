@@ -63,10 +63,10 @@ class MarkDistributionController extends Controller
      * @param  \App\Models\MarkDistribution  $markDistribution
      * @return \Illuminate\Http\Response
      */
-    public function edit($markDistribution)
+    public function edit($cid)
     {
         $offerCourses       = OfferCourse::get();
-        $markDistribution   = MarkDistribution::where('institutecode',$markDistribution)->first();
+        $markDistribution   = MarkDistribution::where('cid_11',$cid)->first();
         return view('backend.mark-distribution.edit', compact('markDistribution', 'offerCourses'));
     }
 
@@ -77,9 +77,9 @@ class MarkDistributionController extends Controller
      * @param  \App\Models\MarkDistribution  $markDistribution
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MarkDistribution $markDistribution)
+    public function update(Request $request, $cid)
     {
-        $markDistribution->update($request->all());
+        MarkDistribution::where('cid_11', $cid)->update($request->except('_token', '_method'));
         return redirect()->route('mark-distributions.index')->withMessage('Mark distribution updated success');
     }
 
@@ -89,9 +89,9 @@ class MarkDistributionController extends Controller
      * @param  \App\Models\MarkDistribution  $markDistribution
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MarkDistribution $markDistribution)
+    public function destroy( $cid)
     {
-        $markDistribution->delete();
+        MarkDistribution::where('cid_11', $cid)->delete();
         return redirect()->route('mark-distributions.index')->withMessage('Mark distribution deleted success');
     }
 }

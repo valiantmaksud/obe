@@ -34,7 +34,7 @@
 
 
 
-                        <form method="POST" action="{{ route('detail-marks.update', $detailMark->id) }}"
+                        <form method="POST" action="{{ route('detail-marks.update', $detailMark->cid_11) }}"
                             class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -48,11 +48,11 @@
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <select name="cid_11" class="chosen-select form-control cid"
-                                        data-selected="{{ old('cid') }}">
+                                        data-selected="{{ old('cid_11') }}">
                                         <option></option>
                                         @foreach ($offerCourses as $item)
-                                            <option value="{{ $item->id }}"
-                                                {{ $item->id == $detailMark->cid_11 ? 'selected' : '' }}>
+                                            <option value="{{ $item->cid_11 }}"
+                                                {{ $item->cid_11 == $detailMark->cid_11 ? 'selected' : '' }}>
                                                 {{ $item->coursecode }}</option>
                                         @endforeach
                                     </select>
@@ -69,8 +69,8 @@
                                         data-selected="{{ old('studentid') }}">
                                         <option></option>
                                         @foreach ($students as $item)
-                                            <option value="{{ $item->id }}"
-                                                {{ $item->id == $detailMark->studentid ? 'selected' : '' }}>
+                                            <option value="{{ $item->studentid }}"
+                                                {{ $item->studentid == $detailMark->studentid ? 'selected' : '' }}>
                                                 {{ $item->studentid }}</option>
                                         @endforeach
                                     </select>

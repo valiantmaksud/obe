@@ -68,7 +68,10 @@
                                                     <td>{{ $item->co }}</td>
                                                     <td>{{ $item->po }}</td>
                                                     <td>{{ $item->obtainedmark }}</td>
-                                                    <td>{{ $item->status_14 }}</td>
+                                                    <td>
+                                                        <span class="badge badge-{{ $item->status_14 ? 'success' : 'warning'}}">{{ $item->status_14 ? 'Active' : 'Inactive' }}</span>
+
+                                                    </td>
 
                                                     <td class="text-center">
                                                         <div class="btn-group btn-corner">

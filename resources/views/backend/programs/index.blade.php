@@ -63,7 +63,9 @@
                                                     <td>{{ $item->programname }}</td>
                                                     <td>{{ $item->deptcode }}</td>
                                                     <td>{{ $item->institutecode }}</td>
-                                                    <td>{{ $item->status_01 }}</td>
+                                                    <td>   
+                                                        <span class="badge badge-{{ $item->status_01 ? 'success' : 'warning'}}">{{ $item->status_01 ? 'Active' : 'Inactive' }}</span>
+                                                    </td>
 
                                                     <td class="text-center">
                                                         <div class="btn-group btn-corner">

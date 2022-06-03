@@ -46,7 +46,7 @@
                                         data-selected="{{ old('cid_11') }}">
                                         <option></option>
                                         @foreach ($offerCourses as $item)
-                                            <option value="{{ $item->id }}"
+                                            <option value="{{ $item->cid_11 }}"
                                                 {{ $item->cid_11 == $pomarkDistribution->cid_11 ? 'selected' : '' }}>
                                                 {{ $item->coursecode }}</option>
                                         @endforeach

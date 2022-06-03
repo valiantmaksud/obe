@@ -71,11 +71,12 @@ class PoObtainedMarkController extends Controller
      * @param  \App\Models\PoObtainedMark  $poObtainedMark
      * @return \Illuminate\Http\Response
      */
-    public function edit(PoObtainedMark $poObtainedMark)
+    public function edit( $cid)
     {
         $offerCourses       = OfferCourse::get();
         $students           = Student::get();
-        $pos                = Po::where('status_06', 'Active')->get();
+        $pos                = Po::where('status_06', '1')->get();
+        $poObtainedMark     = PoObtainedMark::where('cid_11', $cid)->first();
 
         return view('backend.po-obtainedmark.edit', compact('offerCourses', 'students', 'poObtainedMark', 'pos'));
     }
@@ -87,9 +88,9 @@ class PoObtainedMarkController extends Controller
      * @param  \App\Models\PoObtainedMark  $poObtainedMark
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PoObtainedMark $poObtainedMark)
+    public function update(Request $request, $cid)
     {
-        $poObtainedMark->update($request->all());
+        PoObtainedMark::where('cid_11', $cid)->update($request->except('_token', '_method'));
         return redirect()->back()->withMessage('update success');
     }
 
@@ -99,9 +100,9 @@ class PoObtainedMarkController extends Controller
      * @param  \App\Models\PoObtainedMark  $poObtainedMark
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PoObtainedMark $poObtainedMark)
+    public function destroy( $cid)
     {
-        $poObtainedMark->delete();
+        PoObtainedMark::where('cid_11', $cid)->delete();
         return redirect()->back()->withMessage('delete success');
     }
 

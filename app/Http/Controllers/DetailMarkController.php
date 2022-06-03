@@ -65,10 +65,11 @@ class DetailMarkController extends Controller
      * @param  \App\Models\DetailMark  $detailMark
      * @return \Illuminate\Http\Response
      */
-    public function edit(DetailMark $detailMark)
+    public function edit( $cid)
     {
         $offerCourses       = OfferCourse::get();
         $students           = Student::get();
+        $detailMark         = DetailMark::where('cid_11',$cid)->first();
         return view('backend.detail-mark.edit', compact('offerCourses', 'students', 'detailMark'));
     }
 
@@ -79,9 +80,9 @@ class DetailMarkController extends Controller
      * @param  \App\Models\DetailMark  $detailMark
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DetailMark $detailMark)
+    public function update(Request $request,  $cid)
     {
-        $detailMark->update($request->all());
+        DetailMark::where('cid_11', $cid)->update($request->except('_token', '_method'));
         return redirect()->route('detail-marks.index')->withMessage('Detail Mark update success');
     }
 
@@ -91,9 +92,9 @@ class DetailMarkController extends Controller
      * @param  \App\Models\DetailMark  $detailMark
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DetailMark $detailMark)
+    public function destroy($cid)
     {
-        $detailMark->delete();
+        DetailMark::where('cid_11', $cid)->delete();
         return redirect()->route('detail-marks.index')->withMessage('Detail Mark deleted success');
     }
 }

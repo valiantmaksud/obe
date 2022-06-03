@@ -64,7 +64,10 @@
                                                     <td>{{ $item->year }}</td>
                                                     <td>{{ $item->coursecode }}</td>
                                                     <td>{{ $item->teacherid }}</td>
-                                                    <td>{{ $item->status_11 }}</td>
+                                                    <td>
+                                                        <span class="badge badge-{{ $item->status_11 ? 'success' : 'warning'}}">{{ $item->status_11 ? 'Active' : 'Inactive' }}</span>
+
+                                                    </td>
 
                                                     <td class="text-center">
                                                         <div class="btn-group btn-corner">

@@ -34,7 +34,7 @@
 
 
 
-                        <form method="POST" action="{{ route('mark-distributions.update', $markDistribution->id) }}"
+                        <form method="POST" action="{{ route('mark-distributions.update', $markDistribution->cid_11) }}"
                             class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -50,11 +50,10 @@
                                 </label>
                                 <div class="col-md-5 col-sm-5">
                                     <select name="cid_11" class="chosen-select form-control"
-                                        data-selected="{{ old('cid') }}">
+                                        data-selected="{{ old('cid_11', $markDistribution->cid_11) }}">
                                         <option></option>
                                         @foreach ($offerCourses as $item)
-                                            <option value="{{ $item->id }}"
-                                                {{ $item->id == $markDistribution->cid_11 ? 'selected' : '' }}>
+                                            <option value="{{ $item->cid_11 }}">
                                                 {{ $item->coursecode }}</option>
                                         @endforeach
                                     </select>

@@ -71,10 +71,11 @@ class GradeResultController extends Controller
      * @param  \App\Models\GradeResult  $gradeResult
      * @return \Illuminate\Http\Response
      */
-    public function edit(GradeResult $gradeResult)
+    public function edit($cid)
     {
         $offerCourses       = OfferCourse::get();
         $students           = Student::get();
+        $gradeResult        = GradeResult::where('cid_11', $cid)->first();
         return view('backend.grade-result.edit', compact('offerCourses', 'students', 'gradeResult'));
     }
 
@@ -85,9 +86,9 @@ class GradeResultController extends Controller
      * @param  \App\Models\GradeResult  $gradeResult
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GradeResult $gradeResult)
+    public function update(Request $request, $cid)
     {
-        $gradeResult->update($request->all());
+        GradeResult::where('cid_11', $cid)->update($request->except('_token', '_method'));
         return redirect()->route('grade-results.index')->withMessage('grade result update success');
     }
 
@@ -97,9 +98,9 @@ class GradeResultController extends Controller
      * @param  \App\Models\GradeResult  $gradeResult
      * @return \Illuminate\Http\Response
      */
-    public function destroy(GradeResult $gradeResult)
+    public function destroy($cid)
     {
-        $gradeResult->delete();
+        GradeResult::where('cid_11', $cid)->delete();
         return redirect()->route('grade-results.index')->withMessage('delete success');
     }
 }

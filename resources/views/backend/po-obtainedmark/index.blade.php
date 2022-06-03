@@ -66,7 +66,9 @@
                                                     <td>{{ $item->obtainedmark }}</td>
                                                     <td>{{ $item->pototalmark }}</td>
                                                     <td>{{ (int) $item->obtainedpercentage }}%</td>
-                                                    <td>{{ $item->status_20 }}</td>
+                                                    <td>
+                                                        <span class="badge badge-{{ $item->status_20 ? 'success' : 'warning'}}">{{ $item->status_20 ? 'Active' : 'Inactive' }}</span>
+                                                    </td>
 
                                                     <td class="text-center">
                                                         <div class="btn-group btn-corner">

@@ -70,7 +70,10 @@
                                                     <td>{{ $item->finalexam }}</td>
                                                     <td>{{ $item->total }}</td>
                                                     <td>{{ $item->grade }}</td>
-                                                    <td>{{ $item->status_15 }}</td>
+                                                    <td>
+                                                        <span class="badge badge-{{ $item->status_15 ? 'success' : 'warning'}}">{{ $item->status_15 ? 'Active' : 'Inactive' }}</span>
+
+                                                    </td>
 
                                                     <td class="text-center">
                                                         <div class="btn-group btn-corner">

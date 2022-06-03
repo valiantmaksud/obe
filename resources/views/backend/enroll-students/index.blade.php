@@ -61,7 +61,10 @@
                                                     <td>{{ $item->offer->programcode }}</td>
                                                     <td>{{ $item->student->studentid }}</td>
                                                     <td>{{ $item->enrolltype }}</td>
-                                                    <td>{{ $item->status_13 }}</td>
+                                                    <td>
+                                                        <span class="badge badge-{{ $item->status_13 ? 'success' : 'warning'}}">{{ $item->status_13 ? 'Active' : 'Inactive' }}</span>
+
+                                                    </td>
 
                                                     <td class="text-center">
                                                         <div class="btn-group btn-corner">
