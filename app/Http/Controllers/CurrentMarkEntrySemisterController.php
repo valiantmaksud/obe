@@ -61,8 +61,9 @@ class CurrentMarkEntrySemisterController extends Controller
      * @param  \App\Models\CurrentMarkEntrySemister  $currentMarkEntrySemister
      * @return \Illuminate\Http\Response
      */
-    public function edit(CurrentMarkEntrySemister $currentMarkEntrySemister)
+    public function edit($institutecode)
     {
+        $currentMarkEntrySemister = CurrentMarkEntrySemister::where('institutecode', $institutecode)->first();
         return view('backend.mark_entry.edit', compact('currentMarkEntrySemister'));
     }
 
@@ -73,9 +74,9 @@ class CurrentMarkEntrySemisterController extends Controller
      * @param  \App\Models\CurrentMarkEntrySemister  $currentMarkEntrySemister
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CurrentMarkEntrySemister $currentMarkEntrySemister)
+    public function update(Request $request, $institutecode)
     {
-        $currentMarkEntrySemister->update($request->all());
+        CurrentMarkEntrySemister::where('institutecode', $institutecode)->update($request->except('_token', '_method'));
         return redirect()->route('current_mark_entry_semister.index')->withMessage('Mark Entry updated success');
     }
 

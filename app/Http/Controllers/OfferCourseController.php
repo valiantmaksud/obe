@@ -94,8 +94,7 @@ class OfferCourseController extends Controller
      */
     public function destroy($offerCourse)
     {
-        $offerCourse = OfferCourse::where('cid_11',$offerCourse)->first();
-        $offerCourse->delete();
+        $offerCourse = OfferCourse::where('cid_11',$offerCourse)->delete();
         return redirect()->route('offer_courses.index')->withMessage('offerCourse deleted success');
     }
 }

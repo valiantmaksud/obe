@@ -35,7 +35,7 @@
 
 
                         <form method="POST"
-                            action="{{ route('current_mark_entry_semister.update', $currentMarkEntrySemister->id) }}"
+                            action="{{ route('current_mark_entry_semister.update', $currentMarkEntrySemister->institutecode) }}"
                             class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
