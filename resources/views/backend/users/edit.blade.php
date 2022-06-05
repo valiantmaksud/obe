@@ -129,7 +129,7 @@
                                     Dept Code<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="deptcode" class="form-control chosen-select">
+                                    <select name="deptcode" class="form-control chosen-select" data-selected="{{ $user->deptcode }}" required>
                                         <option></option>
                                         @foreach ($depts as $code => $name)
                                             <option value="{{ $code }}">{{ $name }}</option>
@@ -145,7 +145,7 @@
                                     Institute code<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="institutecode" class="form-control chosen-select">
+                                    <select name="institutecode" class="form-control chosen-select" data-selected="{{ $user->institutecode }}" required>
                                         <option></option>
                                         @foreach ($inst as $code => $name)
                                             <option value="{{ $code }}">{{ $name }}</option>

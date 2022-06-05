@@ -128,6 +128,18 @@
             });
         </script>
 
+        <script>
+            $('select').each(function() {
+                let selected = $(this).data('selected');
+
+                if (typeof selected === "undefined") {
+                    return;
+                }
+
+                $(this).val(selected).prop('selected', 'selected')
+
+            })
+        </script>
         @yield('inline-js')
 
 
