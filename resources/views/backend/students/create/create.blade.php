@@ -42,45 +42,13 @@
     </div>
 
 
+    <x-programcode-option />
 
 
-    <div class="form-group">
-        <label class="control-label col-sm-3 col-sm-3">
-            Program Code
-            <sup class="text-danger">*</sup>:
-        </label>
-        <div class="col-md-5 col-sm-5">
-            <input type="text" name="programcode" class="form-control" autocomplete="off" value="{{ old('batch') }}"
-                placeholder="programcode" required>
-        </div>
-    </div>
+    <x-deptcode-option />
 
 
-
-
-
-    <div class="form-group">
-        <label class="control-label col-sm-3 col-sm-3">
-            Dept Code<sup class="text-danger">*</sup>:
-        </label>
-        <div class="col-md-5 col-sm-5">
-            <input type="text" name="deptcode" class="form-control" autocomplete="off" value="{{ old('deptcode') }}"
-                placeholder="deptcode" required>
-        </div>
-    </div>
-
-
-
-    <div class="form-group">
-        <label class="control-label col-sm-3 col-sm-3">
-            Institute code<sup class="text-danger">*</sup>:
-        </label>
-        <div class="col-md-5 col-sm-5">
-            <input type="text" name="institutecode" class="form-control" autocomplete="off"
-                value="{{ old('institutecode') }}" placeholder="institutecode" required>
-        </div>
-    </div>
-
+    <x-instcode-option />
 
 
 

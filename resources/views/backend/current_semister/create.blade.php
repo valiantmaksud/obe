@@ -40,28 +40,11 @@
 
 
 
-                            <div class="form-group">
-                                <label class="control-label col-sm-3 col-sm-3">
-                                    Institute code<sup class="text-danger">*</sup>:
-                                </label>
-                                <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="institutecode" class="form-control" autocomplete="off"
-                                        value="{{ old('institutecode') }}" placeholder="institutecode" required>
-                                </div>
-                            </div>
+                            <x-instcode-option />
 
 
 
-                            <div class="form-group">
-                                <label class="control-label col-sm-3 col-sm-3">
-                                    Program Code<sup class="text-danger">*</sup>:
-                                </label>
-                                <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="programcode" class="form-control" autocomplete="off"
-                                        value="{{ old('programcode') }}" placeholder="programcode" required>
-                                </div>
-                            </div>
-
+                            <x-programcode-option />
 
 
 

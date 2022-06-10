@@ -43,19 +43,9 @@
 
 
 
-
-                            <div class="form-group">
-                                <label class="control-label col-sm-3 col-sm-3" for="product_name">
-                                    Program code<sup class="text-danger">*</sup> :
-                                </label>
-                                <div class="col-md-5 col-sm-5">
-                                    <input class="form-control" type="text" name="programcode" autocomplete="off"
-                                        value="{{ old('programcode', $offerCourse->programcode) }}"
-                                        placeholder="programcode" required />
-                                </div>
-                            </div>
-
-
+                            <x-programcode-option :value="$offerCourse->programcode" />
+    
+    
 
 
                             <div class="form-group">
