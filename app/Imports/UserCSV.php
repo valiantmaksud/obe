@@ -19,6 +19,7 @@ class UserCSV implements ToModel, WithHeadingRow
         //        try {
         return new User([
 
+            'userid'         => $row['userid'],
             'username'       => $row['username'],
             'email'          => trim($row['email']),
             'password'       => Hash::make(trim($row['password'])),

@@ -80,7 +80,7 @@ class InstituteController extends Controller
      */
     public function update(Request $request, $code)
     {
-        $dept = Institute::where('institutecode',$code)->update($request->only('institutename'));
+        $dept = Institute::where('institutecode',$code)->update($request->only('institutename', 'institutecode'));
 
         return redirect()->route('institutes.index')->withMessage('Institute updated success');
     }

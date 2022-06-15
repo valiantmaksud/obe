@@ -1,2 +1,3 @@
-username,email,password,usertype,userrole,deptcode,institutecode,status_02
-testuser,test2@gmail.com,123456,admin,creator,cse,cse,Active
+userid,username,email,password,usertype,userrole,deptcode,institutecode,status_02
+2,testuser,test2@gmail.com,123456,Admin,creator,cse,sub,1
+3,testuser2,test3@gmail.com,123456,Admin,creator,cse,sub,1
