@@ -47,16 +47,7 @@
 
 
 
-                            <div class="form-group">
-                                <label class="control-label col-sm-3 col-sm-3">
-                                    Semester<sup class="text-danger">*</sup>:
-                                </label>
-                                <div class="col-md-5 col-sm-5">
-                                    <input type="text" name="semester" class="form-control" autocomplete="off"
-                                        value="{{ old('semester', $currentMarkEntrySemister->semester) }}"
-                                        placeholder="semester" required>
-                                </div>
-                            </div>
+                            <x-semister-option :value="$currentMarkEntrySemister->semister" />
 
 
 
