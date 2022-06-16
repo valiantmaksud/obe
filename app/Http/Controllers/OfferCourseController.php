@@ -41,7 +41,7 @@ class OfferCourseController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $data['cid_11'] = Str::uuid();
+        // $data['cid_11'] = Str::uuid();
 
         OfferCourse::create($data);
 
