@@ -136,18 +136,32 @@ class PoObtainedMarkController extends Controller
         $data = [];
         if ($request->filled('coursecode') || $request->filled('semister') || $request->filled('year')) {
 
-            $data['poObtainedMarks'] = OfferCourse::has('ObtainedMark')
-                ->with('ObtainedMark')
-                ->when($request->filled('coursecode'), function ($query) use ($request) {
+            // $data['poObtainedMarks'] = OfferCourse::has('ObtainedMark')
+            //     ->with('ObtainedMark')
+            //     ->when($request->filled('coursecode'), function ($query) use ($request) {
+            //         $query->where('coursecode', $request->coursecode);
+            //     })
+            //     ->when($request->filled('year'), function ($query) use ($request) {
+            //         $query->where('year', $request->year);
+            //     })
+            //     ->when($request->filled('semister'), function ($query) use ($request) {
+            //         $query->where('semister', $request->semister);
+            //     })
+            //     ->where('status_11', '1')->get();
+            $data['poObtainedMarks'] = PoObtainedMark::query()
+            ->whereHas('offer', function($query) use($request){
+
+                $query->when($request->filled('coursecode'), function ($query) use ($request) {
                     $query->where('coursecode', $request->coursecode);
                 })
                 ->when($request->filled('year'), function ($query) use ($request) {
                     $query->where('year', $request->year);
                 })
                 ->when($request->filled('semister'), function ($query) use ($request) {
-                    $query->where('semister', $request->coursecode);
-                })
-                ->where('status_11', '1')->get();
+                    $query->where('semister', $request->semister);
+                })->where('status_11', '1');
+            })
+                ->where('status_20', '1')->get();
         }
 
 

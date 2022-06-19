@@ -124,7 +124,7 @@
 
                                                             <a href="javascript:void(0)" class="btn btn-purple btn-lg"
                                                                 onclick="exportToExcel()">
-                                                                <i class="fa fa-refresh"></i>
+                                                                <i class="fa fa-file-pdf-o"></i>
                                                                 Export To Excel
                                                             </a>
                                                         </div>

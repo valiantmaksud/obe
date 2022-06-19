@@ -97,14 +97,14 @@
 
                                                 @forelse ($poObtainedMarks as $key => $item)
                                                     <tr>
-                                                        <td>{{ $item->ObtainedMark->po }}</td>
+                                                        <td>{{ $item->po }}</td>
 
-                                                        <td>{{ $item->ObtainedMark->pototalmark }}</td>
-                                                        <td>{{ $item->ObtainedMark->obtainedmark }}</td>
+                                                        <td>{{ $item->pototalmark }}</td>
+                                                        <td>{{ $item->obtainedmark }}</td>
                                                         <td>
-                                                            {{ ($item->obtainedMark->obtainedmark * 100) / $item->obtainedMark->pototalmark > 40 ? 'True' : 'False' }}
+                                                            {{ ($item->obtainedmark * 100) / $item->pototalmark > 40 ? 'True' : 'False' }}
                                                         </td>
-                                                        <td>{{ $item->ObtainedMark->obtainedpercentage }}</td>
+                                                        <td>{{ $item->obtainedpercentage }}</td>
                                                     </tr>
                                                 @empty
                                                     <tr>
@@ -123,7 +123,7 @@
 
                                                             <a href="javascript:void(0)" class="btn btn-purple btn-lg"
                                                                 onclick="exportToExcel()">
-                                                                <i class="fa fa-refresh"></i>
+                                                                <i class="fa fa-file-pdf-o"></i>
                                                                 Export To Excel
                                                             </a>
                                                         </div>

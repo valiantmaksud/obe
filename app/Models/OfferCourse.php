@@ -17,6 +17,6 @@ class OfferCourse extends Model
 
     public function ObtainedMark()
     {
-        return $this->hasOne(PoObtainedMark::class, 'cid_11')->where('status_20', 'Active');
+        return $this->hasOne(PoObtainedMark::class, 'cid_11', 'cid_11')->where('status_20', '1');
     }
 }
