@@ -94,7 +94,7 @@
 
                                                         <td>{{ $item->obtainedMark->pototalmark }}</td>
                                                         <td>{{ $item->obtainedMark->obtainedmark }}</td>
-                                                        <td>{{ $item->obtainedMark->obtainedpercentage }}</td>
+                                                        <td>{{ $item->obtainedMark->obtainedpercentage }}%</td>
                                                         <td>
                                                             {{ ($item->obtainedMark->obtainedmark * 100) / $item->obtainedMark->pototalmark > 40 ? 'True' : 'False' }}
                                                         </td>
