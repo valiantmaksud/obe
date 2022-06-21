@@ -54,7 +54,7 @@
                                     Semester<sup class="text-danger">*</sup>:
                                 </label>
                                 <div class="col-md-5 col-sm-5">
-                                    <select name="semsster" class="form-control chosen-select" data-selected="{{ old('semester') }}">
+                                    <select name="semester" class="form-control chosen-select" data-selected="{{ old('semester') }}">
                                         <option></option>
                                         @foreach ($semisters as $semister)
                                             <option value="{{ $semister }}">{{ $semister }}</option>

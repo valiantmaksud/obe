@@ -26,7 +26,7 @@ class CurrentEnrollSemisterController extends Controller
      */
     public function create()
     {
-        $data['semister'] = Semister::pluck('semister');
+        $data['semisters'] = Semister::pluck('semister');
         return view('backend.current_semister.create', $data);
     }
 
@@ -65,7 +65,7 @@ class CurrentEnrollSemisterController extends Controller
      */
     public function edit($instcode)
     {
-        $data['semister'] = Semister::pluck('semister');
+        $data['semisters'] = Semister::pluck('semister');
         $data['currentEnrollSemister'] = CurrentEnrollSemister::where('institutecode', $instcode)->first();
         return view('backend.current_semister.edit', $data);
     }
