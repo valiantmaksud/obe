@@ -88,8 +88,8 @@
                                                     <th>PO</th>
                                                     <th>Total PO Marks</th>
                                                     <th>Obtain PO Marks</th>
-                                                    <th>Attainment</th>
                                                     <th>Percentage</th>
+                                                    <th>Attainment</th>
                                                 </tr>
                                             </thead>
 
@@ -101,10 +101,10 @@
 
                                                         <td>{{ $pototal =  $item->sum('pototalmark') }}</td>
                                                         <td>{{ $obtainedtotal = $item->sum('obtainedmark') }}</td>
+                                                        <td>{{ $item->sum('obtainedpercentage')/$item->count('obtainedpercentage') }}%</td>
                                                         <td>
                                                             {{ ($obtainedtotal * 100) / $pototal > 40 ? 'True' : 'False' }}
                                                         </td>
-                                                        <td>{{ $item->sum('obtainedpercentage')/$item->count('obtainedpercentage') }}%</td>
                                                     </tr>
                                                 @empty
                                                     <tr>
