@@ -89,7 +89,7 @@
                                                     <th>Total PO Marks</th>
                                                     <th>Obtain PO Marks</th>
                                                     <th>Attainment</th>
-                                                    <th>Percentage(%)</th>
+                                                    <th>Percentage</th>
                                                 </tr>
                                             </thead>
 
@@ -97,14 +97,14 @@
 
                                                 @forelse ($poObtainedMarks as $key => $item)
                                                     <tr>
-                                                        <td>{{ $item->po }}</td>
+                                                        <td>{{ $item->first()->po }}</td>
 
-                                                        <td>{{ $item->pototalmark }}</td>
-                                                        <td>{{ $item->obtainedmark }}</td>
+                                                        <td>{{ $pototal =  $item->sum('pototalmark') }}</td>
+                                                        <td>{{ $obtainedtotal = $item->sum('obtainedmark') }}</td>
                                                         <td>
-                                                            {{ ($item->obtainedmark * 100) / $item->pototalmark > 40 ? 'True' : 'False' }}
+                                                            {{ ($obtainedtotal * 100) / $pototal > 40 ? 'True' : 'False' }}
                                                         </td>
-                                                        <td>{{ $item->obtainedpercentage }}</td>
+                                                        <td>{{ $item->sum('obtainedpercentage')/$item->count('obtainedpercentage') }}%</td>
                                                     </tr>
                                                 @empty
                                                     <tr>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CurrentMarkEntrySemister;
+use App\Models\Semister;
 use Illuminate\Http\Request;
 
 class CurrentMarkEntrySemisterController extends Controller
@@ -25,7 +26,8 @@ class CurrentMarkEntrySemisterController extends Controller
      */
     public function create()
     {
-        return view('backend.mark_entry.create');
+        $data['semisters'] = Semister::pluck('semister');
+        return view('backend.mark_entry.create', $data);
     }
 
     /**
@@ -64,7 +66,10 @@ class CurrentMarkEntrySemisterController extends Controller
     public function edit($institutecode)
     {
         $currentMarkEntrySemister = CurrentMarkEntrySemister::where('institutecode', $institutecode)->first();
-        return view('backend.mark_entry.edit', compact('currentMarkEntrySemister'));
+
+        $data['semisters'] = Semister::pluck('semister');
+
+        return view('backend.mark_entry.edit', compact('currentMarkEntrySemister'), $data);
     }
 
     /**

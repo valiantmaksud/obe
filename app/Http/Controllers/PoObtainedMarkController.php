@@ -118,7 +118,7 @@ class PoObtainedMarkController extends Controller
         if ($request->filled('student_id')) {
             $data['poObtainedMarks'] = PoObtainedMark::whereHas('student', function ($query) use ($request) {
                 $query->where('studentid', $request->student_id);
-            })->get();
+            })->get()->groupBy('po');
             $data['student'] = Student::where('studentid', $request->student_id)->first();
         }
 
@@ -136,7 +136,7 @@ class PoObtainedMarkController extends Controller
         $data = [];
         if ($request->filled('coursecode') || $request->filled('semister') || $request->filled('year')) {
 
-            // $data['poObtainedMarks'] = OfferCourse::has('ObtainedMark')
+            //  $data['poObtainedMarks'] = OfferCourse::has('ObtainedMark')
             //     ->with('ObtainedMark')
             //     ->when($request->filled('coursecode'), function ($query) use ($request) {
             //         $query->where('coursecode', $request->coursecode);
@@ -161,7 +161,7 @@ class PoObtainedMarkController extends Controller
                     $query->where('semister', $request->semister);
                 })->where('status_11', '1');
             })
-                ->where('status_20', '1')->get();
+                ->where('status_20', '1')->get()->groupBy('po');
         }
 
 
