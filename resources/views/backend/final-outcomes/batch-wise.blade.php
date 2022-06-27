@@ -1,10 +1,10 @@
 @extends('master')
 
 
-@section('title', 'Student PO')
+@section('title', 'Student PO Batch Wise')
 
 @section('page-header')
-    <i class="fa fa-info-circle"></i> Student PO
+    <i class="fa fa-info-circle"></i> Student PO Batch Wise
 @stop
 
 @section('main-content')
