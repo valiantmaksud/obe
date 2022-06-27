@@ -92,9 +92,9 @@
                                                         <td>{{ $item->studentid }}</td>
                                                         <td>{{ $item->studentname }}</td>
 
-                                                        <td>{{ $item->obtainedMark->pototalmark }}</td>
-                                                        <td>{{ $item->obtainedMark->obtainedmark }}</td>
-                                                        <td>{{ $item->obtainedMark->obtainedpercentage }}%</td>
+                                                        <td>{{ $item->obtainedMarks->sum('pototalmark') }}</td>
+                                                        <td>{{ $item->obtainedMarks->sum('obtainedmark') }}</td>
+                                                        <td>{{ round($item->obtainedMarks->sum('obtainedpercentage') / $item->obtainedMarks->count(), 2) }}%</td>
                                                         <td>
                                                             {{ ($item->obtainedMark->obtainedmark * 100) / $item->obtainedMark->pototalmark > 40 ? 'True' : 'False' }}
                                                         </td>
